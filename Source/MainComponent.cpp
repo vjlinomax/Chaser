@@ -9,8 +9,6 @@
 #include "MainComponent.h"
 #include "../../HybridApi/Source/HybridApi.h"
 
-
-
 //==============================================================================
 MainContentComponent::MainContentComponent()
 {
@@ -106,12 +104,8 @@ void MainContentComponent::timerCallback()
 
 		//make the first step active
 		sequencer->selectStep( 0 );
-
 	}
-
-
 	else
-
 	{
 		//		xmlSequence->createFreshXml( version );
 		//		resolution = xmlSequence->getResolution();
@@ -142,8 +136,6 @@ void MainContentComponent::timerCallback()
 
 	//resize to update preview window
 	resized();
-
-
 }
 
 StringArray MainContentComponent::getMenuBarNames()
@@ -154,7 +146,6 @@ StringArray MainContentComponent::getMenuBarNames()
 
 PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::String & )
 {
-
 	PopupMenu menu;
 
 	if ( menuIndex == 0 )
@@ -276,9 +267,6 @@ previewWindow->clearSlices();
 sequencer->selectStep( 0 );
 resized();
 }*/
-
-
-
 
 void MainContentComponent::saveXml()
 {
@@ -436,11 +424,8 @@ void MainContentComponent::pasteSequence()
 	*/
 }
 
-
-
 void MainContentComponent::resized()
 {
-
 	Rectangle<int> area( getLocalBounds() );
 
 	int menuBarHeight = 0;

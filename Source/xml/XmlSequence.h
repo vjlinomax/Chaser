@@ -18,39 +18,36 @@
 class XmlSequence
 {
 public:
-    XmlSequence( String version );
-    ~XmlSequence();
-    
-    
+	XmlSequence( String version );
+	~XmlSequence();
+
 	String getVersion();
 	void setVersion ( String version );
-    
-    void setAssFile ( File f );
-    File getAssFile();
-	
+
+	void setAssFile ( File f );
+	File getAssFile();
+
 	void setResolution( Point<int> resolution );
 	Point<int> getResolution();
 
-    void createFreshXml( String version );
-	
-    bool save();
+	void createFreshXml( String version );
+
+	bool save();
 	bool loadXmlFile( File f );
-    File getXmlFile();
-	
+	File getXmlFile();
+
 	void setXmlFile( File f );
-    
+
 private:
 	String versionThreshold;
-    ScopedPointer<XmlElement> chaserData;
+	ScopedPointer<XmlElement> chaserData;
 	ScopedPointer<XmlElement> lastUsedFileData;
-    XmlElement* sequenceData;
-    XmlElement* positionData;
+	XmlElement* sequenceData;
+	XmlElement* positionData;
 	
 	void addElement(XmlElement* elementToAddTo, String nameOfNewElement, String valueOfNewElement, bool replace);
 	void setPositionData(XmlElement* sliceXml, Slice* s);
 	void addPointsToXml(Array<Point<float>>& points, XmlElement* pointDataElement);
 };
-
-
 
 #endif  // XMLSEQUENCE_H_INCLUDED

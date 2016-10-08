@@ -14,9 +14,6 @@
 #include "JuceHeader.h"
 #include "../xml/ChaserXmlManager.h"
 
-
-
-
 //the active slices in a step, slices are identified by their uniqueId
 typedef Array<int64> Step;
 
@@ -95,9 +92,8 @@ private:
 
 	void writeToXml();
 	XmlElement* getSequencesAsXml();
-	
-	ChaserXmlManager* xmlManager;
 
+	ChaserXmlManager* xmlManager;
 };
 
 

@@ -11,27 +11,26 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
 
-
 //==============================================================================
 class ChaserApplication  : public JUCEApplication
 {
 public:
-    //==============================================================================
-    ChaserApplication() {}
+	//==============================================================================
+	ChaserApplication() {}
 
-    const String getApplicationName() override       { return ProjectInfo::projectName; }
-    const String getApplicationVersion() override    { return ProjectInfo::versionString; }
-    bool moreThanOneInstanceAllowed() override       { return false; }
+	const String getApplicationName() override       { return ProjectInfo::projectName; }
+	const String getApplicationVersion() override    { return ProjectInfo::versionString; }
+	bool moreThanOneInstanceAllowed() override       { return false; }
 
-    //==============================================================================
-    void initialise (const String&) override
-    {
-        // This method is where you should put your application's initialisation code..
+	//==============================================================================
+	void initialise (const String&) override
+	{
+		// This method is where you should put your application's initialisation code..
 
-        mainWindow = new MainWindow (getApplicationName());
-    }
+		mainWindow = new MainWindow (getApplicationName());
+	}
 
-    void shutdown() override
+	void shutdown() override
     {
         // Add your application's shutdown code here..
 

@@ -378,17 +378,8 @@ void ChaseManager::createSequencesFromXml( XmlElement sequencesXml )
 	DBG( "While parsing the xml, the sequenceMap has " + String( sequences.size() ) + " sequences" );
 }
 
-
-
 void ChaseManager::writeToXml()
 {
 	if ( xmlManager )
 		xmlManager->saveXmlElement( getSequencesAsXml() );
 }
-
-//void ChaseManager::setSequences( Array<Sequence> newChaser )
-//{
-//	sequences = newChaser;
-//}
-
-

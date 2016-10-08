@@ -37,6 +37,4 @@ private:
 	File saveFile;
 };
 
-
-
 #endif  // CHASERXMLWRITER_H_INCLUDED

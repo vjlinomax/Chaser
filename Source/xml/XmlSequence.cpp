@@ -143,8 +143,6 @@ bool XmlSequence::save()
 	"Ok");
 	}
 	*/
-
-
 }
 
 void XmlSequence::setAssFile( File f )
@@ -166,12 +164,6 @@ File XmlSequence::getAssFile()
 	return File();
 }
 
-
-
-
-
-
-
 bool XmlSequence::loadXmlFile( File f )
 {
 	//clear out the previous data
@@ -190,8 +182,6 @@ bool XmlSequence::loadXmlFile( File f )
 			if ( chaserData->getChildByName( "sequenceData" ) != nullptr )
 			{
 				sequenceData = chaserData->getChildByName( "sequenceData" );
-
-
 				forEachXmlChildElement( *sequenceData, sequence )
 				{
 					forEachXmlChildElement( *sequence, step )
@@ -254,6 +244,3 @@ File XmlSequence::getXmlFile()
 
 	return defaultChaseFile;
 }
-
-
-

@@ -9,7 +9,6 @@
 */
 
 #include "ChaserXmlManager.h"
-
 #include "../../HybridApi/Source/JuceBased/ArenaHelpers/File/FileHelper.h"
 
 ChaserXmlManager::ChaserXmlManager()

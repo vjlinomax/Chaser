@@ -34,6 +34,4 @@ private:
 	ChaserXmlManager* xmlManager;
 };
 
-
-
 #endif  // SLICEMANAGER_H_INCLUDED

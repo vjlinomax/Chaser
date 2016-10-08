@@ -20,8 +20,6 @@
 #include "slice/SliceManager.h"
 #include "xml\ChaserXmlManager.h"
 
-
-
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
@@ -31,7 +29,6 @@ class MainContentComponent   :  public Component,
 								public MenuBarModel,
 								public KeyListener,
 								public Timer
-
 {
 public:
     //==============================================================================
@@ -41,14 +38,14 @@ public:
     void resized() override;
 
 	virtual void timerCallback() override;
-	
+
 	//menubar methods
 	virtual StringArray getMenuBarNames() override;
 	virtual PopupMenu getMenuForIndex (int topLevelMenuIndex,
 									   const String& menuName) override;
 	virtual void menuItemSelected (int menuItemID,
 								   int topLevelMenuIndex) override;
-			
+
 	//keyboard listener
 	virtual bool keyPressed (const KeyPress& key,
 							 Component* originatingComponent) override;
@@ -56,23 +53,22 @@ public:
 	void saveXml();
 	bool saveAsXml();
 	void loadXml();
-    
+
 	void reloadSliceData();
 	//void clearGUI();
-	
 	void copyStep();
 	void pasteStep();
 	void copySequence();
 	void pasteSequence();
-	
+
 	ScopedPointer<ChaseManager> chaseManager;
 	ScopedPointer<SliceManager> sliceManager;
-	
+
 	ScopedPointer<Preview> previewWindow;
-	
+
 private:
 	ScopedPointer<MenuBarComponent> menuBar;
-	
+
 	int currentStep;
 	int currentSequence;
 	int currentSequenceLength;
@@ -80,23 +76,18 @@ private:
 	Array<int64> slicesToCopy;
 	Array<Array<int>> currentSequenceSlices;
 	String sequenceNameToCopy;
-	
+
     ScopedPointer<ColourLookAndFeel> laf;
-	
+
     ScopedPointer<SliceList> sliceList;
     ScopedPointer<Sequencer> sequencer;
 	ScopedPointer<ChaserXmlManager> xmlManager;
 	ScopedPointer<Copier> copier;
-	
-
-	
-
 
 	String version;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
-
 
 #endif  // MAINCOMPONENT_H_INCLUDED
