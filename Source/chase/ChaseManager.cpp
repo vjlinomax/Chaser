@@ -12,6 +12,16 @@
 
 ChaseManager::ChaseManager( ChaserXmlManager* xmlManager ) : xmlManager( xmlManager )
 {
+	setDefaults();
+}
+
+ChaseManager::~ChaseManager()
+{
+
+}
+
+void ChaseManager::setDefaults()
+{
 	//create 16 sequences with 16 empty steps
 	sequences.resize( 16 );
 	for ( int i = 0; i < sequences.size(); i++ )
@@ -25,11 +35,6 @@ ChaseManager::ChaseManager( ChaserXmlManager* xmlManager ) : xmlManager( xmlMana
 
 	currentStep = 0;
 	currentSequence = 0;
-}
-
-ChaseManager::~ChaseManager()
-{
-
 }
 
 void ChaseManager::setStep( int sequenceIndex, int stepIndex, Step activeSlices )
@@ -73,6 +78,7 @@ Step ChaseManager::getCurrentStep()
 void ChaseManager::clearAll()
 {
 	sequences.clear();
+	setDefaults();
 	writeToXml();
 }
 

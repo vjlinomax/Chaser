@@ -55,7 +55,7 @@ public:
 	void loadXml();
 
 	void reloadSliceData();
-	//void clearGUI();
+
 	void copyStep();
 	void pasteStep();
 	void copySequence();
@@ -69,13 +69,8 @@ public:
 private:
 	ScopedPointer<MenuBarComponent> menuBar;
 
-	int currentStep;
-	int currentSequence;
-	int currentSequenceLength;
-	Array<int64> activeSliceIds;
-	Array<int64> slicesToCopy;
-	Array<Array<int>> currentSequenceSlices;
-	String sequenceNameToCopy;
+	Step stepToCopy;
+	Sequence sequenceToCopy;
 
     ScopedPointer<ColourLookAndFeel> laf;
 
@@ -83,6 +78,10 @@ private:
     ScopedPointer<Sequencer> sequencer;
 	ScopedPointer<ChaserXmlManager> xmlManager;
 	ScopedPointer<Copier> copier;
+
+	void createChaserFromAssFile( File assFile, bool createNew );
+	//will return true if succesful
+	bool createChaserFromChaserFile();
 
 	String version;
     

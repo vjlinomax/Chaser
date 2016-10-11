@@ -33,7 +33,6 @@ private:
 	XmlElement* getMainElement();
 
 	//todo by setting a mainelement name, i can probably make this an api thing
-
 	File saveFile;
 };
 

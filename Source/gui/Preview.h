@@ -74,9 +74,10 @@ public:
     
     virtual void buttonClicked (Button*);
 	
+	/* this will clear the list of sliceButtons and create new ones
+	based on the slices passed in as argument*/
 	void createSliceButtons ( OwnedArray<Slice>& slices );
-    void clearSlices();
-	
+    
 	/* this check the list of slicebuttons to see if there are buttons
 	with a matching uniqueid, if so, it toggles them on*/
 	void setActiveSlices( Array<int64> activeSliceIds );
@@ -85,7 +86,7 @@ public:
     
 
 private:
-	
+	void clearSlices();
 	void addSliceButton( Slice& slice);
 	
     OwnedArray<SliceButton> sliceButtons;

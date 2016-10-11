@@ -73,6 +73,8 @@ void Preview::setActiveSlices(Array<int64> activeSliceIds)
 
 void Preview::createSliceButtons(OwnedArray<Slice> &slices)
 {
+	clearSlices();
+
 	for ( int i = 0; i < slices.size(); i++ )
 		addSliceButton( *slices[i] );
 }

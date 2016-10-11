@@ -84,6 +84,8 @@ public:
 	void createSequencesFromXml( XmlElement sequenceElement );
 
 private:
+	void setDefaults();
+
 	void fillSequence();
 	int currentStep;
 	int currentSequence;
