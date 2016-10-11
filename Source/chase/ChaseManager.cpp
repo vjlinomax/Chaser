@@ -37,6 +37,13 @@ void ChaseManager::setDefaults()
 	currentSequence = 0;
 }
 
+void ChaseManager::clearAll()
+{
+	sequences.clear();
+	setDefaults();
+	writeToXml();
+}
+
 void ChaseManager::setStep( int sequenceIndex, int stepIndex, Step activeSlices )
 {
 	if ( sequences.size() <= sequenceIndex )
@@ -73,13 +80,6 @@ Step ChaseManager::getStep( int sequence, int step )
 Step ChaseManager::getCurrentStep()
 {
 	return getStep( getCurrentSequenceIndex(), getCurrentStepIndex() );
-}
-
-void ChaseManager::clearAll()
-{
-	sequences.clear();
-	setDefaults();
-	writeToXml();
 }
 
 void ChaseManager::fillSequence()
@@ -371,16 +371,21 @@ void ChaseManager::createSequencesFromXml( XmlElement sequencesXml )
 			}
 
 		}
+	}
 
+	//now go through the entire array of sequences and see if any are empty
+	for ( Sequence sequence : sequences )
+	{
 		//set default values if any values are empty
 		if ( sequence.name == "" )
-			sequence.name = "Sequence " + String( sequenceNr + 1 );
+			sequence.name = "Sequence " + String( sequenceCount + 1 );
 		if ( sequence.steps.size() == 0 )
 			sequence.steps.resize( 16 );
 
-		sequences.set( sequenceNr, sequence );
+		sequences.set( sequenceCount, sequence );
 		sequenceCount++;
 	}
+	
 	DBG( "While parsing the xml, the sequenceMap has " + String( sequences.size() ) + " sequences" );
 }
 
