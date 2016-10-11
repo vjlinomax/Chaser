@@ -30,9 +30,17 @@ Point<int>& SliceManager::getResolution()
 	return resolution;
 }
 
+File& SliceManager::getAssFile()
+{
+	return assFile;
+}
+
 XmlElement* SliceManager::getSlicesAsXml()
 {
 	XmlElement* slicesXml = new XmlElement( "slices" );
+	slicesXml->setAttribute( "assFile", assFile.getFullPathName() );
+	slicesXml->setAttribute( "width", resolution.x );
+	slicesXml->setAttribute( "height", resolution.y );
 
 	//loop through all the slices
 	for ( Slice* slice : slices )

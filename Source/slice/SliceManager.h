@@ -23,12 +23,14 @@ public:
 	
 	OwnedArray<Slice>& getSlices();
 	Point<int>& getResolution();
+	File& getAssFile();
 
 	void writeToXml();
 	
 private:
 	OwnedArray<Slice> slices;
 	Point<int> resolution;
+	File assFile;
 
 	XmlElement* getSlicesAsXml();
 	ChaserXmlManager* xmlManager;

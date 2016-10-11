@@ -102,7 +102,9 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		menu.addSeparator();
 
 		menu.addItem( 4, "Load Arena Setup", false, false );
-		menu.addItem( 5, "Reload Arena Setup", true );
+		//if the last used arena file still exists, enable the option to reload it
+		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile() );
+		menu.addItem( 5, "Reload Arena Setup", isAvailable );
 	}
 
 	else if ( menuIndex == 1 )
@@ -205,7 +207,7 @@ bool MainContentComponent::createChaserFromChaserFile()
 	{
 		//this will return 1920x1080 if no resolution was saved
 		ChaserXmlParser::parseResolution( lastUsedChaser, sliceManager->getResolution() );
-
+		ChaserXmlParser::parseAssFile( lastUsedChaser, sliceManager->getAssFile() );
 		ChaserXmlParser::parseSlices( lastUsedChaser, sliceManager->getSlices() );
 
 		//now populate the previewwindow with buttons for these slices
