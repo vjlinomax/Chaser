@@ -14,7 +14,8 @@
 
 
 //==============================================================================
-Preview::Preview()
+Preview::Preview( ChaseManager* chaseManager ) :
+chaseManager( chaseManager )
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
@@ -43,9 +44,8 @@ void Preview::buttonClicked(Button*)
 			activeSlices.add( uid );
 		}
 	}
-	
-	MainContentComponent* parent = findParentComponentOfClass<MainContentComponent>();
-	parent->chaseManager->setCurrentStep( activeSlices );
+
+	chaseManager->setCurrentStep( activeSlices );
 }
 
 void Preview::setActiveSlices(Array<int64> activeSliceIds)

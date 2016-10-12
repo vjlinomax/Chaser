@@ -24,7 +24,7 @@ MainContentComponent::MainContentComponent()
 	chaseManager = new ChaseManager( xmlManager );
 	sliceManager = new SliceManager( xmlManager );
 
-	previewWindow = new Preview();
+	previewWindow = new Preview( chaseManager );
 	addAndMakeVisible( previewWindow );
 
 	sliceList = new SliceList();

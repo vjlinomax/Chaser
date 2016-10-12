@@ -13,6 +13,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SliceButton.h"
+#include "../chase/ChaseManager.h"
 #include "ColourLookAndFeel.h"
 
 
@@ -66,7 +67,7 @@ public:
 class Preview    : public Component, public Button::Listener
 {
 public:
-    Preview();
+    Preview( ChaseManager* chaseManager );
     ~Preview();
 
     void paint (Graphics&);
@@ -89,6 +90,8 @@ private:
 	void clearSlices();
 	void addSliceButton( Slice& slice);
 	
+	ChaseManager* chaseManager;
+
     OwnedArray<SliceButton> sliceButtons;
     ScopedPointer<SliceLookAndFeel> sliceLaf;
 	
