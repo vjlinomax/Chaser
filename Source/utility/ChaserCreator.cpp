@@ -34,13 +34,14 @@ void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 
 	//now populate the previewwindow with buttons for these slices
 	previewWindow->createSliceButtons();
-	previewWindow->resized();
 
 	//now populate the slicelist with entries for these slices
 	//because sliceList has a pointer to sliceManager, 
 	//I don't need to pass anything in
 	sliceList->setSlices();
-	sliceList->resized();
+
+	//now redraw maincomponent, so the previewwindow is fitted and slicelist updated
+	previewWindow->getParentComponent()->resized();
 
 	//at this point, all the slices have their position and screens assigned
 	//so we can save this to xml
@@ -69,11 +70,12 @@ bool ChaserCreator::createChaserFromChaserFile()
 
 		//now populate the previewwindow with buttons for these slices
 		previewWindow->createSliceButtons();
-		previewWindow->resized();
 
 		//now populate the slicelist with entries for these slices
 		sliceList->setSlices();
-		sliceList->resized();
+		
+		//now redraw maincomponent, so the previewwindow is fitted and slicelist updated
+		previewWindow->getParentComponent()->resized();
 
 		//this will try its best to get useful info from the chaserfile
 		chaseManager->createSequencesFromXml( ChaserXmlParser::parseSequences( lastUsedChaser ) );
