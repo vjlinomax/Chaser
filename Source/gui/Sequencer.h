@@ -14,7 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "ColourLookAndFeel.h"
 #include "Stepper.h"
-class MainContentComponent;
+#include "../chase/ChaseManager.h"
 
 //==============================================================================
 /*
@@ -34,7 +34,7 @@ class Sequencer    :	public Component,
 						public Timer
 {
 public:
-	Sequencer( MainContentComponent& parent );
+	Sequencer( ChaseManager* chaser, Preview* preview );
     ~Sequencer();
 
     void paint (Graphics&) override;
@@ -52,14 +52,13 @@ public:
 	void selectStep( int i );
 	
 private:
-	
-	
-	MainContentComponent& parent;
-    
+
+	ChaseManager* chaseManager;
+
     ScopedPointer<DrawableButton> play;
     ScopedPointer<DrawableButton> next;
     ScopedPointer<DrawableButton> previous;
-	
+
 	Stepper* stepper;
 	ScopedPointer<NoKeyViewport> viewport;
 

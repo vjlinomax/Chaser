@@ -30,7 +30,7 @@ MainContentComponent::MainContentComponent()
 	sliceList = new SliceList();
 	addAndMakeVisible( sliceList );
 
-	sequencer = new Sequencer( *this );
+	sequencer = new Sequencer( chaseManager, previewWindow );
 	addAndMakeVisible( sequencer );
 
 	copier = new Copier( chaseManager );
