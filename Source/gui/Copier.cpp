@@ -13,7 +13,8 @@
 #include "../MainComponent.h"
 
 //==============================================================================
-Copier::Copier()
+Copier::Copier( ChaseManager* chaseManager ) :
+chaseManager( chaseManager )
 {
 	//create 4 buttons for x1, x2, x4 and x8
 	for ( int i = 0; i < 4; i++ )
@@ -37,16 +38,14 @@ void Copier::buttonClicked( Button* b )
 {
 	int multiplier = int( pow( 2, buttons.indexOf( b ) ) );
 
-	MainContentComponent* parent = findParentComponentOfClass<MainContentComponent>();
-	ChaseManager* chaser = parent->chaseManager;
-	int copiesThatFitInSequence = int( floor( (chaser->getLastStepIndex() + 1) / multiplier ) );
+	int copiesThatFitInSequence = int( floor( (chaseManager->getLastStepIndex() + 1) / multiplier ) );
 	for ( int i = 1; i < copiesThatFitInSequence; i++ )
 	{
-		int nextStep = chaser->getCurrentStepIndex() + i  * multiplier;
-		if ( nextStep >= chaser->getLastStepIndex() + 1 )
-			nextStep -= chaser->getLastStepIndex() + 1;
+		int nextStep = chaseManager->getCurrentStepIndex() + i  * multiplier;
+		if ( nextStep >= chaseManager->getLastStepIndex() + 1 )
+			nextStep -= chaseManager->getLastStepIndex() + 1;
 
-		chaser->setStep( chaser->getCurrentSequenceIndex(), nextStep, chaser->getCurrentStep() );
+		chaseManager->setStep( chaseManager->getCurrentSequenceIndex(), nextStep, chaseManager->getCurrentStep() );
 	}
 }
 

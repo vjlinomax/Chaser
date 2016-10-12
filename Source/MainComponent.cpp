@@ -33,7 +33,7 @@ MainContentComponent::MainContentComponent()
 	sequencer = new Sequencer( *this );
 	addAndMakeVisible( sequencer );
 
-	copier = new Copier();
+	copier = new Copier( chaseManager );
 	addAndMakeVisible( copier );
 
 	creator = new ChaserCreator( sliceManager, chaseManager, previewWindow, sliceList, sequencer );
