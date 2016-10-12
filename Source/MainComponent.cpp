@@ -298,7 +298,7 @@ void MainContentComponent::copyStep()
 void MainContentComponent::pasteStep()
 {
 	chaseManager->setCurrentStep( stepToCopy );
-	previewWindow->resized();
+	previewWindow->setActiveSlices();
 }
 
 void MainContentComponent::copySequence()
