@@ -24,7 +24,7 @@ MainContentComponent::MainContentComponent()
 	chaseManager = new ChaseManager( xmlManager );
 	sliceManager = new SliceManager( xmlManager );
 
-	previewWindow = new Preview( chaseManager );
+	previewWindow = new Preview( chaseManager, sliceManager );
 	addAndMakeVisible( previewWindow );
 
 	sliceList = new SliceList( sliceManager, previewWindow );
@@ -297,7 +297,8 @@ void MainContentComponent::copyStep()
 
 void MainContentComponent::pasteStep()
 {
-	previewWindow->setActiveSlices( stepToCopy );
+	chaseManager->setCurrentStep( stepToCopy );
+	previewWindow->resized();
 }
 
 void MainContentComponent::copySequence()

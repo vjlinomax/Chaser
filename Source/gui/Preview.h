@@ -14,6 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SliceButton.h"
 #include "../chase/ChaseManager.h"
+#include "../slice/SliceManager.h"
 #include "ColourLookAndFeel.h"
 
 
@@ -67,7 +68,7 @@ public:
 class Preview    : public Component, public Button::Listener
 {
 public:
-    Preview( ChaseManager* chaseManager );
+    Preview( ChaseManager* chaseManager, SliceManager* sliceManager );
     ~Preview();
 
     void paint (Graphics&);
@@ -77,11 +78,11 @@ public:
 	
 	/* this will clear the list of sliceButtons and create new ones
 	based on the slices passed in as argument*/
-	void createSliceButtons ( OwnedArray<Slice>& slices );
+	void createSliceButtons ();
     
 	/* this check the list of slicebuttons to see if there are buttons
 	with a matching uniqueid, if so, it toggles them on*/
-	void setActiveSlices( Array<int64> activeSliceIds );
+	void setActiveSlices();
 
 
     
@@ -91,6 +92,7 @@ private:
 	void addSliceButton( Slice& slice);
 	
 	ChaseManager* chaseManager;
+	SliceManager* sliceManager;
 
     OwnedArray<SliceButton> sliceButtons;
     ScopedPointer<SliceLookAndFeel> sliceLaf;
