@@ -1,41 +1,41 @@
 /*
   ==============================================================================
 
-    SliceList.cpp
-    Created: 10 Jan 2015 7:14:14pm
-    Author:  Joris de Jong
+  SliceList.cpp
+  Created: 10 Jan 2015 7:14:14pm
+  Author:  Joris de Jong
 
   ==============================================================================
-*/
+  */
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SliceList.h"
 
 MyPropertyPanel::MyPropertyPanel( SliceList& parent ) : parent( parent )
 {
-	setMessageWhenEmpty("(no screensetup loaded...)");
+	setMessageWhenEmpty( "(no screensetup loaded...)" );
 }
 
 MyPropertyPanel::~MyPropertyPanel()
 {
-	
+
 }
 
 void MyPropertyPanel::resized()
 {
 	//first call the regular resized method
 	PropertyPanel::resized();
-	
+
 	//now check the states of all the sections
 	for ( int i = 0; i < getSectionNames().size(); i++ )
 	{
-		Array<Slice*> slices = parent.getSlicesFromSection(i);
-		for ( int j = 0; j < slices.size(); j++)
+		Array<Slice*> slices = parent.getSlicesFromSection( i );
+		for ( int j = 0; j < slices.size(); j++ )
 		{
-			slices[j]->screenIsCollapsed = !isSectionOpen( i );
+			slices[ j ]->screenIsCollapsed = !isSectionOpen( i );
 		}
 	}
-	
+
 	parent.sliceVisibilityChanged();
 }
 
@@ -45,16 +45,16 @@ SlicePropertyButton::SlicePropertyButton( SliceList& parent, Slice& slice ) : Bo
 }
 SlicePropertyButton::~SlicePropertyButton(){}
 
-void SlicePropertyButton::buttonClicked ( Button* b )
+void SlicePropertyButton::buttonClicked( Button* b )
 {
 	setState( !getState() );
 	b->setToggleState( getState(), dontSendNotification );
 	slice.enabled = getState();
-	
+
 	parent.sliceVisibilityChanged();
 }
 
-void SlicePropertyButton::setState (bool newState)
+void SlicePropertyButton::setState( bool newState )
 {
 	state = newState;
 }
@@ -74,7 +74,10 @@ Slice& SlicePropertyButton::getSlice()
 
 
 //==============================================================================
-SliceList::SliceList() : panel( new MyPropertyPanel(*this ))
+SliceList::SliceList( SliceManager* sliceManager, Preview* preview ) :
+panel( new MyPropertyPanel( *this ) ),
+sliceManager( sliceManager ),
+preview( preview )
 {
 	addAndMakeVisible( panel );
 }
@@ -84,47 +87,49 @@ SliceList::~SliceList()
 
 }
 
-Array<Slice*> SliceList::getSlicesFromSection(int section)
+Array<Slice*> SliceList::getSlicesFromSection( int section )
 {
 	Array<Slice*> returnArray;
-	
+
 	SectionMap::iterator s = sections.begin();
-	for(int i = 0; i < section; i++)
+	for ( int i = 0; i < section; i++ )
 		s++;
 	for ( int j = 0; j < s->second.size(); j++ )
 	{
-		returnArray.add ( &static_cast<SlicePropertyButton*>(s->second[j])->getSlice() );
+		returnArray.add( &static_cast<SlicePropertyButton*>(s->second[ j ])->getSlice() );
 	}
-	
+
 	return returnArray;
 }
 
-void SliceList::paint (Graphics& g)
+void SliceList::paint( Graphics& g )
 {
-    g.fillAll (claf.backgroundColour);   // clear the background
+	g.fillAll( claf.backgroundColour );   // clear the background
 
-    g.setColour (claf.outlineColour);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+	g.setColour( claf.outlineColour );
+	g.drawRect( getLocalBounds(), 1 );   // draw an outline around the component
 }
 
 
 
-void SliceList::addSlices( OwnedArray<Slice>& slices )
+void SliceList::setSlices()
 {
 	clear();
-	
+
+	OwnedArray<Slice>& slices = sliceManager->getSlices();
+
 	for ( int i = 0; i < slices.size(); i++ )
 	{
-		NamedUniqueId screen = slices[i]->screenId;
-		
+		NamedUniqueId screen = slices[ i ]->screenId;
+
 		//create a new SlicePropertyButton
-		SlicePropertyButton* newComponent = new SlicePropertyButton( *this, *slices[i] );
-		newComponent->setColour(BooleanPropertyComponent::backgroundColourId, claf.backgroundColour);
-		newComponent->setState( slices[i]->enabled );
-		
+		SlicePropertyButton* newComponent = new SlicePropertyButton( *this, *slices[ i ] );
+		newComponent->setColour( BooleanPropertyComponent::backgroundColourId, claf.backgroundColour );
+		newComponent->setState( slices[ i ]->enabled );
+
 		sections[ screen ].add( newComponent );
 	}
-	
+
 	//now go through all the arrays again and create sections out of them
 	for ( const auto& s : sections )
 		panel->addSection( s.first.second, s.second );
@@ -133,7 +138,11 @@ void SliceList::addSlices( OwnedArray<Slice>& slices )
 
 void SliceList::sliceVisibilityChanged()
 {
-	getParentComponent()->resized();
+	//save the new state
+	sliceManager->writeToXml();
+
+	//redraw the preview window
+	preview->repaint();
 }
 
 void SliceList::clear()
@@ -144,6 +153,6 @@ void SliceList::clear()
 
 void SliceList::resized()
 {
-    BorderSize<int> b = {5,5,5,5};
-	panel->setBoundsInset(b);
+	BorderSize<int> b = { 5, 5, 5, 5 };
+	panel->setBoundsInset( b );
 }

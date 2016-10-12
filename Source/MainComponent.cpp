@@ -27,7 +27,7 @@ MainContentComponent::MainContentComponent()
 	previewWindow = new Preview( chaseManager );
 	addAndMakeVisible( previewWindow );
 
-	sliceList = new SliceList();
+	sliceList = new SliceList( sliceManager, previewWindow );
 	addAndMakeVisible( sliceList );
 
 	sequencer = new Sequencer( chaseManager, previewWindow );

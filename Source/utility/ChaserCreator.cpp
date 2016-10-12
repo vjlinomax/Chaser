@@ -37,7 +37,9 @@ void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 	previewWindow->resized();
 
 	//now populate the slicelist with entries for these slices
-	sliceList->addSlices( sliceManager->getSlices() );
+	//because sliceList has a pointer to sliceManager, 
+	//I don't need to pass anything in
+	sliceList->setSlices();
 	sliceList->resized();
 
 	//at this point, all the slices have their position and screens assigned
@@ -70,7 +72,7 @@ bool ChaserCreator::createChaserFromChaserFile()
 		previewWindow->resized();
 
 		//now populate the slicelist with entries for these slices
-		sliceList->addSlices( sliceManager->getSlices() );
+		sliceList->setSlices();
 		sliceList->resized();
 
 		//this will try its best to get useful info from the chaserfile

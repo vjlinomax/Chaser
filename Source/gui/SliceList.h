@@ -13,6 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../../HybridApi/Source/HybridApi.h"
+#include "../slice/SliceManager.h"
+#include "../gui/Preview.h"
 #include "ColourLookAndFeel.h"
 #include <map>
 
@@ -38,13 +40,13 @@ private:
 class SliceList : public Component
 {
 public:
-	SliceList();
+	SliceList( SliceManager* sliceManager, Preview* preview );
 	~SliceList();
 	
 	void paint(Graphics&) override;
 	void resized() override;
 	
-	void addSlices( OwnedArray<Slice>& slices );
+	void setSlices();
 	void clear();
 	
 	void sliceVisibilityChanged();
@@ -52,7 +54,9 @@ public:
 	Array<Slice*> getSlicesFromSection ( int i );
 	
 private:
-	
+	SliceManager* sliceManager;
+	Preview* preview;
+
 	ColourLookAndFeel claf;
 	SectionMap sections;
 	
