@@ -369,7 +369,9 @@ void ChaseManager::createSequencesFromXml( XmlElement sequencesXml )
 
 				stepCount++;
 			}
-
+			
+			//write the data into the array
+			sequences.set( sequenceNr, sequence );
 		}
 	}
 
