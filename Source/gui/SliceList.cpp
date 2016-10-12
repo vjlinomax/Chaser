@@ -36,7 +36,7 @@ void MyPropertyPanel::resized()
 		}
 	}
 
-	parent.sliceVisibilityChanged();
+	parent.screenVisibilityChanged();
 }
 
 SlicePropertyButton::SlicePropertyButton( SliceList& parent, Slice& slice ) : BooleanPropertyComponent( slice.sliceId.second, slice.sliceId.second, slice.sliceId.second ), parent( parent ), slice( slice )
@@ -135,7 +135,11 @@ void SliceList::setSlices()
 		panel->addSection( s.first.second, s.second );
 }
 
-
+void SliceList::screenVisibilityChanged()
+{
+	//redraw the preview window
+	preview->repaint();
+}
 void SliceList::sliceVisibilityChanged()
 {
 	//save the new state

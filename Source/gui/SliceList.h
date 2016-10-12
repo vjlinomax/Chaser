@@ -50,6 +50,7 @@ public:
 	void clear();
 	
 	void sliceVisibilityChanged();
+	void screenVisibilityChanged();
 	
 	Array<Slice*> getSlicesFromSection ( int i );
 	
