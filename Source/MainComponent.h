@@ -19,6 +19,7 @@
 #include "chase/ChaseManager.h"
 #include "slice/SliceManager.h"
 #include "xml\ChaserXmlManager.h"
+#include "utility\ChaserCreator.h"
 
 //==============================================================================
 /*
@@ -61,29 +62,25 @@ public:
 	void copySequence();
 	void pasteSequence();
 
-	ScopedPointer<ChaseManager> chaseManager;
-	ScopedPointer<SliceManager> sliceManager;
-
-	ScopedPointer<Preview> previewWindow;
-
 private:
+	ScopedPointer<ColourLookAndFeel> laf;
+
 	ScopedPointer<MenuBarComponent> menuBar;
+
+	ScopedPointer<SliceList> sliceList;
+	ScopedPointer<Sequencer> sequencer;
+	ScopedPointer<Copier> copier;
+	ScopedPointer<Preview> previewWindow;
 
 	Step stepToCopy;
 	Sequence sequenceToCopy;
 
-    ScopedPointer<ColourLookAndFeel> laf;
-
-    ScopedPointer<SliceList> sliceList;
-    ScopedPointer<Sequencer> sequencer;
-	ScopedPointer<ChaserXmlManager> xmlManager;
-	ScopedPointer<Copier> copier;
-
-	void createChaserFromAssFile( File assFile, bool createNew );
-	//will return true if succesful
-	bool createChaserFromChaserFile();
-
 	String version;
+
+	ScopedPointer<ChaseManager> chaseManager;
+	ScopedPointer<SliceManager> sliceManager;
+	ScopedPointer<ChaserXmlManager> xmlManager;
+	ScopedPointer<ChaserCreator> creator;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)

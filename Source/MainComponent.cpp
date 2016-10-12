@@ -36,6 +36,8 @@ MainContentComponent::MainContentComponent()
 	copier = new Copier();
 	addAndMakeVisible( copier );
 
+	creator = new ChaserCreator( sliceManager, chaseManager, previewWindow, sliceList, sequencer );
+
 	//add a menu bar
 	menuBar = new MenuBarComponent( this );
 #if JUCE_WINDOWS
@@ -56,15 +58,17 @@ MainContentComponent::~MainContentComponent()
 {
 	previewWindow = nullptr;
 	sliceList = nullptr;
-	xmlManager = nullptr;
-#if JUCE_MAC
-	setMacMainMenu(nullptr);
-#endif
+
 	stepToCopy.clear();
 	sequenceToCopy = Sequence();
 
+#if JUCE_MAC
+	setMacMainMenu(nullptr);
+#endif
+
 	chaseManager = nullptr;
 	sliceManager = nullptr;
+	xmlManager = nullptr;
 }
 
 void MainContentComponent::timerCallback()
@@ -72,8 +76,8 @@ void MainContentComponent::timerCallback()
 	stopTimer();
 
 	//if we can't load the existing chaser, create a new one
-	if ( !createChaserFromChaserFile() )
-		createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), false );
+	if ( !creator->createChaserFromChaserFile() )
+		creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), false );
 
 	//set the name
 	getTopLevelComponent()->setName( FileHelper::getLastUsedChaserFile().getFileNameWithoutExtension());
@@ -105,7 +109,7 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		//if the last used arena file still exists, enable the option to reload it
 		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile() );
 		menu.addItem( 5, "Reload Arena Setup", isAvailable );
-		menu.addItem( 6, "Autoload", true, autoload );
+		//menu.addItem( 6, "Autoload", true, autoload );
 	}
 
 	else if ( menuIndex == 1 )
@@ -128,7 +132,7 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 		{
 		case 1:
 			//new chaser
-			createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), true );
+			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), true );
 			break;
 		case 2:
 			//load existing chaser
@@ -141,7 +145,7 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 			break;
 		case 5:
 			//reload the arena setup
-			createChaserFromAssFile( FileHelper::getAssFileAutomagically( false ), false );
+			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( false ), false );
 			break;
 		case 0:
 		default:
@@ -173,65 +177,6 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 	}
 }
 
-void MainContentComponent::createChaserFromAssFile( File assFile, bool createNew )
-{
-	ResXmlParser::parseAssFile( assFile, sliceManager->getSlices(), sliceManager->getResolution() );
-	sliceManager->getAssFile() = assFile;
-
-	//now populate the previewwindow with buttons for these slices
-	previewWindow->createSliceButtons( sliceManager->getSlices() );
-	previewWindow->resized();
-
-	//now populate the slicelist with entries for these slices
-	sliceList->addSlices( sliceManager->getSlices() );
-	sliceList->resized();
-
-	//at this point, all the slices have their position and screens assigned
-	//so we can save this to xml
-	sliceManager->writeToXml();
-
-	//see if we need to reload an existing chaser or create a fresh one
-	if ( createNew )
-		chaseManager->clearAll();
-
-	//make the first step active
-	sequencer->selectStep( 0 );
-}
-
-bool MainContentComponent::createChaserFromChaserFile()
-{
-	//check if we have a Chaser file previously saved
-	//if so, load that bad boy
-	File lastUsedChaser = FileHelper::getLastUsedChaserFile();
-	
-	if ( FileHelper::isFileValid( lastUsedChaser ) )
-	{
-		//this will return 1920x1080 if no resolution was saved
-		ChaserXmlParser::parseResolution( lastUsedChaser, sliceManager->getResolution() );
-		ChaserXmlParser::parseAssFile( lastUsedChaser, sliceManager->getAssFile() );
-		ChaserXmlParser::parseSlices( lastUsedChaser, sliceManager->getSlices() );
-
-		//now populate the previewwindow with buttons for these slices
-		previewWindow->createSliceButtons( sliceManager->getSlices() );
-		previewWindow->resized();
-
-		//now populate the slicelist with entries for these slices
-		sliceList->addSlices( sliceManager->getSlices() );
-		sliceList->resized();
-
-		//this will try its best to get useful info from the chaserfile
-		chaseManager->createSequencesFromXml( ChaserXmlParser::parseSequences( lastUsedChaser ) );
-
-		previewWindow->setActiveSlices( chaseManager->getCurrentStep() );
-
-		//make the first step active
-		sequencer->selectStep( 0 );
-
-		return true;
-	}
-
-	return false;
-}
 
 void MainContentComponent::saveXml()
 {
