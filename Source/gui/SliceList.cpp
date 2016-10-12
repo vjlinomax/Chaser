@@ -138,7 +138,7 @@ void SliceList::setSlices()
 void SliceList::screenVisibilityChanged()
 {
 	//redraw the preview window
-	preview->repaint();
+	preview->resized();
 }
 void SliceList::sliceVisibilityChanged()
 {
@@ -146,7 +146,7 @@ void SliceList::sliceVisibilityChanged()
 	sliceManager->writeToXml();
 
 	//redraw the preview window
-	preview->repaint();
+	preview->resized();
 }
 
 void SliceList::clear()
