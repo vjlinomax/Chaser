@@ -105,6 +105,7 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		//if the last used arena file still exists, enable the option to reload it
 		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile() );
 		menu.addItem( 5, "Reload Arena Setup", isAvailable );
+		menu.addItem( 6, "Autoload", true, autoload );
 	}
 
 	else if ( menuIndex == 1 )

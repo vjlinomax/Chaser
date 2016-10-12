@@ -39,6 +39,15 @@
               file="Source/slice/SliceManager.cpp"/>
         <FILE id="R3egOX" name="SliceManager.h" compile="0" resource="0" file="Source/slice/SliceManager.h"/>
       </GROUP>
+      <GROUP id="{19685FF5-15A7-807B-D533-9DA8C6182711}" name="utility">
+        <FILE id="VSgPsR" name="AutoUpdateTimer.cpp" compile="1" resource="0"
+              file="Source/utility/AutoUpdateTimer.cpp"/>
+        <FILE id="VInHGc" name="AutoUpdateTimer.h" compile="0" resource="0"
+              file="Source/utility/AutoUpdateTimer.h"/>
+        <FILE id="DZS6F8" name="ChaserCreator.cpp" compile="1" resource="0"
+              file="Source/utility/ChaserCreator.cpp"/>
+        <FILE id="WblnnR" name="ChaserCreator.h" compile="0" resource="0" file="Source/utility/ChaserCreator.h"/>
+      </GROUP>
       <GROUP id="{1378AC68-4293-88BD-BFEC-611A8E42B263}" name="xml">
         <FILE id="jC5IXd" name="ChaserXmlManager.cpp" compile="1" resource="0"
               file="Source/xml/ChaserXmlManager.cpp"/>

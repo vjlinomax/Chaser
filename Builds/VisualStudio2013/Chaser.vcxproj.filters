@@ -20,6 +20,9 @@
     <Filter Include="Chaser\Source\slice">
       <UniqueIdentifier>{D94C5484-8ECE-626B-0777-FF96CC806EDA}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chaser\Source\utility">
+      <UniqueIdentifier>{6B6DA5D3-7739-2B43-FA22-D6A5AB2A20F7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Chaser\Source\xml">
       <UniqueIdentifier>{5F0FA068-A813-839B-27DA-BD078B181742}</UniqueIdentifier>
     </Filter>
@@ -339,6 +342,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\slice\SliceManager.cpp">
       <Filter>Chaser\Source\slice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\utility\AutoUpdateTimer.cpp">
+      <Filter>Chaser\Source\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\utility\ChaserCreator.cpp">
+      <Filter>Chaser\Source\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\xml\ChaserXmlManager.cpp">
       <Filter>Chaser\Source\xml</Filter>
@@ -1907,6 +1916,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\slice\SliceManager.h">
       <Filter>Chaser\Source\slice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\utility\AutoUpdateTimer.h">
+      <Filter>Chaser\Source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\utility\ChaserCreator.h">
+      <Filter>Chaser\Source\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\xml\ChaserXmlManager.h">
       <Filter>Chaser\Source\xml</Filter>

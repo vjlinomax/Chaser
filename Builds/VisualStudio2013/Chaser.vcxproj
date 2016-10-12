@@ -140,6 +140,8 @@
     <ClCompile Include="..\..\Source\gui\SliceList.cpp"/>
     <ClCompile Include="..\..\Source\gui\Stepper.cpp"/>
     <ClCompile Include="..\..\Source\slice\SliceManager.cpp"/>
+    <ClCompile Include="..\..\Source\utility\AutoUpdateTimer.cpp"/>
+    <ClCompile Include="..\..\Source\utility\ChaserCreator.cpp"/>
     <ClCompile Include="..\..\Source\xml\ChaserXmlManager.cpp"/>
     <ClCompile Include="..\..\Source\xml\XmlSequence.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
@@ -1569,6 +1571,8 @@
     <ClInclude Include="..\..\Source\gui\SliceList.h"/>
     <ClInclude Include="..\..\Source\gui\Stepper.h"/>
     <ClInclude Include="..\..\Source\slice\SliceManager.h"/>
+    <ClInclude Include="..\..\Source\utility\AutoUpdateTimer.h"/>
+    <ClInclude Include="..\..\Source\utility\ChaserCreator.h"/>
     <ClInclude Include="..\..\Source\xml\ChaserXmlManager.h"/>
     <ClInclude Include="..\..\Source\xml\XmlSequence.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
