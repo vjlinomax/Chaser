@@ -33,7 +33,7 @@ void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 	sliceManager->getAssFile() = assFile;
 
 	//now populate the previewwindow with buttons for these slices
-	previewWindow->createSliceButtons( sliceManager->getSlices() );
+	previewWindow->createSliceButtons();
 	previewWindow->resized();
 
 	//now populate the slicelist with entries for these slices
@@ -68,7 +68,7 @@ bool ChaserCreator::createChaserFromChaserFile()
 		ChaserXmlParser::parseSlices( lastUsedChaser, sliceManager->getSlices() );
 
 		//now populate the previewwindow with buttons for these slices
-		previewWindow->createSliceButtons( sliceManager->getSlices() );
+		previewWindow->createSliceButtons();
 		previewWindow->resized();
 
 		//now populate the slicelist with entries for these slices
@@ -78,7 +78,7 @@ bool ChaserCreator::createChaserFromChaserFile()
 		//this will try its best to get useful info from the chaserfile
 		chaseManager->createSequencesFromXml( ChaserXmlParser::parseSequences( lastUsedChaser ) );
 
-		previewWindow->setActiveSlices( chaseManager->getCurrentStep() );
+		previewWindow->setActiveSlices();
 
 		//make the first step active
 		sequencer->selectStep( 0 );

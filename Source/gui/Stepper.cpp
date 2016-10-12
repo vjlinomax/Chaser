@@ -30,7 +30,7 @@ void Stepper::buttonClicked( juce::Button *b )
 	if ( b->getToggleState() )
 	{
 		chaser->skipToStep( stepper.indexOf( b ) );
-		preview->setActiveSlices( chaser->getCurrentStep() );
+		preview->setActiveSlices();
 	}
 }
 
