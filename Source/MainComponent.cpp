@@ -38,6 +38,10 @@ MainContentComponent::MainContentComponent()
 
 	creator = new ChaserCreator( sliceManager, chaseManager, previewWindow, sliceList, sequencer );
 
+	//start checking for ass file updates once per second
+	autoUpdate = new AutoUpdateTimer( creator );
+	autoUpdate->start();
+
 	//add a menu bar
 	menuBar = new MenuBarComponent( this );
 #if JUCE_WINDOWS
@@ -108,8 +112,13 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		menu.addItem( 4, "Load Arena Setup", false, false );
 		//if the last used arena file still exists, enable the option to reload it
 		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile() );
+
+		//if there is no active assfile, stop the timer
+		if ( !isAvailable )
+			autoUpdate->stop();
+
 		menu.addItem( 5, "Reload Arena Setup", isAvailable );
-		//menu.addItem( 6, "Autoload", true, autoload );
+		menu.addItem( 6, "Autoload", isAvailable, autoUpdate->isTimerRunning() );
 	}
 
 	else if ( menuIndex == 1 )
@@ -146,6 +155,12 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 		case 5:
 			//reload the arena setup
 			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( false ), false );
+			break;
+		case 6:
+			if ( autoUpdate->isTimerRunning() )
+				autoUpdate->stop();
+			else
+				autoUpdate->start();
 			break;
 		case 0:
 		default:

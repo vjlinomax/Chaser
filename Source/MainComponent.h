@@ -20,6 +20,7 @@
 #include "slice/SliceManager.h"
 #include "xml\ChaserXmlManager.h"
 #include "utility\ChaserCreator.h"
+#include "utility\AutoUpdateTimer.h"
 
 //==============================================================================
 /*
@@ -81,6 +82,7 @@ private:
 	ScopedPointer<SliceManager> sliceManager;
 	ScopedPointer<ChaserXmlManager> xmlManager;
 	ScopedPointer<ChaserCreator> creator;
+	ScopedPointer<AutoUpdateTimer> autoUpdate;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)

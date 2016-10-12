@@ -26,7 +26,13 @@ void ChaserXmlManager::setSaveFile( File newSaveFile )
 	saveFile = newSaveFile;
 	File prefFile = FileHelper::getChaserPreferencesFile();
 
-	ScopedPointer<XmlElement> lastUsedFileData = new XmlElement( "preferences" );
+	//try to parse it
+	juce::XmlDocument prefRoot( prefFile );
+
+	ScopedPointer<XmlElement> lastUsedFileData = prefRoot.getDocumentElement();
+		
+	if (!lastUsedFileData)
+		lastUsedFileData = new XmlElement( "preferences" );
 
 	XmlElement* lastUsedFile = new XmlElement( "lastusedfile" );
 	lastUsedFile->setAttribute( "fullpathname", newSaveFile.getFullPathName() );
