@@ -45,6 +45,7 @@
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(LibraryPath);..\..\..\HybridApi\Builds\VisualStudio2013\x64\Debug</LibraryPath>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Chaser</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(LibraryPath);..\..\..\HybridApi\Builds\VisualStudio2013\x64\Release</LibraryPath>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -123,6 +124,7 @@
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalLibraryDirectories>..\..\..\HybridApi\Builds\VisualStudio2013\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LargeAddressAware>true</LargeAddressAware>
       <AdditionalDependencies>HybridApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
