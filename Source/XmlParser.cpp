@@ -160,6 +160,9 @@ bool XmlParser::parseRes4ConfigXml(juce::XmlElement &xmlTreeToParse, OwnedArray<
 
 bool XmlParser::parseRes4Xml(XmlElement& xmlTreeToParse, OwnedArray<Slice>& slices, Point<int>& resolution)
 {
+	//clear the slice array so we don't get doubles
+	slices.clear();
+
 	forEachXmlChildElement( xmlTreeToParse, presetNode )
 	{
 		if ( presetNode->hasTagName("screen") )
@@ -171,9 +174,6 @@ bool XmlParser::parseRes4Xml(XmlElement& xmlTreeToParse, OwnedArray<Slice>& slic
 			{
 				if ( screenNode->hasTagName("slices") )
 				{
-					//clear the slice array so we don't get doubles
-					slices.clear();
-					
 					forEachXmlChildElement( *screenNode, slicesNode)
 					{
 						if ( slicesNode->hasTagName("Slice") )
