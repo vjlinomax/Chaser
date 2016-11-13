@@ -34,7 +34,9 @@ void ChaserXmlManager::setSaveFile( File newSaveFile )
 	if (!lastUsedFileData)
 		lastUsedFileData = new XmlElement( "preferences" );
 
-	XmlElement* lastUsedFile = new XmlElement( "lastusedfile" );
+	XmlElement* lastUsedFile = lastUsedFile->getChildByName("lastusedfile");
+	if ( !lastUsedFile )
+		lastUsedFile = new XmlElement( "lastusedfile" );
 	lastUsedFile->setAttribute( "fullpathname", newSaveFile.getFullPathName() );
 	lastUsedFileData->addChildElement( lastUsedFile );
 
