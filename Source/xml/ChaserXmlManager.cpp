@@ -28,17 +28,21 @@ void ChaserXmlManager::setSaveFile( File newSaveFile )
 
 	//try to parse it
 	juce::XmlDocument prefRoot( prefFile );
-
 	ScopedPointer<XmlElement> lastUsedFileData = prefRoot.getDocumentElement();
 		
 	if (!lastUsedFileData)
 		lastUsedFileData = new XmlElement( "preferences" );
 
-	XmlElement* lastUsedFile = lastUsedFile->getChildByName("lastusedfile");
+	//try to get the lastusedfile child
+	XmlElement* lastUsedFile = lastUsedFileData->getChildByName("lastusedfile");
 	if ( !lastUsedFile )
+	{
 		lastUsedFile = new XmlElement( "lastusedfile" );
+		lastUsedFileData->addChildElement( lastUsedFile );
+	}
+
 	lastUsedFile->setAttribute( "fullpathname", newSaveFile.getFullPathName() );
-	lastUsedFileData->addChildElement( lastUsedFile );
+	
 
 	lastUsedFileData->writeToFile( prefFile, "" );
 }
