@@ -84,7 +84,9 @@ public:
 	with a matching uniqueid, if so, it toggles them on*/
 	void setActiveSlices();
 
-
+	/* this checks the list of slicebuttons
+	and inverts all the visibile buttons*/
+	void invertActiveSlices();
     
 
 private:

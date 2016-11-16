@@ -125,9 +125,8 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 	{
 		menu.addItem( 1, "Copy Step " + KeyPress( 'c', ModifierKeys::commandModifier, NULL ).getTextDescriptionWithIcons() );
 		menu.addItem( 2, "Paste Step " + KeyPress( 'v', ModifierKeys::commandModifier, NULL ).getTextDescriptionWithIcons() );
-		menu.addSeparator();
-		menu.addItem( 3, "Copy Sequence" );
-		menu.addItem( 4, "Paste Sequence" );
+		menu.addItem( 3, "Clear Step" );
+		menu.addItem( 4, "Invert Step" );
 	}
 
 	return menu;
@@ -179,12 +178,17 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 			pasteStep();
 			break;
 		case 3:
-			copySequence();
+		{
+			//clear the step
+			Step empty;
+			chaseManager->setCurrentStep( empty );
+			previewWindow->setActiveSlices();
 			break;
+		}
 		case 4:
-			pasteSequence();
+			//invert step
+			previewWindow->invertActiveSlices();
 			break;
-
 		case 0:
 		default:
 			return;
@@ -316,26 +320,7 @@ void MainContentComponent::pasteStep()
 	previewWindow->setActiveSlices();
 }
 
-void MainContentComponent::copySequence()
-{
-	//sequenceToCopy = chaseManager->getCurrentSequence();
-	/*
-	//copy the name
-	sequenceNameToCopy = xmlSequence->getSequenceNames()[currentSequence];
-	//create an array with an array
-	currentSequenceSlices.clear();
-	for ( int i = 0; i < currentSequenceLength; i++ )
-	{
-	Array<int> step = xmlSequence->getStep(currentSequence, i);
-	currentSequenceSlices.add( step );
-	}
-	*/
-}
 
-void MainContentComponent::pasteSequence()
-{
-	
-}
 
 void MainContentComponent::resized()
 {

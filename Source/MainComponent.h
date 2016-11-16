@@ -60,8 +60,6 @@ public:
 
 	void copyStep();
 	void pasteStep();
-	void copySequence();
-	void pasteSequence();
 
 private:
 	ScopedPointer<ColourLookAndFeel> laf;

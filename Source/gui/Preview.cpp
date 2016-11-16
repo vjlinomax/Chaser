@@ -74,6 +74,28 @@ void Preview::setActiveSlices()
 	}
 }
 
+void Preview::invertActiveSlices()
+{
+	Step activeSliceIds = chaseManager->getCurrentStep();
+
+	//go through all the visible buttons
+	//if they're not on the active list, 
+	//add them to the list to be set to active
+	for ( SliceButton* button : sliceButtons )
+	{
+		if ( button->isVisible() )
+		{
+			int64 uId = button->getUniqueId();
+			if ( activeSliceIds.contains( uId ) )
+				activeSliceIds.removeAllInstancesOf( uId );
+			else
+				activeSliceIds.add( uId );
+		}
+	}
+	chaseManager->setCurrentStep( activeSliceIds );
+	setActiveSlices();
+}
+
 void Preview::createSliceButtons()
 {
 	clearSlices();
