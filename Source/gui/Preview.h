@@ -74,7 +74,7 @@ public:
     void paint (Graphics&);
     void resized();
     
-    virtual void buttonClicked (Button*);
+    virtual void buttonClicked (Button*) override;
 	
 	/* this will clear the list of sliceButtons and create new ones
 	based on the slices passed in as argument*/
