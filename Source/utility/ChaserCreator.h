@@ -29,8 +29,10 @@ public:
 	~ChaserCreator();
 
 	void createChaserFromAssFile( File assFile, bool createNew );
+	
 	//will return true if succesful
 	bool createChaserFromChaserFile();
+	bool createChaserFromChaserFile( File chaserToLoad );
 
 private:
 	SliceManager* sliceManager;

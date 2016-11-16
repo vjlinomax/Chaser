@@ -19,7 +19,16 @@ MainContentComponent::MainContentComponent()
 	version = ProjectInfo::versionString;
 
 	xmlManager = new ChaserXmlManager();
-	xmlManager->setSaveFile( File::getSpecialLocation( File::userDocumentsDirectory ).getChildFile( "Chaser/chaserBeta.xml" ) );
+	//try to get the last used chaser file
+	File lastChaser = FileHelper::getLastUsedChaserFile();
+	if ( !FileHelper::isFileValid( lastChaser ) )
+		lastChaser = File::getSpecialLocation( File::userDocumentsDirectory ).getChildFile( "Chaser/chaserBeta.xml" );
+	xmlManager->setSaveFile( lastChaser );
+
+	//save the version
+	XmlElement* versionXml = new XmlElement( "version" );
+	versionXml->setAttribute( "nr", version );
+	xmlManager->saveXmlElement( versionXml );
 
 	chaseManager = new ChaseManager( xmlManager );
 	sliceManager = new SliceManager( xmlManager );
@@ -84,7 +93,7 @@ void MainContentComponent::timerCallback()
 		creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), false );
 
 	//set the name
-	getTopLevelComponent()->setName( FileHelper::getLastUsedChaserFile().getFileNameWithoutExtension());
+	getTopLevelComponent()->setName( FileHelper::getLastUsedChaserFile().getFileNameWithoutExtension() );
 
 	//resize to update preview window
 	resized();
@@ -105,11 +114,10 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		menu.addItem( 1, "New Chaser" );
 		menu.addSeparator();
 
-		menu.addItem( 2, "Load Chaser", false, false );
-		menu.addItem( 3, "Save Chaser as...", false, false );
+		menu.addItem( 2, "Load Chaser" );
+		menu.addItem( 3, "Save Chaser as..." );
 		menu.addSeparator();
 
-		menu.addItem( 4, "Load Arena Setup", false, false );
 		//if the last used arena file still exists, enable the option to reload it
 		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile() );
 
@@ -117,8 +125,7 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		if ( !isAvailable )
 			autoUpdate->stop();
 
-		menu.addItem( 5, "Reload Arena Setup", isAvailable );
-		menu.addItem( 6, "Autoload", isAvailable, autoUpdate->isTimerRunning() );
+		menu.addItem( 4, "Autoload", isAvailable, autoUpdate->isTimerRunning() );
 	}
 
 	else if ( menuIndex == 1 )
@@ -139,23 +146,23 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 		switch ( menuItemID )
 		{
 		case 1:
+		{
 			//new chaser
+			File defaultChaser = File::getSpecialLocation( File::userDocumentsDirectory ).getChildFile( "Chaser/chaserBeta.xml" );
+			xmlManager->setSaveFile( defaultChaser );
 			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), true );
+			getTopLevelComponent()->setName( defaultChaser.getFileNameWithoutExtension() );
+		}
 			break;
 		case 2:
 			//load existing chaser
+			loadChaser();
 			break;
 		case 3:
 			//save the chaser under a new name
 			break;
 		case 4:
-			//load the arena setup
-			break;
-		case 5:
-			//reload the arena setup
-			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( false ), false );
-			break;
-		case 6:
+			//toggle autoreload
 			if ( autoUpdate->isTimerRunning() )
 				autoUpdate->stop();
 			else
@@ -197,7 +204,7 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 }
 
 
-void MainContentComponent::saveXml()
+void MainContentComponent::saveChaser()
 {
 	/*
 	if (!xmlSequence->save())
@@ -208,7 +215,7 @@ void MainContentComponent::saveXml()
 	*/
 }
 
-bool MainContentComponent::saveAsXml()
+bool MainContentComponent::saveChaserAs()
 {
 	/*
 	//open a save dialog
@@ -230,60 +237,22 @@ bool MainContentComponent::saveAsXml()
 	return false;
 }
 
-void MainContentComponent::loadXml()
+void MainContentComponent::loadChaser()
 {
-	/*
+
 	//open a load dialog
 	File chaserLocation = File::getSpecialLocation( File::SpecialLocationType::userDocumentsDirectory ).getFullPathName() + "/Chaser/";
-	FileChooser fc ( "Pick a Chaser file...", chaserLocation, "*.xml", true );
+	FileChooser fc( "Pick a Chaser file...", chaserLocation, "*.xml", true );
 
 	if ( fc.browseForFileToOpen() )
 	{
-	File f = fc.getResult();
-
-	if ( !xmlSequence->loadXmlFile( f ))
-	{
-	throwLoadError();
+		File f = fc.getResult();
+		if ( creator->createChaserFromChaserFile( f ) )
+		{
+			getTopLevelComponent()->setName( f.getFileNameWithoutExtension() );
+			xmlManager->setSaveFile( f );
+		}
 	}
-	else
-	{
-	reloadSliceData();
-	getTopLevelComponent()->setName(f.getFileNameWithoutExtension());
-	resized();
-	}
-	}
-	*/
-}
-
-void MainContentComponent::reloadSliceData()
-{
-	/*
-	//sliceList->clearSlices();
-	previewWindow->clearSlices();
-	slices.clear();
-
-	//load the slices from the xml if they exist
-	Array<Slice*> slicesInXml = xmlSequence->getSlices();
-	for ( int i = 0; i < slicesInXml.size(); i++ )
-	{
-	Slice* s = slicesInXml[i];
-	previewWindow->addSlice (s) ;
-
-	slices.add(s);
-	}
-
-	sliceList->addSlices( slices );
-
-	//update the view for the first step
-	activeSlices = xmlSequence->getStep( currentSequence, currentStep );
-	previewWindow->setSlices( activeSlices );
-	sequencer->setSequenceNames ( xmlSequence->getSequenceNames() );
-	sequencer->setSequenceLengths ( xmlSequence->getSequenceLengths() );
-	currentSequenceLength = xmlSequence->getSequenceLengths()[ currentSequence ];
-
-	resolution = xmlSequence->getResolution();
-	*/
-	resized();
 }
 
 bool MainContentComponent::keyPressed( const juce::KeyPress &key, juce::Component * )
@@ -319,8 +288,6 @@ void MainContentComponent::pasteStep()
 	chaseManager->setCurrentStep( stepToCopy );
 	previewWindow->setActiveSlices();
 }
-
-
 
 void MainContentComponent::resized()
 {

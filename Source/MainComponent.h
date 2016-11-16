@@ -52,11 +52,9 @@ public:
 	virtual bool keyPressed (const KeyPress& key,
 							 Component* originatingComponent) override;
 
-	void saveXml();
-	bool saveAsXml();
-	void loadXml();
-
-	void reloadSliceData();
+	void saveChaser();
+	bool saveChaserAs();
+	void loadChaser();
 
 	void copyStep();
 	void pasteStep();

@@ -63,30 +63,42 @@ bool ChaserCreator::createChaserFromChaserFile()
 
 	if ( FileHelper::isFileValid( lastUsedChaser ) )
 	{
-		//this will return 1920x1080 if no resolution was saved
-		ChaserXmlParser::parseResolution( lastUsedChaser, sliceManager->getResolution() );
-		ChaserXmlParser::parseAssFile( lastUsedChaser, sliceManager->getAssFile() );
-		ChaserXmlParser::parseSlices( lastUsedChaser, sliceManager->getSlices() );
-
-		//now populate the previewwindow with buttons for these slices
-		previewWindow->createSliceButtons();
-
-		//now populate the slicelist with entries for these slices
-		sliceList->setSlices();
-		
-		//now redraw maincomponent, so the previewwindow is fitted and slicelist updated
-		previewWindow->getParentComponent()->resized();
-
-		//this will try its best to get useful info from the chaserfile
-		chaseManager->createSequencesFromXml( ChaserXmlParser::parseSequences( lastUsedChaser ) );
-
-		previewWindow->setActiveSlices();
-
-		//make the first step active
-		sequencer->selectStep( 0 );
-
-		return true;
+		return createChaserFromChaserFile( lastUsedChaser );
 	}
 
+	DBG( "Not a valid file!" );
 	return false;
+}
+
+bool ChaserCreator::createChaserFromChaserFile( File chaserToLoad )
+{
+	if ( !ChaserXmlParser::canThisAppVersionLoadThisChaser( chaserToLoad, ProjectInfo::versionString ) )
+		return false;
+
+	if ( !ChaserXmlParser::parseResolution( chaserToLoad, sliceManager->getResolution() )
+		|| !ChaserXmlParser::parseAssFile( chaserToLoad, sliceManager->getAssFile() )
+		|| !ChaserXmlParser::parseSlices( chaserToLoad, sliceManager->getSlices() ) )
+	{
+		FileHelper::throwLoadError();
+		return false;
+	}
+
+	//now populate the previewwindow with buttons for these slices
+	previewWindow->createSliceButtons();
+
+	//now populate the slicelist with entries for these slices
+	sliceList->setSlices();
+
+	//now redraw maincomponent, so the previewwindow is fitted and slicelist updated
+	previewWindow->getParentComponent()->resized();
+
+	//this will try its best to get useful info from the chaserfile
+	chaseManager->createSequencesFromXml( ChaserXmlParser::parseSequences( chaserToLoad ) );
+
+	previewWindow->setActiveSlices();
+
+	//make the first step active
+	sequencer->selectStep( 0 );
+
+	return true;
 }
