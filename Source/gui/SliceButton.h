@@ -38,10 +38,16 @@ public:
 	void paintButton (Graphics& g, bool isMouseOverButton, bool isButtonDown) override;
 	void resized() override;
 
+	void mouseDown( const MouseEvent& ) override;
+	void mouseUp( const MouseEvent& ) override;
+	void mouseDrag( const MouseEvent& ) override;
+
 private:
 	Path path;
 	Slice& slice;
 	Path makePath( Array<Point<float>>& points, Point<int> scale );
+
+	SliceButton* lastDraggedButton;
 	
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SliceButton)
 };

@@ -127,6 +127,45 @@ int64 SliceButton::getUniqueId()
 	return slice.sliceId.first;
 }
 
+void SliceButton::mouseDown( const MouseEvent& event )
+{
+	Button::mouseDown( event );
+	
+	lastDraggedButton = nullptr;
+}
+
+void SliceButton::mouseUp( const MouseEvent& event )
+{
+	//if this button was part of the last drag action,
+	//don't do anything, the state will already have been toggled
+	if ( lastDraggedButton == this )
+	{
+		lastDraggedButton = nullptr;
+		return;
+	}
+
+	//otherwise do the regular mouse up action
+	Button::mouseUp( event );
+	lastDraggedButton = nullptr;
+}
+
+void SliceButton::mouseDrag( const MouseEvent& event )
+{
+	Button::mouseDrag( event );
+
+	Component* parent = getParentComponent();
+	SliceButton* button = dynamic_cast<SliceButton*>( parent->getComponentAt( event.getPosition() + getPosition() ));
+	
+	//if we're actually over a slicebutton and it wasn't the last button we toggled
+	if ( button && button != lastDraggedButton )
+	{
+		bool state = button->getToggleState();
+		button->setToggleState( !state, sendNotification );
+		lastDraggedButton = button;
+	}
+}
+
+
 
 
 
