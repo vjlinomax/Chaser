@@ -62,9 +62,7 @@ bool ChaserCreator::createChaserFromChaserFile()
 	File lastUsedChaser = FileHelper::getLastUsedChaserFile();
 
 	if ( FileHelper::isFileValid( lastUsedChaser ) )
-	{
 		return createChaserFromChaserFile( lastUsedChaser );
-	}
 
 	DBG( "Not a valid file!" );
 	return false;
@@ -72,6 +70,13 @@ bool ChaserCreator::createChaserFromChaserFile()
 
 bool ChaserCreator::createChaserFromChaserFile( File chaserToLoad )
 {
+	//first check if the file we want to load is valid
+	//this will throw an error message
+	if ( !FileHelper::isFileValid( chaserToLoad ) )
+		return false;
+
+	//now check if we can load this version
+	//this will throw an error message
 	if ( !ChaserXmlParser::canThisAppVersionLoadThisChaser( chaserToLoad, ProjectInfo::versionString ) )
 		return false;
 
