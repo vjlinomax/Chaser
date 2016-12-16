@@ -119,7 +119,7 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		menu.addSeparator();
 
 		//if the last used arena file still exists, enable the option to reload it
-		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile() );
+		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile(), false );
 
 		//if there is no active assfile, stop the timer
 		if ( !isAvailable )
