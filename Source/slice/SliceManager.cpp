@@ -87,6 +87,11 @@ XmlElement* SliceManager::getSlicesAsXml()
 	return slicesXml;
 }
 
+Array<NamedUniqueId> SliceManager::getScreens()
+{
+    return screens;
+}
+
 void SliceManager::writeToXml()
 {
 	if ( xmlManager )

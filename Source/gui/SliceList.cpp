@@ -115,6 +115,9 @@ void SliceList::paint( Graphics& g )
 void SliceList::setSlices()
 {
 	clear();
+    
+    //first get the screennames
+    Array<UniquePreset> screens = sliceManager->getScreens();
 
 	OwnedArray<Slice>& slices = sliceManager->getSlices();
 
@@ -137,6 +140,9 @@ void SliceList::setSlices()
 
 void SliceList::screenVisibilityChanged()
 {
+    //write the new section states to xml
+    
+    
 	//redraw the preview window
 	preview->resized();
 }

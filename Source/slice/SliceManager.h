@@ -24,6 +24,8 @@ public:
 	OwnedArray<Slice>& getSlices();
 	Point<int>& getResolution();
 	File& getAssFile();
+    
+    Array<NamedUniqueId>& getScreens();
 
 	void writeToXml();
 	
@@ -34,6 +36,8 @@ private:
 
 	XmlElement* getSlicesAsXml();
 	ChaserXmlManager* xmlManager;
+    
+    Array<NamedUniqueId> screens;
 };
 
 #endif  // SLICEMANAGER_H_INCLUDED
