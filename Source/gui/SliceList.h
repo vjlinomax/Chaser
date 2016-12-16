@@ -80,11 +80,6 @@ public:
 
 	Slice& getSlice();
 	
-	void paint (Graphics& g) override
-	{
-		PropertyComponent::paint (g);
-	}
-	
 private:
 	SliceList& parent;
 	Slice& slice;
