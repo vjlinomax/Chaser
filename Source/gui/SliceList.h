@@ -20,7 +20,7 @@
 
 //==============================================================================
 
-typedef std::map<NamedUniqueId, Array<PropertyComponent*>> SectionMap;
+typedef std::map<int64, Array<PropertyComponent*>> SectionMap;
 
 class SliceList;
 
@@ -50,7 +50,7 @@ public:
 	void clear();
 	
 	void sliceVisibilityChanged();
-	void screenVisibilityChanged();
+	void screenVisibilityChanged( int foldedSectionIndex );
 	
 	Array<Slice*> getSlicesFromSection ( int i );
 	

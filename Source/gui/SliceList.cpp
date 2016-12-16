@@ -34,12 +34,12 @@ void MyPropertyPanel::resized()
 		{
 			slices[ j ]->screenIsCollapsed = !isSectionOpen( i );
 		}
-	}
 
-	parent.screenVisibilityChanged();
+		parent.screenVisibilityChanged( i );
+	}
 }
 
-SlicePropertyButton::SlicePropertyButton( SliceList& parent, Slice& slice ) : BooleanPropertyComponent( slice.sliceId.second, slice.sliceId.second, slice.sliceId.second ), parent( parent ), slice( slice )
+SlicePropertyButton::SlicePropertyButton( SliceList& parent, Slice& slice ) : BooleanPropertyComponent( slice.sliceId.first, slice.sliceId.first, slice.sliceId.first ), parent( parent ), slice( slice )
 {
 	state = slice.enabled;
 }
@@ -115,34 +115,54 @@ void SliceList::paint( Graphics& g )
 void SliceList::setSlices()
 {
 	clear();
-    
-    //first get the screennames
-    Array<UniquePreset> screens = sliceManager->getScreens();
+
+	//first get the screennames
+	Array<Screen> screens = sliceManager->getScreens();
 
 	OwnedArray<Slice>& slices = sliceManager->getSlices();
 
 	for ( int i = 0; i < slices.size(); i++ )
 	{
-		NamedUniqueId screen = slices[ i ]->screenId;
+		int64 screenId = slices[ i ]->screenId;
+
+		//get the folded state for this screen
+		for ( Screen screen : screens )
+			if ( screen.uid == screenId )
+				slices[i]->screenIsCollapsed = screen.folded;
 
 		//create a new SlicePropertyButton
 		SlicePropertyButton* newComponent = new SlicePropertyButton( *this, *slices[ i ] );
 		newComponent->setColour( BooleanPropertyComponent::backgroundColourId, claf.backgroundColour );
 		newComponent->setState( slices[ i ]->enabled );
 
-		sections[ screen ].add( newComponent );
+		sections[ screenId ].add( newComponent );
 	}
 
 	//now go through all the arrays again and create sections out of them
 	for ( const auto& s : sections )
-		panel->addSection( s.first.second, s.second );
+	{
+		//get the name for this screen's uid
+		int64 uid = s.first;
+		for ( Screen screen : screens )
+		{
+			if ( screen.uid == uid )
+				panel->addSection( screen.name, s.second, !screen.folded );
+		}
+	}
+
+	//redraw the preview window
+	preview->resized();
 }
 
-void SliceList::screenVisibilityChanged()
+void SliceList::screenVisibilityChanged( int foldedSectionIndex )
 {
-    //write the new section states to xml
-    
-    
+	//wrtie the status of this section to xml
+	for ( Screen& screen : sliceManager->getScreens() )
+	{
+		if ( screen.name == panel->getSectionNames()[ foldedSectionIndex ] )
+			screen.folded = !panel->isSectionOpen( foldedSectionIndex );
+	}
+	sliceManager->writeToXml();
 	//redraw the preview window
 	preview->resized();
 }

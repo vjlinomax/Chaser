@@ -29,7 +29,7 @@ ChaserCreator::~ChaserCreator()
 
 void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 {
-	ResXmlParser::parseAssFile( assFile, sliceManager->getSlices(), sliceManager->getResolution() );
+	ResXmlParser::parseAssFile( assFile, sliceManager->getSlices(), sliceManager->getScreens(), sliceManager->getResolution() );
 	sliceManager->getAssFile() = assFile;
 
 	//now populate the previewwindow with buttons for these slices
@@ -82,6 +82,7 @@ bool ChaserCreator::createChaserFromChaserFile( File chaserToLoad )
 
 	if ( !ChaserXmlParser::parseResolution( chaserToLoad, sliceManager->getResolution() )
 		|| !ChaserXmlParser::parseAssFile( chaserToLoad, sliceManager->getAssFile() )
+		|| !ChaserXmlParser::parseScreens( chaserToLoad, sliceManager->getScreens() )
 		|| !ChaserXmlParser::parseSlices( chaserToLoad, sliceManager->getSlices() ) )
 	{
 		FileHelper::throwLoadError();

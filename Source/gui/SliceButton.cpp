@@ -12,13 +12,13 @@
 #include "SliceButton.h"
 
 
-SliceButton::SliceButton(Slice& s, Point<int> scale) : ShapeButton ( s.sliceId.second, Colours::transparentBlack, Colours::transparentBlack, Colours::transparentBlack ), slice(s)
+SliceButton::SliceButton(Slice& s, Point<int> scale) : ShapeButton ( s.sliceId.first, Colours::transparentBlack, Colours::transparentBlack, Colours::transparentBlack ), slice(s)
 {
-	setButtonText( s.sliceId.second );
+	setButtonText( s.sliceId.first );
 	//enable loads the state from the ass xml file
 	//it can still be edited via the slicelist
 	setVisible( s.enabled );
-	name = s.sliceId.second;
+	name = s.sliceId.first;
 	createPath( scale );
 	setClickingTogglesState( true );
 	setToggleState( false, sendNotification );
@@ -124,7 +124,7 @@ void SliceButton::resized()
 
 int64 SliceButton::getUniqueId()
 {
-	return slice.sliceId.first;
+	return slice.sliceId.second;
 }
 
 void SliceButton::mouseDown( const MouseEvent& event )

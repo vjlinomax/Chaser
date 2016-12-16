@@ -14,6 +14,7 @@
 #include "../../HybridApi/Source/HybridApi.h"
 #include "../xml/ChaserXmlManager.h"
 
+
 //takes care of keeping all the slice data in one place and accesible by other classes
 class SliceManager
 {
@@ -25,7 +26,7 @@ public:
 	Point<int>& getResolution();
 	File& getAssFile();
     
-    Array<NamedUniqueId>& getScreens();
+    Array<Screen>& getScreens();
 
 	void writeToXml();
 	
@@ -35,9 +36,10 @@ private:
 	File assFile;
 
 	XmlElement* getSlicesAsXml();
+	XmlElement* getScreensAsXml();
 	ChaserXmlManager* xmlManager;
     
-    Array<NamedUniqueId> screens;
+    Array<Screen> screens;
 };
 
 #endif  // SLICEMANAGER_H_INCLUDED

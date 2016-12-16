@@ -47,11 +47,10 @@ XmlElement* SliceManager::getSlicesAsXml()
 	{
 		//for every slice, create an xmlelement and its id, and which screen it belongs to
 		XmlElement* sliceXml = new XmlElement( "slice" );
-		sliceXml->setAttribute( "name", slice->sliceId.second );
-		sliceXml->setAttribute( "uniqueId", String( slice->sliceId.first ) );
+		sliceXml->setAttribute( "name", slice->sliceId.first );
+		sliceXml->setAttribute( "uniqueId", String( slice->sliceId.second ) );
 		sliceXml->setAttribute( "enable", slice->enabled );
-		sliceXml->setAttribute( "screenName", slice->screenId.second );
-		sliceXml->setAttribute( "screenId", String( slice->screenId.first ) );
+		sliceXml->setAttribute( "screenId", String( slice->screenId ) );
 		slicesXml->addChildElement( sliceXml );
 
 		//then create an xmlelement to store its rects and points
@@ -87,13 +86,30 @@ XmlElement* SliceManager::getSlicesAsXml()
 	return slicesXml;
 }
 
-Array<NamedUniqueId> SliceManager::getScreens()
+Array<Screen>& SliceManager::getScreens()
 {
-    return screens;
+	return screens;
+}
+
+XmlElement* SliceManager::getScreensAsXml()
+{
+	XmlElement* screens = new XmlElement( "screens" );
+	for ( auto screen : getScreens() )
+	{
+		XmlElement* screenXml = new XmlElement( "screen" );
+		screenXml->setAttribute( "name", screen.name );
+		screenXml->setAttribute( "uniqueId", String( screen.uid ) );
+		screenXml->setAttribute( "folded", screen.folded );
+		screens->addChildElement( screenXml );
+	}
+	return screens;
 }
 
 void SliceManager::writeToXml()
 {
 	if ( xmlManager )
+	{
 		xmlManager->saveXmlElement( getSlicesAsXml() );
+		xmlManager->saveXmlElement( getScreensAsXml() );
+	}
 }
