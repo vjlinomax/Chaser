@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.0"
               bundleIdentifier="nl.HybridVisuals.www" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.4" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
+              jucerVersion="4.3.0" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
               companyEmail="joris@hybridvisuals.nl">
   <MAINGROUP id="cFMW0p" name="Chaser">
     <GROUP id="{6A6FFF85-7097-63A1-1439-46EFB4CC7C8A}" name="Source">
@@ -63,23 +63,24 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="CaJ0AR" bigIcon="CaJ0AR">
+    <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="y0Yjpu" bigIcon="y0Yjpu"
+               externalLibraries="HybridApi">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="Chaser"/>
+                       isDebug="1" optimisation="1" targetName="Chaser" libraryPath="../../../HybridApi/Builds/MacOSX/build/Debug"/>
         <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="64BitIntel"
-                       isDebug="0" optimisation="2" targetName="Chaser"/>
+                       isDebug="0" optimisation="2" targetName="Chaser" libraryPath="../../../HybridApi/Builds/MacOSX/build/Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_core" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_data_structures" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_events" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_graphics" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2013 targetFolder="Builds/VisualStudio2013" smallIcon="y0Yjpu" bigIcon="y0Yjpu"

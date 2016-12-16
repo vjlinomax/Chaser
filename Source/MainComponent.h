@@ -18,9 +18,9 @@
 #include "gui/ColourLookAndFeel.h"
 #include "chase/ChaseManager.h"
 #include "slice/SliceManager.h"
-#include "xml\ChaserXmlManager.h"
-#include "utility\ChaserCreator.h"
-#include "utility\AutoUpdateTimer.h"
+#include "xml/ChaserXmlManager.h"
+#include "utility/ChaserCreator.h"
+#include "utility/AutoUpdateTimer.h"
 
 //==============================================================================
 /*
