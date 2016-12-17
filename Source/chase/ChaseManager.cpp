@@ -102,11 +102,13 @@ void ChaseManager::fillSequence()
 
 void ChaseManager::skipToSequence( int i )
 {
+	if ( i > 512 )
+		return;
+
 	currentSequence = i;
 
-	if ( currentSequence > getLastSequenceIndex() )
+	if ( currentSequence > getLastSequenceIndex()  )
 		sequences.resize( i );
-	//currentSequence = getLastSequenceIndex();
 
 	//make sure the sequence is filled
 	fillSequence();
@@ -182,26 +184,33 @@ int ChaseManager::skipToPreviousStep()
 
 int ChaseManager::setStepCount( int i )
 {
-	while ( i > getLastStepIndex() + 1 )
-		addStep();
-	while ( i < getLastStepIndex() + 1 )
-		removeStep();
+	if ( i <= 1024 && i > 0 )
+	{
+		while ( i > getLastStepIndex() + 1 )
+			addStep( false );
+		while ( i < getLastStepIndex() + 1 )
+			removeStep( false );
+	}
 
-	return getLastStepIndex();
-}
-
-int ChaseManager::addStep()
-{
-	Sequence sequence = sequences[ getCurrentSequenceIndex() ];
-	sequence.steps.resize( sequence.steps.size() + 1 );
-
-	sequences.set( getCurrentSequenceIndex(), sequence );
 	writeToXml();
 
 	return getLastStepIndex();
 }
 
-int ChaseManager::removeStep()
+int ChaseManager::addStep( bool write )
+{
+	Sequence sequence = sequences[ getCurrentSequenceIndex() ];
+	sequence.steps.resize( sequence.steps.size() + 1 );
+
+	sequences.set( getCurrentSequenceIndex(), sequence );
+
+	if ( write )
+		writeToXml();
+
+	return getLastStepIndex();
+}
+
+int ChaseManager::removeStep( bool write )
 {
 	//only remove as long as we still have more than 1 step
 	if ( getLastStepIndex() > 0 )
@@ -210,7 +219,9 @@ int ChaseManager::removeStep()
 		sequence.steps.resize( sequence.steps.size() - 1 );
 
 		sequences.set( getCurrentSequenceIndex(), sequence );
-		writeToXml();
+
+		if ( write )
+			writeToXml();
 	}
 
 	return getLastStepIndex();

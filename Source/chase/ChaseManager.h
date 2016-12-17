@@ -61,8 +61,8 @@ public:
 
 	//will return the new max amount of steps in the current sequence
 	//steps are always added and removed from the end of the sequence
-	int addStep();
-	int removeStep();
+	int addStep( bool write = true);
+	int removeStep( bool write = true );
 	int setStepCount( int i );
 
 	//will return the new max amount of sequences
