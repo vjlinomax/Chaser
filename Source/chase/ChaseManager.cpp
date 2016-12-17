@@ -111,8 +111,6 @@ void ChaseManager::skipToSequence( int i )
 	//make sure the sequence is filled
 	fillSequence();
 
-	updateComponents();
-
 	//when skipping sequences, the current step always resets
 	skipToStep( 0 );
 }
@@ -413,7 +411,7 @@ void ChaseManager::createSequencesFromXml( XmlElement sequencesXml )
 		sequenceCount++;
 	}
 	
-	DBG( "While parsing the xml, the sequenceMap has " + String( sequences.size() ) + " sequences" );
+	updateComponents();
 }
 
 void ChaseManager::writeToXml()
