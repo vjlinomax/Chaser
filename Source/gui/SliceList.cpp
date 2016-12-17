@@ -82,10 +82,9 @@ void SlicePropertyButton::paint( Graphics& g )
 
 
 //==============================================================================
-SliceList::SliceList( SliceManager* sliceManager, Preview* preview ) :
+SliceList::SliceList( SliceManager* sliceManager ) :
 panel( new MyPropertyPanel( *this ) ),
-sliceManager( sliceManager ),
-preview( preview )
+sliceManager( sliceManager )
 {
 	addAndMakeVisible( panel );
 }
@@ -117,8 +116,6 @@ void SliceList::paint( Graphics& g )
 	g.setColour( claf.outlineColour );
 	g.drawRect( getLocalBounds(), 1 );   // draw an outline around the component
 }
-
-
 
 void SliceList::setSlices()
 {
@@ -157,9 +154,6 @@ void SliceList::setSlices()
 				panel->addSection( screen.name, s.second, !screen.folded );
 		}
 	}
-
-	//redraw the preview window
-	preview->resized();
 }
 
 void SliceList::screenVisibilityChanged( int foldedSectionIndex )
@@ -171,16 +165,16 @@ void SliceList::screenVisibilityChanged( int foldedSectionIndex )
 			screen.folded = !panel->isSectionOpen( foldedSectionIndex );
 	}
 	sliceManager->writeToXml();
-	//redraw the preview window
-	preview->resized();
 }
 void SliceList::sliceVisibilityChanged()
 {
 	//save the new state
 	sliceManager->writeToXml();
+}
 
-	//redraw the preview window
-	preview->resized();
+void SliceList::update()
+{
+	resized();
 }
 
 void SliceList::clear()

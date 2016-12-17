@@ -107,9 +107,22 @@ XmlElement* SliceManager::getScreensAsXml()
 
 void SliceManager::writeToXml()
 {
+	updateComponents();
+
 	if ( xmlManager )
 	{
 		xmlManager->saveXmlElement( getSlicesAsXml() );
 		xmlManager->saveXmlElement( getScreensAsXml() );
 	}
+}
+
+void SliceManager::addUpdateable( UpdateableComponent* newUpdateable )
+{
+	updateables.add( newUpdateable );
+}
+
+void SliceManager::updateComponents()
+{
+	for ( auto component : updateables )
+		component->update();
 }

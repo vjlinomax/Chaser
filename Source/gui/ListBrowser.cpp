@@ -36,8 +36,7 @@ void ListBrowser::addComponentAsTab( Component* c, String name )
 
 void ListBrowser::paint( Graphics& g )
 {
-	g.setColour( Colours::red );
-	g.drawRect( getLocalBounds(), 1.0f );
+
 }
 
 void ListBrowser::resized()
@@ -51,5 +50,4 @@ void ListBrowser::resized()
 		tab.removeFromTop( getTabBarDepth() );
 		c->setBounds( tab );
 	}
-
 }

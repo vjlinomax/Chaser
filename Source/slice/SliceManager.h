@@ -13,6 +13,7 @@
 
 #include "../../HybridApi/Source/HybridApi.h"
 #include "../xml/ChaserXmlManager.h"
+#include "../gui logic/UpdateableComponent.h"
 
 
 //takes care of keeping all the slice data in one place and accesible by other classes
@@ -29,6 +30,8 @@ public:
     Array<Screen>& getScreens();
 
 	void writeToXml();
+
+	void addUpdateable( UpdateableComponent* newUpdateable );
 	
 private:
 	OwnedArray<Slice> slices;
@@ -40,6 +43,9 @@ private:
 	ChaserXmlManager* xmlManager;
     
     Array<Screen> screens;
+
+	void updateComponents();
+	Array<UpdateableComponent*> updateables;
 };
 
 #endif  // SLICEMANAGER_H_INCLUDED
