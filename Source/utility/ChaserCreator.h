@@ -17,7 +17,6 @@
 #include "../xml/ChaserXmlManager.h"
 #include "../gui/Preview.h"
 #include "../gui/SliceList.h"
-#include "../gui/Sequencer.h"
 
 /*responsible for loading in chaser data from xml 
 and populating the various managers*/
@@ -25,7 +24,7 @@ class ChaserCreator
 {
 public:
 	ChaserCreator( SliceManager* sliceManager, ChaseManager* chaseManager, 
-					Preview* preview, SliceList* sliceList, Sequencer* sequencer );
+					Preview* preview, SliceList* sliceList );
 	~ChaserCreator();
 
 	void createChaserFromAssFile( File assFile, bool createNew );
@@ -37,10 +36,14 @@ public:
 private:
 	SliceManager* sliceManager;
 	ChaseManager* chaseManager;
+
+	/**creator needs pointers to previewWindow and sliceList
+	because it needs to update those with new data when a new file is loaded
+	this is not something that can be done with an updateable callback
+	unless I create a new updateable class that only updates when a new file is loaded
+	this seems like too much work for now*/
 	Preview* previewWindow;
 	SliceList* sliceList;
-	Sequencer* sequencer;
-	
 };
 
 

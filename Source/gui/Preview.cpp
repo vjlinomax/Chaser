@@ -32,6 +32,7 @@ Preview::~Preview()
 void Preview::update()
 {
 	setActiveSlices();
+	resized();
 }
 
 void Preview::buttonClicked( Button* )

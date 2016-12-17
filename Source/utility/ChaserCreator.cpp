@@ -12,12 +12,11 @@
 #include "../../HybridApi/Source/HybridApi.h"
 
 ChaserCreator::ChaserCreator( SliceManager* sliceManager, ChaseManager* chaseManager, 
-								Preview* preview, SliceList* sliceList, Sequencer* sequencer ) :
+								Preview* preview, SliceList* sliceList ) :
 sliceManager( sliceManager ),
 chaseManager( chaseManager ),
 previewWindow( preview ),
-sliceList( sliceList ),
-sequencer( sequencer )
+sliceList( sliceList )
 {
 
 }
@@ -40,9 +39,6 @@ void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 	//I don't need to pass anything in
 	sliceList->setSlices();
 
-	//now redraw maincomponent, so the previewwindow is fitted and slicelist updated
-	previewWindow->getParentComponent()->resized();
-
 	//at this point, all the slices have their position and screens assigned
 	//so we can save this to xml
 	sliceManager->writeToXml();
@@ -50,9 +46,6 @@ void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 	//see if we need to reload an existing chaser or create a fresh one
 	if ( createNew )
 		chaseManager->clearAll();
-
-	//make the first step active
-	sequencer->selectStep( 0 );
 }
 
 bool ChaserCreator::createChaserFromChaserFile()
@@ -95,16 +88,8 @@ bool ChaserCreator::createChaserFromChaserFile( File chaserToLoad )
 	//now populate the slicelist with entries for these slices
 	sliceList->setSlices();
 
-	//now redraw maincomponent, so the previewwindow is fitted and slicelist updated
-	previewWindow->getParentComponent()->resized();
-
 	//this will try its best to get useful info from the chaserfile
 	chaseManager->createSequencesFromXml( ChaserXmlParser::parseSequences( chaserToLoad ) );
-
-	previewWindow->setActiveSlices();
-
-	//make the first step active
-	sequencer->selectStep( 0 );
 
 	return true;
 }

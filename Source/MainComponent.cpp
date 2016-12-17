@@ -53,7 +53,7 @@ MainContentComponent::MainContentComponent()
 	copier = new Copier( chaseManager );
 	addAndMakeVisible( copier );
 
-	creator = new ChaserCreator( sliceManager, chaseManager, previewWindow, sliceList, sequencer );
+	creator = new ChaserCreator( sliceManager, chaseManager, previewWindow, sliceList );
 
 	//start checking for ass file updates once per second
 	autoUpdate = new AutoUpdateTimer( creator );
