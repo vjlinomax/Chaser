@@ -36,7 +36,7 @@ MainContentComponent::MainContentComponent()
 	previewWindow = new Preview( chaseManager, sliceManager );
 	addAndMakeVisible( previewWindow );
 
-	sequencer = new Sequencer( chaseManager, previewWindow, nullptr );
+	sequencer = new Sequencer( chaseManager, previewWindow );
 	addAndMakeVisible( sequencer );
 
 	SliceList* sliceList = new SliceList( sliceManager, previewWindow );
@@ -47,8 +47,8 @@ MainContentComponent::MainContentComponent()
 	addAndMakeVisible( listBrowser );
 	
 	chaseManager->addUpdateable( sequenceList );
-	sequencer->setList( sequenceList );
-
+	chaseManager->addUpdateable( sequencer );
+	
 	copier = new Copier( chaseManager );
 	addAndMakeVisible( copier );
 

@@ -14,9 +14,8 @@
 
 
 //==============================================================================
-Sequencer::Sequencer(ChaseManager* chaseManager, Preview* preview, SequenceList* seqList) : 
-chaseManager(chaseManager), 
-sequenceList( seqList )
+Sequencer::Sequencer(ChaseManager* chaseManager, Preview* preview ) : 
+chaseManager(chaseManager)
 {
 	stepper = new Stepper( chaseManager, preview );
 	viewport = new NoKeyViewport();
@@ -148,14 +147,11 @@ void Sequencer::buttonClicked( Button* b )
 
 }
 
-void Sequencer::selectSequence( int sequenceToJumpTo )
+void Sequencer::update()
 {
-	if ( sequenceToJumpTo > -1 )
-		chaseManager->skipToSequence( sequenceToJumpTo );
-
-	//calling update here will make sure the values in the labels will update correctly, even if an unaccepted value was entered
 	updateSequenceSettings();
 }
+
 
 void Sequencer::labelTextChanged( Label* labelThatHasChanged )
 {

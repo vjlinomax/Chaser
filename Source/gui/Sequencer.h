@@ -15,12 +15,11 @@
 #include "ColourLookAndFeel.h"
 #include "Stepper.h"
 #include "../chase/ChaseManager.h"
+#include "../gui logic/UpdateableComponent.h"
 
 //==============================================================================
 /*
 */
-
-class SequenceList;
 
 class NoKeyViewport : public Viewport
 {
@@ -33,10 +32,11 @@ public:
 class Sequencer    :	public Component,
 						public Button::Listener,
 						public Label::Listener,
-						public Timer
+						public Timer,
+						public UpdateableComponent
 {
 public:
-	Sequencer( ChaseManager* chaser, Preview* preview, SequenceList* seqList );
+	Sequencer( ChaseManager* chaser, Preview* preview );
     ~Sequencer();
 
     void paint (Graphics&) override;
@@ -53,12 +53,9 @@ public:
 	void previousStep();
 	void selectStep( int i );
 
-	void selectSequence( int i );
+	void update() override;
 
-	void setList( SequenceList* list ){ sequenceList = list;  }
-	
 private:
-	SequenceList* sequenceList;
 	ChaseManager* chaseManager;
 
     ScopedPointer<DrawableButton> play;
