@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\chase\ChaseManager.cpp"/>
+    <ClCompile Include="..\..\Source\gui logic\UpdateableComponent.cpp"/>
     <ClCompile Include="..\..\Source\gui\Copier.cpp"/>
     <ClCompile Include="..\..\Source\gui\ListBrowser.cpp"/>
     <ClCompile Include="..\..\Source\gui\Preview.cpp"/>
@@ -1558,6 +1559,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\chase\ChaseManager.h"/>
+    <ClInclude Include="..\..\Source\gui logic\UpdateableComponent.h"/>
     <ClInclude Include="..\..\Source\gui\ColourLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\gui\Copier.h"/>
     <ClInclude Include="..\..\Source\gui\ListBrowser.h"/>

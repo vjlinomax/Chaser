@@ -18,6 +18,12 @@
               file="Source/chase/ChaseManager.cpp"/>
         <FILE id="TuKu3e" name="ChaseManager.h" compile="0" resource="0" file="Source/chase/ChaseManager.h"/>
       </GROUP>
+      <GROUP id="{EF5995FF-0490-981A-F3C1-AE71B143019E}" name="gui logic">
+        <FILE id="n7epwj" name="UpdateableComponent.cpp" compile="1" resource="0"
+              file="Source/gui logic/UpdateableComponent.cpp"/>
+        <FILE id="okYVGd" name="UpdateableComponent.h" compile="0" resource="0"
+              file="Source/gui logic/UpdateableComponent.h"/>
+      </GROUP>
       <GROUP id="{3DFBAD7C-FAB1-579F-D0DB-236E023842FF}" name="gui">
         <FILE id="tGm7Wb" name="ColourLookAndFeel.h" compile="0" resource="0"
               file="Source/gui/ColourLookAndFeel.h"/>

@@ -14,6 +14,9 @@
     <Filter Include="Chaser\Source\chase">
       <UniqueIdentifier>{4C1EFAE4-1B21-664A-CDD9-3EF80454A51A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chaser\Source\gui logic">
+      <UniqueIdentifier>{152DD601-65B1-535A-6414-ED48B421A4D5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Chaser\Source\gui">
       <UniqueIdentifier>{631C78EF-DF82-5577-BF5E-BCF7ADE3558C}</UniqueIdentifier>
     </Filter>
@@ -318,6 +321,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\chase\ChaseManager.cpp">
       <Filter>Chaser\Source\chase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\gui logic\UpdateableComponent.cpp">
+      <Filter>Chaser\Source\gui logic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\gui\Copier.cpp">
       <Filter>Chaser\Source\gui</Filter>
@@ -1880,6 +1886,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\chase\ChaseManager.h">
       <Filter>Chaser\Source\chase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui logic\UpdateableComponent.h">
+      <Filter>Chaser\Source\gui logic</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\ColourLookAndFeel.h">
       <Filter>Chaser\Source\gui</Filter>
