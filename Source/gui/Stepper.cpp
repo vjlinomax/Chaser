@@ -17,7 +17,7 @@
 Stepper::Stepper( ChaseManager* chaser ) :
 chaser( chaser )
 {
-
+	
 }
 
 Stepper::~Stepper()
@@ -27,7 +27,11 @@ Stepper::~Stepper()
 void Stepper::buttonClicked( juce::Button *b )
 {
 	if ( b->getToggleState() )
-		chaser->skipToStep( stepper.indexOf( b ) );
+	{
+		int index = stepper.indexOf( b );
+		if ( index != chaser->getCurrentStepIndex() )
+			chaser->skipToStep( index );
+	}
 }
 
 int Stepper::getButtonCount()
@@ -38,8 +42,7 @@ int Stepper::getButtonCount()
 void Stepper::triggerButton( int buttonIndex )
 {
 	if ( stepper.size() > buttonIndex 
-		&& buttonIndex >= 0 
-		&& buttonIndex != chaser->getCurrentStepIndex() ) //to avoid a feedback loop
+		&& buttonIndex >= 0 )
 		stepper[ buttonIndex ]->triggerClick();
 }
 
