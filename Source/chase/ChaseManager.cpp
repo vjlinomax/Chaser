@@ -111,6 +111,8 @@ void ChaseManager::skipToSequence( int i )
 	//make sure the sequence is filled
 	fillSequence();
 
+	updateComponents();
+
 	//when skipping sequences, the current step always resets
 	skipToStep( 0 );
 }
@@ -152,6 +154,8 @@ void ChaseManager::skipToStep( int i )
 		i = getLastStepIndex();
 
 	currentStep = i;
+
+	updateComponents();
 }
 
 int ChaseManager::skipToNextStep()
@@ -160,6 +164,8 @@ int ChaseManager::skipToNextStep()
 
 	if ( currentStep > getLastStepIndex() )
 		currentStep = 0;
+
+	updateComponents();
 
 	return currentStep;
 }
@@ -170,6 +176,8 @@ int ChaseManager::skipToPreviousStep()
 
 	if ( currentStep < 0 )
 		currentStep = getLastStepIndex();
+
+	updateComponents();
 
 	return currentStep;
 }
@@ -410,6 +418,21 @@ void ChaseManager::createSequencesFromXml( XmlElement sequencesXml )
 
 void ChaseManager::writeToXml()
 {
+	updateComponents();
+
 	if ( xmlManager )
 		xmlManager->saveXmlElement( getSequencesAsXml() );
+}
+
+void ChaseManager::addUpdateable( UpdateableComponent* newUpdateable )
+{
+	updateables.add( newUpdateable );
+}
+
+void ChaseManager::updateComponents()
+{
+	for ( auto component : updateables )
+	{
+		component->update();
+	}
 }

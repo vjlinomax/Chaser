@@ -13,6 +13,7 @@
 
 #include "JuceHeader.h"
 #include "../xml/ChaserXmlManager.h"
+#include "../gui logic/UpdateableComponent.h"
 
 //the active slices in a step, slices are identified by their uniqueId
 typedef Array<int64> Step;
@@ -80,6 +81,8 @@ public:
 
 	void createSequencesFromXml( XmlElement sequenceElement );
 
+	void addUpdateable( UpdateableComponent* newUpdateable );
+
 private:
 	void setDefaults();
 
@@ -93,6 +96,9 @@ private:
 	XmlElement* getSequencesAsXml();
 
 	ChaserXmlManager* xmlManager;
+
+	Array<UpdateableComponent*> updateables;
+	void updateComponents();
 };
 
 
