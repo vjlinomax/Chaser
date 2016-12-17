@@ -41,7 +41,9 @@ int Stepper::getButtonCount()
 
 void Stepper::triggerButton( int buttonIndex )
 {
-	if ( stepper.size() > buttonIndex && buttonIndex >= 0 )
+	if ( stepper.size() > buttonIndex 
+		&& buttonIndex >= 0 
+		&& buttonIndex != chaser->getCurrentStepIndex() ) //to avoid a feedback loop
 		stepper[ buttonIndex ]->triggerClick();
 }
 
