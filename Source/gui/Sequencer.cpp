@@ -14,10 +14,10 @@
 
 
 //==============================================================================
-Sequencer::Sequencer(ChaseManager* chaseManager, Preview* preview ) : 
+Sequencer::Sequencer(ChaseManager* chaseManager ) : 
 chaseManager(chaseManager)
 {
-	stepper = new Stepper( chaseManager, preview );
+	stepper = new Stepper( chaseManager );
 	viewport = new NoKeyViewport();
 	viewport->setViewedComponent( stepper, true );
 	addAndMakeVisible( viewport );

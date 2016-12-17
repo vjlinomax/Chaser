@@ -13,7 +13,6 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../chase/ChaseManager.h"
-#include "Preview.h"
 
 //==============================================================================
 /*
@@ -22,7 +21,7 @@ class Stepper    :  public Component,
 					public Button::Listener
 {
 public:
-    Stepper( ChaseManager* chaser, Preview* preview );
+    Stepper( ChaseManager* chaser );
     ~Stepper();
 
     void paint (Graphics&) override;
@@ -39,10 +38,8 @@ private:
 	void addButton();
 	void removeButton();
 	
-	
 	OwnedArray<Button> stepper;
 	ChaseManager* chaser;
-	Preview* preview;
 	
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Stepper)
 };

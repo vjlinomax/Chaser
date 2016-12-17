@@ -14,9 +14,8 @@
 #include "../MainComponent.h"
 
 //==============================================================================
-Stepper::Stepper( ChaseManager* chaser, Preview* preview ) :
-chaser( chaser ),
-preview( preview )
+Stepper::Stepper( ChaseManager* chaser ) :
+chaser( chaser )
 {
 
 }
@@ -28,10 +27,7 @@ Stepper::~Stepper()
 void Stepper::buttonClicked( juce::Button *b )
 {
 	if ( b->getToggleState() )
-	{
 		chaser->skipToStep( stepper.indexOf( b ) );
-		preview->setActiveSlices();
-	}
 }
 
 int Stepper::getButtonCount()

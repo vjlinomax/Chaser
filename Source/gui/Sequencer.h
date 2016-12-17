@@ -36,7 +36,7 @@ class Sequencer    :	public Component,
 						public UpdateableComponent
 {
 public:
-	Sequencer( ChaseManager* chaser, Preview* preview );
+	Sequencer( ChaseManager* chaser );
     ~Sequencer();
 
     void paint (Graphics&) override;

@@ -29,6 +29,11 @@ Preview::~Preview()
 	clearSlices();
 }
 
+void Preview::update()
+{
+	setActiveSlices();
+}
+
 void Preview::buttonClicked( Button* )
 {
 	//using uid instead of index should make sure that once we change the state again

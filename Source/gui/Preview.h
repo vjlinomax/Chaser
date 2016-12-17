@@ -16,6 +16,7 @@
 #include "../chase/ChaseManager.h"
 #include "../slice/SliceManager.h"
 #include "ColourLookAndFeel.h"
+#include "../gui logic/UpdateableComponent.h"
 
 
 //==============================================================================
@@ -65,7 +66,10 @@ public:
 };
 
 
-class Preview    : public Component, public Button::Listener
+class Preview    : 
+	public Component,
+	public Button::Listener,
+	public UpdateableComponent
 {
 public:
     Preview( ChaseManager* chaseManager, SliceManager* sliceManager );
@@ -87,6 +91,8 @@ public:
 	/* this checks the list of slicebuttons
 	and inverts all the visibile buttons*/
 	void invertActiveSlices();
+
+	void update() override;
     
 
 private:
