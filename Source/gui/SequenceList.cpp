@@ -13,10 +13,9 @@
 #include "ColourLookAndFeel.h"
 
 //==============================================================================
-SequenceList::SequenceList( ChaseManager* cm, Sequencer* s )
+SequenceList::SequenceList( ChaseManager* cm )
 {
 	chaseManager = cm;
-	sequencer = s;
 	sequenceListBox.setModel( this );
 	sequenceListBox.updateContent();
 	sequenceListBox.setRowHeight( 30 );
@@ -47,25 +46,22 @@ void SequenceList::paintListBoxItem( int rowNumber, Graphics& g, int width, int 
 	if ( rowIsSelected )
 		g.fillAll( claf.primaryColour );
 
-	DBG( "Names " << chaseManager->getSequenceNames().size() );
 	if ( rowNumber < chaseManager->getSequenceNames().size() )
-	{
 		g.drawText( chaseManager->getSequenceNames()[ rowNumber ], 15, 0, width - 15, height, Justification::centredLeft );
-	}
 }
 
-void SequenceList::selectItem( int i )
+void SequenceList::update()
 {
 	sequenceListBox.deselectAllRows();
 	sequenceListBox.updateContent();
-	sequenceListBox.selectRow( i );
+	sequenceListBox.selectRow( chaseManager->getCurrentSequenceIndex() );
 }
 
 void SequenceList::listBoxItemClicked( int row, const MouseEvent& )
 {
 	sequenceListBox.deselectAllRows();
 	sequenceListBox.selectRow( row );
-	sequencer->selectSequence( row );
+	chaseManager->skipToSequence( row );
 }
 
 void SequenceList::paint (Graphics& g)

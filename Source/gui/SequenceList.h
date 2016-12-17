@@ -14,21 +14,25 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "../chase/ChaseManager.h"
-#include "Sequencer.h"
+#include "../gui logic/UpdateableComponent.h"
 
 //==============================================================================
 /*
 */
 class SequenceList    : 
 	public Component,
-	public ListBoxModel
+	public ListBoxModel,
+	public UpdateableComponent
+
 {
 public:
-    SequenceList( ChaseManager* sliceManager, Sequencer* s );
+    SequenceList( ChaseManager* chMan );
     ~SequenceList();
 
     void paint (Graphics&) override;
     void resized() override;
+
+	void update() override;
 
 	int getNumRows() override;
 	void paintListBoxItem( int rowNumber,
@@ -37,15 +41,11 @@ public:
 		bool rowIsSelected ) override;
 	void listBoxItemClicked( int row, const MouseEvent& ) override;
 
-	void selectItem( int i );
-
-
 private:
 	ListBox sequenceListBox;
 	StringArray sequenceNames;
 
 	ChaseManager* chaseManager;
-	Sequencer* sequencer;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SequenceList)
 };
 

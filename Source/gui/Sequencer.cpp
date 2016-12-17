@@ -160,7 +160,9 @@ void Sequencer::selectSequence( int sequenceToJumpTo )
 void Sequencer::labelTextChanged( Label* labelThatHasChanged )
 {
 	if ( labelThatHasChanged == sequenceName )
+	{
 		chaseManager->setCurrentSequenceName( labelThatHasChanged->getText() );
+	}
 
 	else if ( labelThatHasChanged == sequenceNumber )
 	{
@@ -223,9 +225,6 @@ void Sequencer::updateSequenceSettings()
 	//update the sequence name component
 	sequenceName->setText( chaseManager->getCurrentSequenceName(), dontSendNotification );
 	sequenceNumber->setText( String( chaseManager->getCurrentSequenceIndex() + 1 ), dontSendNotification );
-
-	if ( sequenceList )
-		sequenceList->selectItem( chaseManager->getCurrentSequenceIndex() );
 
 	resized();
 

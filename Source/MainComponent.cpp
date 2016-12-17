@@ -40,15 +40,14 @@ MainContentComponent::MainContentComponent()
 	addAndMakeVisible( sequencer );
 
 	SliceList* sliceList = new SliceList( sliceManager, previewWindow );
-	SequenceList* sequenceList = new SequenceList( chaseManager, sequencer );
+	SequenceList* sequenceList = new SequenceList( chaseManager );
 	listBrowser = new ListBrowser();
 	listBrowser->addComponentAsTab( sliceList, "Slices" );
 	listBrowser->addComponentAsTab( sequenceList, "Sequences" );
 	addAndMakeVisible( listBrowser );
 	
+	chaseManager->addUpdateable( sequenceList );
 	sequencer->setList( sequenceList );
-
-	
 
 	copier = new Copier( chaseManager );
 	addAndMakeVisible( copier );
