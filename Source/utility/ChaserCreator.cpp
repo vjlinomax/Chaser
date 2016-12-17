@@ -46,6 +46,10 @@ void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 	//see if we need to reload an existing chaser or create a fresh one
 	if ( createNew )
 		chaseManager->clearAll();
+
+	//this needs to be here, in order for the window to be properly resized
+	//when the dimension change
+	previewWindow->getParentComponent()->resized();
 }
 
 bool ChaserCreator::createChaserFromChaserFile()
@@ -90,6 +94,10 @@ bool ChaserCreator::createChaserFromChaserFile( File chaserToLoad )
 
 	//this will try its best to get useful info from the chaserfile
 	chaseManager->createSequencesFromXml( ChaserXmlParser::parseSequences( chaserToLoad ) );
+
+	//this needs to be here, in order for the window to be properly resized
+	//when the dimension change
+	previewWindow->getParentComponent()->resized();
 
 	return true;
 }
