@@ -36,13 +36,9 @@ void SliceButton::createPath( Point<int> scale )
 	//and the mask points should be used for the path
 	//otherwise it's a regular slice and the inputrect points should be used for the path
 	if ( slice.maskPoints.size() > 0 )
-	{
 		path = makePath(slice.maskPoints, scale);
-	}
 	else
-	{
 		path = makePath(slice.inputRectPoints, scale);
-	}
 }
 
 Path SliceButton::makePath( Array<Point<float>>& points, Point<int> scale )
@@ -55,9 +51,7 @@ Path SliceButton::makePath( Array<Point<float>>& points, Point<int> scale )
 		//here points are transformed to fit within the preview window
 		p *= scale;
 		if ( i == 0)
-		{
 			newPath.startNewSubPath( p );
-		}
 		else
 			newPath.lineTo( p );
 	}
