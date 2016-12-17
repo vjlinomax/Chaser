@@ -20,6 +20,8 @@
 /*
 */
 
+class SequenceList;
+
 class NoKeyViewport : public Viewport
 {
 public:
@@ -34,7 +36,7 @@ class Sequencer    :	public Component,
 						public Timer
 {
 public:
-	Sequencer( ChaseManager* chaser, Preview* preview );
+	Sequencer( ChaseManager* chaser, Preview* preview, SequenceList* seqList );
     ~Sequencer();
 
     void paint (Graphics&) override;
@@ -50,9 +52,13 @@ public:
 	void nextStep();
 	void previousStep();
 	void selectStep( int i );
+
+	void selectSequence( int i );
+
+	void setList( SequenceList* list ){ sequenceList = list;  }
 	
 private:
-
+	SequenceList* sequenceList;
 	ChaseManager* chaseManager;
 
     ScopedPointer<DrawableButton> play;

@@ -27,6 +27,9 @@
         <FILE id="Rr6RoN" name="ListBrowser.h" compile="0" resource="0" file="Source/gui/ListBrowser.h"/>
         <FILE id="nszcyH" name="Preview.cpp" compile="1" resource="0" file="Source/gui/Preview.cpp"/>
         <FILE id="OM00JM" name="Preview.h" compile="0" resource="0" file="Source/gui/Preview.h"/>
+        <FILE id="rDOHkW" name="SequenceList.cpp" compile="1" resource="0"
+              file="Source/gui/SequenceList.cpp"/>
+        <FILE id="IZ4TKb" name="SequenceList.h" compile="0" resource="0" file="Source/gui/SequenceList.h"/>
         <FILE id="WMlvLX" name="Sequencer.cpp" compile="1" resource="0" file="Source/gui/Sequencer.cpp"/>
         <FILE id="jA2Ero" name="Sequencer.h" compile="0" resource="0" file="Source/gui/Sequencer.h"/>
         <FILE id="HovDuI" name="SliceButton.cpp" compile="1" resource="0" file="Source/gui/SliceButton.cpp"/>

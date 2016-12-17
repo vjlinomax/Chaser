@@ -22,6 +22,7 @@
 #include "utility/ChaserCreator.h"
 #include "utility/AutoUpdateTimer.h"
 #include "gui/ListBrowser.h"
+#include "gui/SequenceList.h"
 
 //==============================================================================
 /*
@@ -66,7 +67,6 @@ private:
 	ScopedPointer<MenuBarComponent> menuBar;
 
 	ScopedPointer<ListBrowser> listBrowser;
-	ScopedPointer<SliceList> sliceList;
 	ScopedPointer<Sequencer> sequencer;
 	ScopedPointer<Copier> copier;
 	ScopedPointer<Preview> previewWindow;

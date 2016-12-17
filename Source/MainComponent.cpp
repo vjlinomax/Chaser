@@ -36,16 +36,19 @@ MainContentComponent::MainContentComponent()
 	previewWindow = new Preview( chaseManager, sliceManager );
 	addAndMakeVisible( previewWindow );
 
-	sliceList = new SliceList( sliceManager, previewWindow );
-	
-	listBrowser = new ListBrowser( );
-	
-	listBrowser->addTab( "Slices", Colours::lightgrey, sliceList, false );
-	listBrowser->addTab( TRANS( "Tab 1" ), Colours::lightgrey, 0, false );
-	addAndMakeVisible( listBrowser );
-
-	sequencer = new Sequencer( chaseManager, previewWindow );
+	sequencer = new Sequencer( chaseManager, previewWindow, nullptr );
 	addAndMakeVisible( sequencer );
+
+	SliceList* sliceList = new SliceList( sliceManager, previewWindow );
+	SequenceList* sequenceList = new SequenceList( chaseManager, sequencer );
+	listBrowser = new ListBrowser();
+	listBrowser->addComponentAsTab( sliceList, "Slices" );
+	listBrowser->addComponentAsTab( sequenceList, "Sequences" );
+	addAndMakeVisible( listBrowser );
+	
+	sequencer->setList( sequenceList );
+
+	
 
 	copier = new Copier( chaseManager );
 	addAndMakeVisible( copier );
@@ -61,7 +64,7 @@ MainContentComponent::MainContentComponent()
 #if JUCE_WINDOWS
 	addAndMakeVisible( menuBar );
 #elif JUCE_MAC
-	setMacMainMenu(this);
+	setMacMainMenu( this );
 #endif
 
 	addKeyListener( this );
@@ -75,13 +78,12 @@ MainContentComponent::MainContentComponent()
 MainContentComponent::~MainContentComponent()
 {
 	previewWindow = nullptr;
-	sliceList = nullptr;
 
 	stepToCopy.clear();
 	sequenceToCopy = Sequence();
 
 #if JUCE_MAC
-	setMacMainMenu(nullptr);
+	setMacMainMenu( nullptr );
 #endif
 
 	chaseManager = nullptr;
@@ -158,7 +160,7 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), true );
 			getTopLevelComponent()->setName( defaultChaser.getFileNameWithoutExtension() );
 		}
-			break;
+		break;
 		case 2:
 			//load existing chaser
 			loadChaser();
@@ -318,9 +320,6 @@ void MainContentComponent::resized()
 
 	Rectangle<int> sliceArea = Rectangle < int > { previewArea.getWidth(), menuBarHeight, area.getWidth() - previewArea.getWidth(), previewArea.getHeight()};
 	listBrowser->setBounds( sliceArea.reduced( 5 ) );
-
-	float relativeBarHeight = float( listBrowser->getTabBarDepth() ) / float( listBrowser->getHeight() );
-	sliceList->setBoundsRelative( 0.0f, relativeBarHeight, 1.0f, 1.0f - relativeBarHeight );
 
 	Rectangle<int> bottomArea = area.removeFromBottom( area.getHeight() - previewArea.getHeight() );
 	copier->setBounds( bottomArea.removeFromLeft( 75 ).reduced( 5 ) );

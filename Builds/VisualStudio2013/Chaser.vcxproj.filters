@@ -328,6 +328,9 @@
     <ClCompile Include="..\..\Source\gui\Preview.cpp">
       <Filter>Chaser\Source\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\gui\SequenceList.cpp">
+      <Filter>Chaser\Source\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\gui\Sequencer.cpp">
       <Filter>Chaser\Source\gui</Filter>
     </ClCompile>
@@ -1888,6 +1891,9 @@
       <Filter>Chaser\Source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\Preview.h">
+      <Filter>Chaser\Source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\SequenceList.h">
       <Filter>Chaser\Source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\Sequencer.h">

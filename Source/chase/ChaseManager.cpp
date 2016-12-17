@@ -252,6 +252,23 @@ void ChaseManager::setCurrentSequenceName( juce::String newName )
 	writeToXml();
 }
 
+StringArray ChaseManager::getSequenceNames()
+{
+	StringArray returnArray;
+
+	for ( int i = 0; i < getLastSequenceIndex() + 1; i++ )
+	{
+		//fill the array with default names
+		//unless the sequence exists and has its own name
+		String name = "Sequence " + String( i + 1);
+		if ( sequences[i].name != String() )
+			name = sequences[ i ].name;
+		returnArray.add( name );
+	}
+
+	return returnArray;
+}
+
 XmlElement* ChaseManager::getSequencesAsXml()
 {
 	XmlElement* sequencesXml = new XmlElement( "sequences" );

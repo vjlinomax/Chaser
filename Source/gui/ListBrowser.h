@@ -25,7 +25,11 @@ public:
     void paint (Graphics&) override;
     void resized() override;
 
+	void addComponentAsTab( Component* c, String name );
+
+	void currentTabChanged( int newCurrentTabIndex, const String& newCurrentTabName ) override;
 private:
+	OwnedArray<Component> tabs;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ListBrowser)
 };
 

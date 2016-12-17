@@ -72,6 +72,8 @@ Slice& SlicePropertyButton::getSlice()
 
 void SlicePropertyButton::paint( Graphics& g )
 {
+	//I need this resized here to make sure the button stay left aligned after switching tabs
+	resized();
 	PropertyComponent::paint( g );
 }
 

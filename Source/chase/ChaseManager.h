@@ -76,6 +76,7 @@ public:
 
 	String getCurrentSequenceName();
 	void setCurrentSequenceName( String newName );
+	StringArray getSequenceNames();
 
 	void createSequencesFromXml( XmlElement sequenceElement );
 
