@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\chase\ChaseManager.cpp"/>
     <ClCompile Include="..\..\Source\gui\Copier.cpp"/>
+    <ClCompile Include="..\..\Source\gui\ListBrowser.cpp"/>
     <ClCompile Include="..\..\Source\gui\Preview.cpp"/>
     <ClCompile Include="..\..\Source\gui\Sequencer.cpp"/>
     <ClCompile Include="..\..\Source\gui\SliceButton.cpp"/>
@@ -1558,6 +1559,7 @@
     <ClInclude Include="..\..\Source\chase\ChaseManager.h"/>
     <ClInclude Include="..\..\Source\gui\ColourLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\gui\Copier.h"/>
+    <ClInclude Include="..\..\Source\gui\ListBrowser.h"/>
     <ClInclude Include="..\..\Source\gui\Preview.h"/>
     <ClInclude Include="..\..\Source\gui\Sequencer.h"/>
     <ClInclude Include="..\..\Source\gui\SliceButton.h"/>

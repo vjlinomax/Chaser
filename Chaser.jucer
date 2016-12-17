@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.0"
               bundleIdentifier="nl.HybridVisuals.www" includeBinaryInAppConfig="1"
-              jucerVersion="4.3.0" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
+              jucerVersion="4.2.4" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
               companyEmail="joris@hybridvisuals.nl">
   <MAINGROUP id="cFMW0p" name="Chaser">
     <GROUP id="{6A6FFF85-7097-63A1-1439-46EFB4CC7C8A}" name="Source">
@@ -23,6 +23,8 @@
               file="Source/gui/ColourLookAndFeel.h"/>
         <FILE id="DMp4Xs" name="Copier.cpp" compile="1" resource="0" file="Source/gui/Copier.cpp"/>
         <FILE id="n5iXtJ" name="Copier.h" compile="0" resource="0" file="Source/gui/Copier.h"/>
+        <FILE id="PeEIve" name="ListBrowser.cpp" compile="1" resource="0" file="Source/gui/ListBrowser.cpp"/>
+        <FILE id="Rr6RoN" name="ListBrowser.h" compile="0" resource="0" file="Source/gui/ListBrowser.h"/>
         <FILE id="nszcyH" name="Preview.cpp" compile="1" resource="0" file="Source/gui/Preview.cpp"/>
         <FILE id="OM00JM" name="Preview.h" compile="0" resource="0" file="Source/gui/Preview.h"/>
         <FILE id="WMlvLX" name="Sequencer.cpp" compile="1" resource="0" file="Source/gui/Sequencer.cpp"/>

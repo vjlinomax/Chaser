@@ -322,6 +322,9 @@
     <ClCompile Include="..\..\Source\gui\Copier.cpp">
       <Filter>Chaser\Source\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\gui\ListBrowser.cpp">
+      <Filter>Chaser\Source\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\gui\Preview.cpp">
       <Filter>Chaser\Source\gui</Filter>
     </ClCompile>
@@ -1879,6 +1882,9 @@
       <Filter>Chaser\Source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\Copier.h">
+      <Filter>Chaser\Source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\ListBrowser.h">
       <Filter>Chaser\Source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\Preview.h">

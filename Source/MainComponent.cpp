@@ -37,7 +37,12 @@ MainContentComponent::MainContentComponent()
 	addAndMakeVisible( previewWindow );
 
 	sliceList = new SliceList( sliceManager, previewWindow );
-	addAndMakeVisible( sliceList );
+	
+	listBrowser = new ListBrowser( );
+	
+	listBrowser->addTab( "Slices", Colours::lightgrey, sliceList, false );
+	listBrowser->addTab( TRANS( "Tab 1" ), Colours::lightgrey, 0, false );
+	addAndMakeVisible( listBrowser );
 
 	sequencer = new Sequencer( chaseManager, previewWindow );
 	addAndMakeVisible( sequencer );
@@ -312,7 +317,10 @@ void MainContentComponent::resized()
 		previewWindow->setBoundsToFit( previewWindowArea.getX(), previewWindowArea.getY(), previewWindowArea.getWidth(), previewWindowArea.getHeight(), Justification::centred, false );
 
 	Rectangle<int> sliceArea = Rectangle < int > { previewArea.getWidth(), menuBarHeight, area.getWidth() - previewArea.getWidth(), previewArea.getHeight()};
-	sliceList->setBounds( sliceArea.reduced( 5 ) );
+	listBrowser->setBounds( sliceArea.reduced( 5 ) );
+
+	float relativeBarHeight = float( listBrowser->getTabBarDepth() ) / float( listBrowser->getHeight() );
+	sliceList->setBoundsRelative( 0.0f, relativeBarHeight, 1.0f, 1.0f - relativeBarHeight );
 
 	Rectangle<int> bottomArea = area.removeFromBottom( area.getHeight() - previewArea.getHeight() );
 	copier->setBounds( bottomArea.removeFromLeft( 75 ).reduced( 5 ) );

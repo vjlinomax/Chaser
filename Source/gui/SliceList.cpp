@@ -43,6 +43,7 @@ SlicePropertyButton::SlicePropertyButton( SliceList& parent, Slice& slice ) : Bo
 {
 	state = slice.enabled;
 }
+
 SlicePropertyButton::~SlicePropertyButton(){}
 
 void SlicePropertyButton::buttonClicked( Button* b )
@@ -67,6 +68,11 @@ bool SlicePropertyButton::getState() const
 Slice& SlicePropertyButton::getSlice()
 {
 	return slice;
+}
+
+void SlicePropertyButton::paint( Graphics& g )
+{
+	PropertyComponent::paint( g );
 }
 
 
