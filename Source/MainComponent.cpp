@@ -124,8 +124,8 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		menu.addItem( 1, "New Chaser" );
 		menu.addSeparator();
 
-		menu.addItem( 2, "Load Chaser" );
-		menu.addItem( 3, "Save Chaser as..." );
+		menu.addItem( 2, "Load Chaser", false );
+		menu.addItem( 3, "Save Chaser as...", false );
 		menu.addSeparator();
 
 		//if the last used arena file still exists, enable the option to reload it
