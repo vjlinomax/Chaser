@@ -1,17 +1,13 @@
-Builds/MacOSX/build/Debug/
-Builds/MacOSX/Chaser.xcodeproj/project.xcworkspace/xcuserdata/hybrid.xcuserdatad/UserInterfaceState.xcuserstate
-Builds/MacOSX/Chaser.xcodeproj/xcuserdata/hybrid.xcuserdatad/xcschemes/Chaser.xcscheme
-Builds/MacOSX/Chaser.xcodeproj/xcuserdata/hybrid.xcuserdatad/xcschemes/xcschememanagement.plist
-Builds/MacOSX/build/Release
-Builds/VisualStudio2015/Debug/
+hybrid.xcuserdatad
+joris.xcuserdatad
+
 Builds/VisualStudio2015/x64/
 Builds/VisualStudio2015/Chaser.opensdf
 Builds/VisualStudio2015/Chaser.sdf
 
 build
+*.suo
+*.VC.db
+*.VC.VC.opendb
 
 /Builds/MacOSX/Chaser.xcodeproj/project.xcworkspace/xcuserdata/
-
-/Builds/MacOSX/Chaser.xcodeproj/xcuserdata/joris.xcuserdatad/
-Chaser.xcscmblueprint
-Builds/MacOSX/Chaser.xcodeproj/xcuserdata/hybrid.xcuserdatad
