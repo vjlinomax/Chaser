@@ -67,7 +67,7 @@ public:
 
 	//will return the new max amount of sequences
 	int addSequence();
-	int removeCurrentSequence();
+	int removeSequence( int index );
 
 	int getLastStepIndex();
 	int getLastSequenceIndex();

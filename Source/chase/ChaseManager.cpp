@@ -197,6 +197,24 @@ int ChaseManager::setStepCount( int i )
 	return getLastStepIndex();
 }
 
+int ChaseManager::addSequence()
+{
+	//this will make sure the sequence gets created and filled
+	currentSequence = getLastSequenceIndex() + 1;
+	fillSequence();
+
+	return getLastSequenceIndex() + 1;
+}
+
+int ChaseManager::removeSequence( int index )
+{
+	if ( index <= getLastSequenceIndex() && index > -1 )
+	{
+		sequences.removeRange( index, 1 );
+	}
+	return getLastSequenceIndex() + 1;
+}
+
 int ChaseManager::addStep( bool write )
 {
 	Sequence sequence = sequences[ getCurrentSequenceIndex() ];

@@ -15,6 +15,7 @@
 
 #include "../chase/ChaseManager.h"
 #include "../gui logic/UpdateableComponent.h"
+#include "JuceBased\Components\DeletableItemListComponent.h"
 
 //==============================================================================
 /*
@@ -22,7 +23,8 @@
 class SequenceList    : 
 	public Component,
 	public ListBoxModel,
-	public UpdateableComponent
+	public UpdateableComponent,
+	public DeletableItemListComponent::Listener
 
 {
 public:
@@ -31,6 +33,8 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
+
+	void itemRemoved( int index ) override;
 
 	void update() override;
 
@@ -44,6 +48,9 @@ public:
 private:
 	ListBox sequenceListBox;
 	StringArray sequenceNames;
+
+	ScopedPointer<TextButton> addSeqButton;
+	ScopedPointer<DeletableItemListComponent> sequenceListComponent;
 
 	ChaseManager* chaseManager;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SequenceList)

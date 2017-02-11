@@ -12,19 +12,32 @@
 #include "SequenceList.h"
 #include "ColourLookAndFeel.h"
 
+
+
 //==============================================================================
 SequenceList::SequenceList( ChaseManager* cm )
 {
 	chaseManager = cm;
+	/*
 	sequenceListBox.setModel( this );
 	sequenceListBox.updateContent();
 	sequenceListBox.setRowHeight( 30 );
 	sequenceListBox.setColour( ListBox::ColourIds::backgroundColourId, Colours::transparentBlack );
 	addAndMakeVisible( sequenceListBox );
+	*/
+
+	sequenceListComponent = new DeletableItemListComponent();
+	for ( String seqName : chaseManager->getSequenceNames() )
+		sequenceListComponent->addItem( seqName );
+	addAndMakeVisible( sequenceListComponent );
+	sequenceListComponent->addListener( this );
 
 	////set the selected row
 	int selectedRow = chaseManager->getCurrentSequenceIndex();
-	sequenceListBox.selectRow( selectedRow );
+	//sequenceListBox.selectRow( selectedRow );
+
+	addSeqButton = new TextButton( "+" );
+	addAndMakeVisible( addSeqButton );
 }
 
 SequenceList::~SequenceList()
@@ -75,5 +88,12 @@ void SequenceList::paint (Graphics& g)
 
 void SequenceList::resized()
 {
-	sequenceListBox.setBoundsInset( BorderSize < int > {1} );
+	//sequenceListBox.setBoundsInset( BorderSize < int > {1,1,40,1} );
+	sequenceListComponent->setBoundsInset( BorderSize<int> {1, 1, 40, 1} );
+	addSeqButton->setBounds( 1, sequenceListBox.getBottom() + 1, getWidth() - 1, 38 );
+}
+
+void SequenceList::itemRemoved( int index )
+{
+	chaseManager->removeSequence( index );
 }

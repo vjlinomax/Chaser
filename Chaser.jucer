@@ -118,9 +118,11 @@
             externalLibraries="HybridApi.lib">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Debug"/>
+                       isDebug="1" optimisation="1" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Debug"
+                       headerPath="..\..\..\HybridApi\Source"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Release"/>
+                       isDebug="0" optimisation="3" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Release"
+                       headerPath="..\..\..\HybridApi\Source"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
