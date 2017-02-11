@@ -13,6 +13,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../../HybridApi/Source/JuceBased/ArenaHelpers/Slice/Slice.h"
 
+using namespace hybrid;
+
 //TODO add node with positions for all slices
 
 class XmlSequence
@@ -41,7 +43,6 @@ public:
 private:
 	String versionThreshold;
 	ScopedPointer<XmlElement> chaserData;
-	ScopedPointer<XmlElement> lastUsedFileData;
 	XmlElement* sequenceData;
 	XmlElement* positionData;
 	

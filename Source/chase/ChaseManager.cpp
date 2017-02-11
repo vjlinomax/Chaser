@@ -312,15 +312,15 @@ XmlElement* ChaseManager::getSequencesAsXml()
 			sequenceXml->addChildElement( stepsXml );
 
 			//loop through this sequence's steps
-			for ( int i = 0; i < sequence.steps.size(); i++ )
+			for ( int j = 0; j < sequence.steps.size(); j++ )
 			{
-				Step step = sequence.steps[ i ];
+				Step step = sequence.steps[ j ];
 				//only store filled steps
 				if ( step.size() > 0 )
 				{
 					//for every step, create an xmlelement and store the step nr
 					XmlElement* stepXml = new XmlElement( "step" );
-					stepXml->setAttribute( "nr", i );
+					stepXml->setAttribute( "nr", j );
 					stepsXml->addChildElement( stepXml );
 
 					//loop through this step's active slices

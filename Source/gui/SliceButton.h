@@ -15,7 +15,7 @@
 #include "../../HybridApi/Source/HybridApi.h"
 #include "ColourLookAndFeel.h"
 
-
+using namespace hybrid;
 //==============================================================================
 /*
 */
@@ -23,7 +23,7 @@
 class SliceButton    : public ShapeButton
 {
 public:
-	SliceButton ( Slice& s, Point<int> scale );
+	SliceButton ( hybrid::Slice& s, Point<int> scale );
     ~SliceButton();
 	
     String name;
@@ -44,7 +44,7 @@ public:
 
 private:
 	Path path;
-	Slice& slice;
+	hybrid::Slice& slice;
 	Path makePath( Array<Point<float>>& points, Point<int> scale );
 
 	SliceButton* lastDraggedButton;

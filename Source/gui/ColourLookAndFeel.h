@@ -29,7 +29,7 @@ public:
 	
 	
 	
-	void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour,
+	void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundCol,
 							   bool isMouseOverButton, bool isButtonDown)
 	{
 		const int width = button.getWidth();
@@ -45,7 +45,7 @@ public:
 							   height - indent * 2.0f,
 							   (float) cornerSize);
 		
-		Colour bc (backgroundColour);
+		Colour bc (backgroundCol);
 		
 		if (isMouseOverButton)
 		{

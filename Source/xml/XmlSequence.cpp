@@ -222,11 +222,11 @@ void XmlSequence::setXmlFile( File f )
 	if ( !prefFile.exists() )
 		prefFile.create();
 
-	XmlElement* lastUsedFileData = new XmlElement( "preferences" );
+	ScopedPointer<XmlElement> lastUsedFileData;
+	lastUsedFileData = new XmlElement( "preferences" );
 	addElement( lastUsedFileData, "lastusedfile", f.getFullPathName(), true );
 
 	lastUsedFileData->writeToFile( prefFile, "" );
-	delete lastUsedFileData;
 }
 
 File XmlSequence::getXmlFile()

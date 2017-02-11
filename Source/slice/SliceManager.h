@@ -15,6 +15,8 @@
 #include "../xml/ChaserXmlManager.h"
 #include "../gui logic/UpdateableComponent.h"
 
+using namespace hybrid;
+
 
 //takes care of keeping all the slice data in one place and accesible by other classes
 class SliceManager

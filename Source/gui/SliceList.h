@@ -18,6 +18,7 @@
 #include "ColourLookAndFeel.h"
 #include <map>
 
+using namespace hybrid;
 //==============================================================================
 
 typedef std::map<int64, Array<PropertyComponent*>> SectionMap;

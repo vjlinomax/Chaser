@@ -93,16 +93,16 @@ Array<Screen>& SliceManager::getScreens()
 
 XmlElement* SliceManager::getScreensAsXml()
 {
-	XmlElement* screens = new XmlElement( "screens" );
+	XmlElement* screensXml = new XmlElement( "screens" );
 	for ( auto screen : getScreens() )
 	{
 		XmlElement* screenXml = new XmlElement( "screen" );
 		screenXml->setAttribute( "name", screen.name );
 		screenXml->setAttribute( "uniqueId", String( screen.uid ) );
 		screenXml->setAttribute( "folded", screen.folded );
-		screens->addChildElement( screenXml );
+		screensXml->addChildElement( screenXml );
 	}
-	return screens;
+	return screensXml;
 }
 
 void SliceManager::writeToXml()

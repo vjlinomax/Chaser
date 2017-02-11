@@ -23,7 +23,7 @@ ListBrowser::~ListBrowser()
 	tabs.clear();
 }
 
-void ListBrowser::currentTabChanged( int newCurrentTabIndex, const String& newCurrentTabName )
+void ListBrowser::currentTabChanged( int , const String&  )
 {
 	
 }
@@ -34,7 +34,7 @@ void ListBrowser::addComponentAsTab( Component* c, String name )
 	tabs.add( c );
 }
 
-void ListBrowser::paint( Graphics& g )
+void ListBrowser::paint( Graphics& )
 {
 
 }
