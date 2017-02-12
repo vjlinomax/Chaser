@@ -22,7 +22,6 @@
 */
 class SequenceList    : 
 	public Component,
-	public ListBoxModel,
 	public UpdateableComponent,
 	public DeletableItemListComponent::Listener
 
@@ -38,15 +37,7 @@ public:
 
 	void update() override;
 
-	int getNumRows() override;
-	void paintListBoxItem( int rowNumber,
-		Graphics& g,
-		int width, int height,
-		bool rowIsSelected ) override;
-	void listBoxItemClicked( int row, const MouseEvent& ) override;
-
 private:
-	ListBox sequenceListBox;
 	StringArray sequenceNames;
 
 	ScopedPointer<TextButton> addSeqButton;

@@ -203,6 +203,8 @@ int ChaseManager::addSequence()
 	currentSequence = getLastSequenceIndex() + 1;
 	fillSequence();
 
+	writeToXml();
+
 	return getLastSequenceIndex() + 1;
 }
 
@@ -212,6 +214,9 @@ int ChaseManager::removeSequence( int index )
 	{
 		sequences.removeRange( index, 1 );
 	}
+
+	writeToXml();
+
 	return getLastSequenceIndex() + 1;
 }
 
