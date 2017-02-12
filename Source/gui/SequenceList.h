@@ -23,7 +23,8 @@
 class SequenceList    : 
 	public Component,
 	public UpdateableComponent,
-	public DeletableItemListComponent::Listener
+	public DeletableItemListComponent::Listener,
+	public Button::Listener
 
 {
 public:
@@ -34,6 +35,8 @@ public:
     void resized() override;
 
 	void itemRemoved( int index ) override;
+
+	void buttonClicked( Button* b ) override;
 
 	void update() override;
 

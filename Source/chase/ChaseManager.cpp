@@ -105,10 +105,12 @@ void ChaseManager::skipToSequence( int i )
 	if ( i > 512 )
 		return;
 
-	currentSequence = i;
-
-	if ( currentSequence > getLastSequenceIndex()  )
-		sequences.resize( i );
+	while ( i > getLastSequenceIndex() )
+	{
+		sequences.resize( sequences.size() + 1 );
+		currentSequence = getLastSequenceIndex();
+		fillSequence();
+	}
 
 	//make sure the sequence is filled
 	fillSequence();
@@ -222,6 +224,9 @@ int ChaseManager::removeSequence( int index )
 
 int ChaseManager::addStep( bool write )
 {
+	if ( sequences.size() == 0 )
+		return 0;
+
 	Sequence sequence = sequences[ getCurrentSequenceIndex() ];
 	sequence.steps.resize( sequence.steps.size() + 1 );
 

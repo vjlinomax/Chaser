@@ -26,6 +26,7 @@ SequenceList::SequenceList( ChaseManager* cm )
 	sequenceListComponent->addListener( this );
 
 	addSeqButton = new TextButton( "+" );
+	addSeqButton->addListener( this );
 	addAndMakeVisible( addSeqButton );
 }
 
@@ -63,4 +64,10 @@ void SequenceList::resized()
 void SequenceList::itemRemoved( int index )
 {
 	chaseManager->removeSequence( index );
+}
+
+void SequenceList::buttonClicked( Button* )
+{
+	//there's only button
+	chaseManager->addSequence();
 }
