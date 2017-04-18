@@ -138,7 +138,7 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 	else if ( menuIndex == 1 )
 	{
 		menu.addItem( 1, "Copy Step " + KeyPress( 'c', ModifierKeys::commandModifier, NULL ).getTextDescriptionWithIcons() );
-		menu.addItem( 2, "Paste Step " + KeyPress( 'v', ModifierKeys::commandModifier, NULL ).getTextDescriptionWithIcons() );
+		menu.addItem( 2, "Paste Step " + KeyPress( 'v', ModifierKeys::commandModifier, NULL ).getTextDescriptionWithIcons(), !stepToCopy.isEmpty() );
 		menu.addItem( 3, "Clear Step" );
 		menu.addItem( 4, "Invert Step" );
 	}
@@ -272,8 +272,11 @@ void MainContentComponent::copyStep()
 
 void MainContentComponent::pasteStep()
 {
-	chaseManager->setCurrentStep( stepToCopy );
-	previewWindow->setActiveSlices();
+	if ( !stepToCopy.isEmpty() )
+	{
+		chaseManager->setCurrentStep( stepToCopy );
+		previewWindow->setActiveSlices();
+	}
 }
 
 void MainContentComponent::resized()
