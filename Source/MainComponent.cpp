@@ -8,8 +8,9 @@
 
 #include "MainComponent.h"
 #include "../../HybridApi/Source/HybridApi.h"
+#include "../../HybridApi/Source/JuceBased/Fileless/FileLess.h"
 
-//==============================================================================
+  //==============================================================================
 MainContentComponent::MainContentComponent()
 {
 	laf = new ColourLookAndFeel();
@@ -19,10 +20,10 @@ MainContentComponent::MainContentComponent()
 	version = ProjectInfo::versionString;
 
 	xmlManager = new ChaserXmlManager();
+
 	//try to get the last used chaser file
-	File lastChaser = FileHelper::getLastUsedChaserFile();
-	if ( !FileHelper::isFileValid( lastChaser, false ) )
-		lastChaser = File::getSpecialLocation( File::userDocumentsDirectory ).getChildFile( "Chaser/chaserBeta.xml" );
+	//this will create and return a deafult filename if nothing is found
+	File lastChaser = FileLess::getLastUsedFileName( FileLess::Chaser );
 	xmlManager->setSaveFile( lastChaser );
 
 	//save the version
@@ -45,14 +46,14 @@ MainContentComponent::MainContentComponent()
 	listBrowser->addComponentAsTab( sliceList, "Slices" );
 	listBrowser->addComponentAsTab( sequenceList, "Sequences" );
 	addAndMakeVisible( listBrowser );
-	
+
 	chaseManager->addUpdateable( sequenceList );
 	chaseManager->addUpdateable( sequencer );
 	chaseManager->addUpdateable( previewWindow );
 
 	sliceManager->addUpdateable( sliceList );
 	sliceManager->addUpdateable( previewWindow );
-	
+
 	copier = new Copier( chaseManager );
 	addAndMakeVisible( copier );
 
@@ -103,7 +104,7 @@ void MainContentComponent::timerCallback()
 		creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), false );
 
 	//set the name
-	getTopLevelComponent()->setName( FileHelper::getLastUsedChaserFile().getFileNameWithoutExtension() );
+	getTopLevelComponent()->setName( FileLess::getLastUsedFileName( FileLess::Chaser ).getFileNameWithoutExtension() );
 
 	//resize to update preview window
 	resized();
@@ -124,14 +125,12 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		menu.addItem( 1, "New Chaser" );
 		menu.addSeparator();
 
-		menu.addItem( 2, "Load Chaser", false );
-		menu.addItem( 3, "Save Chaser as...", false );
+		menu.addItem( 2, "Load Chaser" );
+		menu.addItem( 3, "Save Chaser as..." );
 		menu.addSeparator();
 
-		//if the last used arena file still exists, enable the option to reload it
-		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile(), false );
-
 		//if there is no active assfile, stop the timer
+		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile(), false );
 		if ( !isAvailable )
 			autoUpdate->stop();
 	}
@@ -156,7 +155,7 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 		case 1:
 		{
 			//new chaser
-			File defaultChaser = File::getSpecialLocation( File::userDocumentsDirectory ).getChildFile( "Chaser/chaserBeta.xml" );
+			File defaultChaser = FileLess::getNewFile( FileLess::Chaser );
 			xmlManager->setSaveFile( defaultChaser );
 			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), true );
 			getTopLevelComponent()->setName( defaultChaser.getFileNameWithoutExtension() );
@@ -168,13 +167,7 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 			break;
 		case 3:
 			//save the chaser under a new name
-			break;
-		case 4:
-			//toggle autoreload
-			if ( autoUpdate->isTimerRunning() )
-				autoUpdate->stop();
-			else
-				autoUpdate->start();
+			saveChaserAs();
 			break;
 		case 0:
 		default:
@@ -211,45 +204,31 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 	}
 }
 
-
-void MainContentComponent::saveChaser()
-{
-	/*
-	if (!xmlSequence->save())
-	{
-	DBG("SAVE ERROR!");
-	throwSaveError();
-	}
-	*/
-}
-
 bool MainContentComponent::saveChaserAs()
 {
-	/*
+
 	//open a save dialog
-	File chaserLocation = File::getSpecialLocation( File::SpecialLocationType::userDocumentsDirectory ).getFullPathName() + "/Chaser/";
-	if (!chaserLocation.exists())
-	chaserLocation.createDirectory();
-	FileChooser fc ( "Save chaser as...", chaserLocation, "*.xml", true );
-	if ( fc.browseForFileToSave(true) )
+	File chaserLocation = FileLess::getAppFolder( FileLess::Chaser );
+	FileChooser fc( "Save chaser as...", chaserLocation, "*.xml", true );
+	if ( fc.browseForFileToSave( true ) )
 	{
-	File f = fc.getResult();
+		File f = fc.getResult();
+		xmlManager->setSaveFile( f );
 
-	xmlSequence->setXmlFile( f );
-	saveXml();
+		sliceManager->writeToXml();
+		chaseManager->writeToXml();
 
-	getTopLevelComponent()->setName(f.getFileNameWithoutExtension());
-	return true;
+		getTopLevelComponent()->setName( f.getFileNameWithoutExtension() );
+		return true;
 	}
-	*/
+
 	return false;
 }
 
 void MainContentComponent::loadChaser()
 {
-
 	//open a load dialog
-	File chaserLocation = File::getSpecialLocation( File::SpecialLocationType::userDocumentsDirectory ).getFullPathName() + "/Chaser/";
+	File chaserLocation = FileLess::getAppFolder( FileLess::Chaser );
 	FileChooser fc( "Pick a Chaser file...", chaserLocation, "*.xml", true );
 
 	if ( fc.browseForFileToOpen() )
@@ -310,7 +289,7 @@ void MainContentComponent::resized()
 
 	menuBar->setBounds( area.removeFromTop( menuBarHeight ) );
 
-	Rectangle<int> previewArea = Rectangle < int > {0, 0, int( getWidth() * 0.83 ), int( (getWidth() / 16.0) * 9.0 * 0.83 ) };
+	Rectangle<int> previewArea = Rectangle < int >{ 0, 0, int( getWidth() * 0.83 ), int( (getWidth() / 16.0) * 9.0 * 0.83 ) };
 	previewArea.setPosition( 0, menuBarHeight );
 
 	previewWindow->setBounds( 0, 0, sliceManager->getResolution().x, sliceManager->getResolution().y );
@@ -319,7 +298,7 @@ void MainContentComponent::resized()
 	if ( previewWindow->getWidth() > 0 && previewWindow->getHeight() > 0 )
 		previewWindow->setBoundsToFit( previewWindowArea.getX(), previewWindowArea.getY(), previewWindowArea.getWidth(), previewWindowArea.getHeight(), Justification::centred, false );
 
-	Rectangle<int> sliceArea = Rectangle < int > { previewArea.getWidth(), menuBarHeight, area.getWidth() - previewArea.getWidth(), previewArea.getHeight()};
+	Rectangle<int> sliceArea = Rectangle < int >{ previewArea.getWidth(), menuBarHeight, area.getWidth() - previewArea.getWidth(), previewArea.getHeight() };
 	listBrowser->setBounds( sliceArea.reduced( 5 ) );
 
 	Rectangle<int> bottomArea = area.removeFromBottom( area.getHeight() - previewArea.getHeight() );

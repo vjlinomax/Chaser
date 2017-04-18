@@ -86,6 +86,8 @@ public:
 
 	void addUpdateable( UpdateableComponent* newUpdateable );
 
+	void writeToXml();
+
 private:
 	void setDefaults();
 
@@ -95,7 +97,6 @@ private:
 
 	Array<Sequence> sequences;
 
-	void writeToXml();
 	XmlElement* getSequencesAsXml();
 
 	ChaserXmlManager* xmlManager;

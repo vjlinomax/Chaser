@@ -10,6 +10,7 @@
 
 #include "ChaserCreator.h"
 #include "../../HybridApi/Source/HybridApi.h"
+#include "../../HybridApi/Source/JuceBased/Fileless/FileLess.h"
 
 ChaserCreator::ChaserCreator( SliceManager* sliceManager, ChaseManager* chaseManager,
 	Preview* preview, SliceList* sliceList ) :
@@ -61,7 +62,7 @@ bool ChaserCreator::createChaserFromChaserFile( bool giveFeedback )
 {
 	//check if we have a Chaser file previously saved
 	//if so, load that bad boy
-	File lastUsedChaser = FileHelper::getLastUsedChaserFile();
+	File lastUsedChaser = FileLess::getLastUsedFileName( FileLess::Chaser );
 
 	return createChaserFromChaserFile( lastUsedChaser, giveFeedback );
 

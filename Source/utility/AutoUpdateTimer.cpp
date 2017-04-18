@@ -9,6 +9,7 @@
 */
 
 #include "AutoUpdateTimer.h"
+#include "../../HybridApi/Source/JuceBased/Fileless/FileLess.h"
 
 
 AutoUpdateTimer::AutoUpdateTimer( ChaserCreator* creator ) :
@@ -50,7 +51,7 @@ void AutoUpdateTimer::timerCallback()
 	{
 		lastModifiedTime = checkTime;
 		File assFile;
-		ChaserXmlParser::parseAssFile( FileHelper::getLastUsedChaserFile(), assFile );
+		ChaserXmlParser::parseAssFile( FileLess::getLastUsedFileName( FileLess::Chaser ), assFile );
 		creator->createChaserFromAssFile( assFile, false );
 	}
 }

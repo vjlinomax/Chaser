@@ -54,7 +54,6 @@ public:
 	virtual bool keyPressed (const KeyPress& key,
 							 Component* originatingComponent) override;
 
-	void saveChaser();
 	bool saveChaserAs();
 	void loadChaser();
 

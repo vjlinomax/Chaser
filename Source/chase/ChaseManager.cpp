@@ -474,7 +474,7 @@ void ChaseManager::removeDeletedSlices( OwnedArray<hybrid::Slice>& sliceList )
 						contains = true;
 				}
 				if ( !contains )
-					step.remove( uid );
+					step.removeAllInstancesOf( uid );
 			}
 
 	writeToXml();
