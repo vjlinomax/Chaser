@@ -134,8 +134,6 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		//if there is no active assfile, stop the timer
 		if ( !isAvailable )
 			autoUpdate->stop();
-
-		menu.addItem( 4, "Autoload", isAvailable, autoUpdate->isTimerRunning() );
 	}
 
 	else if ( menuIndex == 1 )
