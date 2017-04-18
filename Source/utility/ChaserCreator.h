@@ -30,8 +30,8 @@ public:
 	void createChaserFromAssFile( File assFile, bool createNew );
 	
 	//will return true if succesful
-	bool createChaserFromChaserFile();
-	bool createChaserFromChaserFile( File chaserToLoad );
+	bool createChaserFromChaserFile( bool giveFeedback );
+	bool createChaserFromChaserFile( File chaserToLoad, bool giveFeedback );
 
 private:
 	SliceManager* sliceManager;

@@ -51,7 +51,7 @@ XmlElement* ChaserXmlManager::getMainElement()
 	XmlElement* mainElement = nullptr;
 	
 	//try to read existing data from the saveFile
-	if ( FileHelper::isFileValid( saveFile ) )
+	if ( FileHelper::isFileValid( saveFile, false ) )
 		mainElement =  XmlDocument::parse( saveFile );
 	
 	//if there is no valid xml yet, create it

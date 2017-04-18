@@ -21,7 +21,7 @@ MainContentComponent::MainContentComponent()
 	xmlManager = new ChaserXmlManager();
 	//try to get the last used chaser file
 	File lastChaser = FileHelper::getLastUsedChaserFile();
-	if ( !FileHelper::isFileValid( lastChaser ) )
+	if ( !FileHelper::isFileValid( lastChaser, false ) )
 		lastChaser = File::getSpecialLocation( File::userDocumentsDirectory ).getChildFile( "Chaser/chaserBeta.xml" );
 	xmlManager->setSaveFile( lastChaser );
 
@@ -99,7 +99,7 @@ void MainContentComponent::timerCallback()
 	stopTimer();
 
 	//if we can't load the existing chaser, create a new one
-	if ( !creator->createChaserFromChaserFile() )
+	if ( !creator->createChaserFromChaserFile( false ) ) //no need to give feedback on first startup
 		creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), false );
 
 	//set the name
@@ -255,7 +255,7 @@ void MainContentComponent::loadChaser()
 	if ( fc.browseForFileToOpen() )
 	{
 		File f = fc.getResult();
-		if ( creator->createChaserFromChaserFile( f ) )
+		if ( creator->createChaserFromChaserFile( f, true ) )
 		{
 			getTopLevelComponent()->setName( f.getFileNameWithoutExtension() );
 			xmlManager->setSaveFile( f );

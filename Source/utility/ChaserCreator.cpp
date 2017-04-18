@@ -11,12 +11,12 @@
 #include "ChaserCreator.h"
 #include "../../HybridApi/Source/HybridApi.h"
 
-ChaserCreator::ChaserCreator( SliceManager* sliceManager, ChaseManager* chaseManager, 
-								Preview* preview, SliceList* sliceList ) :
-sliceManager( sliceManager ),
-chaseManager( chaseManager ),
-previewWindow( preview ),
-sliceList( sliceList )
+ChaserCreator::ChaserCreator( SliceManager* sliceManager, ChaseManager* chaseManager,
+	Preview* preview, SliceList* sliceList ) :
+	sliceManager( sliceManager ),
+	chaseManager( chaseManager ),
+	previewWindow( preview ),
+	sliceList( sliceList )
 {
 
 }
@@ -57,24 +57,21 @@ void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 	previewWindow->getParentComponent()->resized();
 }
 
-bool ChaserCreator::createChaserFromChaserFile()
+bool ChaserCreator::createChaserFromChaserFile( bool giveFeedback )
 {
 	//check if we have a Chaser file previously saved
 	//if so, load that bad boy
 	File lastUsedChaser = FileHelper::getLastUsedChaserFile();
 
-	if ( FileHelper::isFileValid( lastUsedChaser ) )
-		return createChaserFromChaserFile( lastUsedChaser );
+	return createChaserFromChaserFile( lastUsedChaser, giveFeedback );
 
-	DBG( "Not a valid file!" );
-	return false;
 }
 
-bool ChaserCreator::createChaserFromChaserFile( File chaserToLoad )
+bool ChaserCreator::createChaserFromChaserFile( File chaserToLoad, bool giveFeedback )
 {
 	//first check if the file we want to load is valid
 	//this will throw an error message
-	if ( !FileHelper::isFileValid( chaserToLoad ) )
+	if ( !FileHelper::isFileValid( chaserToLoad, giveFeedback ) )
 		return false;
 
 	//now check if we can load this version
@@ -87,7 +84,8 @@ bool ChaserCreator::createChaserFromChaserFile( File chaserToLoad )
 		|| !ChaserXmlParser::parseScreens( chaserToLoad, sliceManager->getScreens() )
 		|| !ChaserXmlParser::parseSlices( chaserToLoad, sliceManager->getSlices() ) )
 	{
-		FileHelper::throwLoadError();
+		if ( giveFeedback )
+			FileHelper::throwLoadError();
 		return false;
 	}
 
