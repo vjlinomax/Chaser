@@ -41,13 +41,13 @@ MainContentComponent::MainContentComponent()
 	addAndMakeVisible( sequencer );
 
 	SliceList* sliceList = new SliceList( sliceManager );
-	SequenceList* sequenceList = new SequenceList( chaseManager );
+	//SequenceList* sequenceList = new SequenceList( chaseManager );
 	listBrowser = new ListBrowser();
 	listBrowser->addComponentAsTab( sliceList, "Slices" );
-	listBrowser->addComponentAsTab( sequenceList, "Sequences" );
+	//listBrowser->addComponentAsTab( sequenceList, "Sequences" );
 	addAndMakeVisible( listBrowser );
 
-	chaseManager->addUpdateable( sequenceList );
+	//chaseManager->addUpdateable( sequenceList );
 	chaseManager->addUpdateable( sequencer );
 	chaseManager->addUpdateable( previewWindow );
 
