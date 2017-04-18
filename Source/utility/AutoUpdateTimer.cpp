@@ -25,15 +25,11 @@ AutoUpdateTimer::~AutoUpdateTimer()
 void AutoUpdateTimer::start()
 {
 	startTimerHz( 1 );
-
-	//jtodo write to xml
 }
 
 void AutoUpdateTimer::stop()
 {
 	stopTimer();
-
-	//jtodo write to xml
 }
 
 void AutoUpdateTimer::timerCallback()

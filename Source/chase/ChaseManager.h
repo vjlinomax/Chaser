@@ -14,6 +14,7 @@
 #include "JuceHeader.h"
 #include "../xml/ChaserXmlManager.h"
 #include "../gui logic/UpdateableComponent.h"
+#include "../../HybridApi/Source/JuceBased/ArenaHelpers/Slice/Slice.h"
 
 //the active slices in a step, slices are identified by their uniqueId
 typedef Array<int64> Step;
@@ -80,6 +81,8 @@ public:
 	StringArray getSequenceNames();
 
 	void createSequencesFromXml( XmlElement sequenceElement );
+
+	void removeDeletedSlices( OwnedArray<hybrid::Slice>& sliceList );
 
 	void addUpdateable( UpdateableComponent* newUpdateable );
 

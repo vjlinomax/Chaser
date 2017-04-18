@@ -461,6 +461,25 @@ void ChaseManager::writeToXml()
 		xmlManager->saveXmlElement( getSequencesAsXml() );
 }
 
+void ChaseManager::removeDeletedSlices( OwnedArray<hybrid::Slice>& sliceList )
+{
+	for ( Sequence sequence : sequences )
+		for ( Step step : sequence.steps )
+			for ( int64 uid : step )
+			{
+				bool contains = false;
+				for ( hybrid::Slice* slice : sliceList )
+				{
+					if ( slice->sliceId.second == uid )
+						contains = true;
+				}
+				if ( !contains )
+					step.remove( uid );
+			}
+
+	writeToXml();
+}
+
 void ChaseManager::addUpdateable( UpdateableComponent* newUpdateable )
 {
 	updateables.add( newUpdateable );

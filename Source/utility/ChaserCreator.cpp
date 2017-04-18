@@ -47,6 +47,11 @@ void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 	if ( createNew )
 		chaseManager->clearAll();
 
+	//if we don't create a new slicelist, we can cause a crash in the plugin at this point
+	//if we removed a slice in the assfile
+	//the chasemanager can have that slice stored in a chase, while the slice does not exist anymore in the slicelist
+	chaseManager->removeDeletedSlices( sliceManager->getSlices() );
+
 	//this needs to be here, in order for the window to be properly resized
 	//when the dimension change
 	previewWindow->getParentComponent()->resized();
