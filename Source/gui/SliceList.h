@@ -14,6 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../../HybridApi/Source/HybridApi.h"
 #include "../slice/SliceManager.h"
+#include "../chase/ChaseManager.h"
 #include "../gui logic/UpdateableComponent.h"
 #include "ColourLookAndFeel.h"
 #include <map>
@@ -43,7 +44,7 @@ class SliceList :
 	public UpdateableComponent
 {
 public:
-	SliceList( SliceManager* sliceManager );
+	SliceList( ChaseManager* chaseManger, SliceManager* sliceManager );
 	~SliceList();
 
 	void paint( Graphics& ) override;
@@ -61,6 +62,7 @@ public:
 
 private:
 	SliceManager* sliceManager;
+	ChaseManager* chaseManager;
 
 	ColourLookAndFeel claf;
 	SectionMap sections;

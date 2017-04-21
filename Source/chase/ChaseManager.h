@@ -13,6 +13,7 @@
 
 #include "JuceHeader.h"
 #include "../xml/ChaserXmlManager.h"
+#include "../slice/SliceManager.h"
 #include "../gui logic/UpdateableComponent.h"
 #include "../../HybridApi/Source/JuceBased/ArenaHelpers/Slice/Slice.h"
 
@@ -39,7 +40,7 @@ struct Sequence
 class ChaseManager
 {
 public:
-	ChaseManager( ChaserXmlManager* xmlManager );
+	ChaseManager( ChaserXmlManager* xmlManager, SliceManager* sliceManager );
 	~ChaseManager();
 
 	void setStep( int sequence, int step, Step activeSlices );
@@ -100,6 +101,7 @@ private:
 	XmlElement* getSequencesAsXml();
 
 	ChaserXmlManager* xmlManager;
+	SliceManager* sliceManager;
 
 	Array<UpdateableComponent*> updateables;
 	void updateComponents();

@@ -31,16 +31,16 @@ MainContentComponent::MainContentComponent()
 	versionXml->setAttribute( "nr", version );
 	xmlManager->saveXmlElement( versionXml );
 
-	chaseManager = new ChaseManager( xmlManager );
 	sliceManager = new SliceManager( xmlManager );
-
+	chaseManager = new ChaseManager( xmlManager, sliceManager );
+	
 	previewWindow = new Preview( chaseManager, sliceManager );
 	addAndMakeVisible( previewWindow );
 
 	sequencer = new Sequencer( chaseManager );
 	addAndMakeVisible( sequencer );
 
-	SliceList* sliceList = new SliceList( sliceManager );
+	SliceList* sliceList = new SliceList( chaseManager, sliceManager );
 	//SequenceList* sequenceList = new SequenceList( chaseManager );
 	listBrowser = new ListBrowser();
 	listBrowser->addComponentAsTab( sliceList, "Slices" );

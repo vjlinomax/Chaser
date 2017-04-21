@@ -121,6 +121,14 @@ void SliceManager::addUpdateable( UpdateableComponent* newUpdateable )
 	updateables.add( newUpdateable );
 }
 
+bool SliceManager::isSliceShowing( int64 uid )
+{
+	for ( Slice* slice : slices )
+		if ( slice->sliceId.second == uid )
+			return slice->enabled;
+	return false;
+}
+
 void SliceManager::updateComponents()
 {
 	for ( auto component : updateables )

@@ -34,6 +34,8 @@ public:
 	void writeToXml();
 
 	void addUpdateable( UpdateableComponent* newUpdateable );
+
+	bool isSliceShowing( int64 uid );
 	
 private:
 	OwnedArray<Slice> slices;

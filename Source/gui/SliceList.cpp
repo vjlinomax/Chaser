@@ -82,8 +82,9 @@ void SlicePropertyButton::paint( Graphics& g )
 
 
 //==============================================================================
-SliceList::SliceList( SliceManager* sliceManager ) :
+SliceList::SliceList( ChaseManager* chaseManager, SliceManager* sliceManager ) :
 panel( new MyPropertyPanel( *this ) ),
+chaseManager ( chaseManager ),
 sliceManager( sliceManager )
 {
 	addAndMakeVisible( panel );
@@ -170,6 +171,8 @@ void SliceList::sliceVisibilityChanged()
 {
 	//save the new state
 	sliceManager->writeToXml();
+	//we also need to write the chases, because we need to remove the invisible slice
+	chaseManager->writeToXml();
 }
 
 void SliceList::update()
