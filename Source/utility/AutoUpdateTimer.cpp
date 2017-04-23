@@ -40,10 +40,8 @@ void AutoUpdateTimer::timerCallback()
 
 	//if we didn't get a valid time, 
 	//maybe because the file doesn't exist
-	//stop the timer
 	if ( checkTime.toMilliseconds() == 0 )
 	{
-		stop();
 		return;
 	}
 

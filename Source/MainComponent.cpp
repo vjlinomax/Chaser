@@ -129,10 +129,10 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		menu.addItem( 3, "Save Chaser as..." );
 		menu.addSeparator();
 
-		//if there is no active assfile, stop the timer
-		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile(), false );
-		if ( !isAvailable )
-			autoUpdate->stop();
+//		//if there is no active assfile, stop the timer
+//		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile(), false );
+//		if ( !isAvailable )
+//			autoUpdate->stop();
 	}
 
 	else if ( menuIndex == 1 )
