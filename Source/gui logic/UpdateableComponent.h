@@ -19,7 +19,7 @@ class UpdateableComponent
 {
 public:
 	UpdateableComponent();
-	~UpdateableComponent();
+	virtual ~UpdateableComponent();
 
 	virtual void update() = 0;
 };
