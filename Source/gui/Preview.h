@@ -75,8 +75,8 @@ public:
     Preview( ChaseManager* chaseManager, SliceManager* sliceManager );
     ~Preview();
 
-    void paint (Graphics&);
-    void resized();
+    void paint (Graphics&) override;
+    void resized() override;
     
     virtual void buttonClicked (Button*) override;
 	

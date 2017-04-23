@@ -15,7 +15,7 @@
 
 #include "../chase/ChaseManager.h"
 #include "../gui logic/UpdateableComponent.h"
-#include "JuceBased\Components\DeletableItemListComponent.h"
+#include "Source/JuceBased/Components/DeletableItemListComponent.h"
 
 //==============================================================================
 /*

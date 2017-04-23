@@ -83,9 +83,9 @@ void SlicePropertyButton::paint( Graphics& g )
 
 //==============================================================================
 SliceList::SliceList( ChaseManager* chaseManager, SliceManager* sliceManager ) :
-panel( new MyPropertyPanel( *this ) ),
+sliceManager( sliceManager ),
 chaseManager ( chaseManager ),
-sliceManager( sliceManager )
+panel( new MyPropertyPanel( *this ) )
 {
 	addAndMakeVisible( panel );
 }
