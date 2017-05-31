@@ -37,11 +37,13 @@ struct Sequence
 
 //ChaseManager gives access to the sequences, their steps and the active slices in the step
 
-class ChaseManager
+class ChaseManager : public Timer
 {
 public:
 	ChaseManager( ChaserXmlManager* xmlManager, SliceManager* sliceManager );
 	~ChaseManager();
+
+	void timerCallback() override;
 
 	void setStep( int sequence, int step, Step activeSlices );
 	void setCurrentStep( Step activeSlices );

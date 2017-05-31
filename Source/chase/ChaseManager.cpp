@@ -21,6 +21,17 @@ ChaseManager::~ChaseManager()
 
 }
 
+void ChaseManager::timerCallback()
+{
+	updateComponents();
+
+	if ( xmlManager )
+		xmlManager->saveXmlElement( getSequencesAsXml() );
+
+	stopTimer();
+	
+}
+
 void ChaseManager::setDefaults()
 {
 	//create 16 sequences with 16 empty steps
@@ -460,10 +471,8 @@ void ChaseManager::createSequencesFromXml( XmlElement sequencesXml )
 
 void ChaseManager::writeToXml()
 {
-	updateComponents();
-
-	if ( xmlManager )
-		xmlManager->saveXmlElement( getSequencesAsXml() );
+	if (!isTimerRunning() )
+		startTimerHz( 1 );
 }
 
 void ChaseManager::removeDeletedSlices( OwnedArray<hybrid::Slice>& sliceList )
