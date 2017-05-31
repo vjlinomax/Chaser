@@ -54,7 +54,7 @@ MainContentComponent::MainContentComponent()
 	sliceManager->addUpdateable( sliceList );
 	sliceManager->addUpdateable( previewWindow );
 
-	copier = new Copier( chaseManager, sequencer );
+	copier = new Copier( chaseManager );
 	addAndMakeVisible( copier );
 
 	creator = new ChaserCreator( sliceManager, chaseManager, previewWindow, sliceList );

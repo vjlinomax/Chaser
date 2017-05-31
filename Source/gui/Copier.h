@@ -14,7 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "ColourLookAndFeel.h"
 #include "../chase/ChaseManager.h"
-#include "Sequencer.h"
+
 
 
 
@@ -25,7 +25,7 @@
 class Copier : public Component, public Button::Listener
 {
 public:
-	Copier( ChaseManager* chaseManager, Sequencer* sequencer );
+	Copier( ChaseManager* chaseManager );
 	~Copier();
 
 	//listener functions
@@ -38,7 +38,6 @@ public:
 private:
 	OwnedArray<Button> buttons;
 	ChaseManager* chaseManager;
-	Sequencer* sequencer;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR( Copier )
 };

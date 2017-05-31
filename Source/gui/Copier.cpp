@@ -14,9 +14,8 @@
 
 
 //==============================================================================
-Copier::Copier( ChaseManager* chaseManager, Sequencer* sequencer ) :
-chaseManager( chaseManager ),
-sequencer ( sequencer )
+Copier::Copier( ChaseManager* chaseManager ) :
+chaseManager( chaseManager )
 {
 	//create 4 buttons for x1, x2, x4 and x8
 	for ( int i = 0; i < 4; i++ )
@@ -39,8 +38,6 @@ Copier::~Copier()
 void Copier::buttonClicked( Button* b )
 {
 	int multiplier = int( pow( 2, buttons.indexOf( b ) ) );
-
-	//sequencer->stopTimer();
 
 	int copiesThatFitInSequence = int( floor( (chaseManager->getLastStepIndex() + 1) / multiplier ) );
 	for ( int i = 1; i < copiesThatFitInSequence; i++ )
