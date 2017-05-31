@@ -112,7 +112,10 @@ void Sequencer::buttonClicked( Button* b )
 	if ( b == play )
 	{
 		if ( b->getToggleState() )
+		{
+			loops = 0;
 			startTimer( 200 );
+		}
 		else
 			stopTimer();
 	}
@@ -147,7 +150,7 @@ void Sequencer::buttonClicked( Button* b )
 
 }
 
-void Sequencer::update()
+void Sequencer::reload()
 {
 	updateSequenceSettings();
 }
@@ -186,7 +189,13 @@ void Sequencer::buttonStateChanged( Button* )
 
 void Sequencer::timerCallback()
 {
+	int curStep = chaseManager->getCurrentStepIndex();
 	nextStep();
+	if ( chaseManager->getCurrentStepIndex() < curStep ) //we've looped
+		loops++;
+
+	if ( loops > 2 )
+		play->triggerClick();
 }
 
 void Sequencer::nextStep()

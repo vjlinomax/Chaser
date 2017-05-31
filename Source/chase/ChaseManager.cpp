@@ -120,10 +120,11 @@ void ChaseManager::skipToSequence( int i )
 	while ( i > getLastSequenceIndex() )
 	{
 		sequences.resize( sequences.size() + 1 );
-		currentSequence = getLastSequenceIndex();
-		fillSequence();
+		writeToXml();
 	}
 
+	currentSequence = i;
+	
 	//make sure the sequence is filled
 	fillSequence();
 
@@ -466,7 +467,14 @@ void ChaseManager::createSequencesFromXml( XmlElement sequencesXml )
 		sequenceCount++;
 	}
 
-	updateComponents();
+	currentSequence = 0;
+	currentStep = 0;
+
+	for ( auto component : updateables )
+	{
+		component->update();
+		component->reload(); //this will make sure I only update the sequence settings on a load action
+	}
 }
 
 void ChaseManager::writeToXml()

@@ -53,7 +53,7 @@ public:
 	void previousStep();
 	void selectStep( int i );
 
-	void update() override;
+	void reload() override;
 
 private:
 	ChaseManager* chaseManager;
@@ -75,6 +75,8 @@ private:
 	void updateSequenceSettings ();
 	
 	ColourLookAndFeel claf;
+
+	int loops;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sequencer)
 };

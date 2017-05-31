@@ -21,7 +21,8 @@ public:
 	UpdateableComponent();
 	virtual ~UpdateableComponent();
 
-	virtual void update() = 0;
+	virtual void update() {}
+	virtual void reload() {}
 };
 
 
