@@ -53,6 +53,10 @@ void ChaseManager::clearAll()
 {
 	sequences.clear();
 	setDefaults();
+    
+    for ( auto component : updateables )
+        component->reload(); //this will make sure I only update the sequence settings on a load action
+
 	writeToXml();
 }
 
