@@ -38,7 +38,14 @@ XmlElement* ChaserXmlManager::getMainElement()
 
 	//if there is no valid xml yet, create it
 	if ( !mainElement )
-		mainElement = new XmlElement( "ChaserData" );
+		mainElement = new XmlElement( "ChaserFileData" );
+	
+	else if ( mainElement->hasTagName( "chaserData" ) ) //old chaser format 
+	{
+		mainElement->deleteAllChildElements();
+		delete mainElement;
+		return new XmlElement( "ChaserFileData" );
+	}
 
 	return mainElement;
 }
