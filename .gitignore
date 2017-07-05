@@ -17,3 +17,9 @@ build
 /Builds/MacOSX/Chaser.xcodeproj/xcuserdata/joris.xcuserdatad/
 Chaser.xcscmblueprint
 Builds/MacOSX/Chaser.xcodeproj/xcuserdata/hybrid.xcuserdatad
+
+*.opendb
+
+Builds/VisualStudio2015/\.vs/Chaser/v14/
+
+*.db
