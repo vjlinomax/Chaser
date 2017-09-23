@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.0"
+<JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.1"
               bundleIdentifier="nl.HybridVisuals.www" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.1" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
-              companyEmail="joris@hybridvisuals.nl">
+              jucerVersion="5.0.2" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
+              companyEmail="joris@hybridvisuals.nl" displaySplashScreen="0"
+              reportAppUsage="1" splashScreenColour="Dark">
   <MAINGROUP id="cFMW0p" name="Chaser">
     <GROUP id="{6A6FFF85-7097-63A1-1439-46EFB4CC7C8A}" name="Source">
       <GROUP id="{A45A8A90-99DF-A3ED-9483-B22CEDC95B4C}" name="buttons">
@@ -100,10 +101,10 @@
             externalLibraries="HybridApi.lib">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Debug"
+                       isDebug="1" optimisation="1" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Debug\Static Library"
                        headerPath="..\..\..\HybridApi\Source"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Release"
+                       isDebug="0" optimisation="3" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Release\Static Library"
                        headerPath="..\..\..\HybridApi\Source"/>
       </CONFIGURATIONS>
       <MODULEPATHS>

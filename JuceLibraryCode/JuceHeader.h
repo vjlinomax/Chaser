@@ -10,8 +10,7 @@
 
 */
 
-#ifndef __APPHEADERFILE_ZSFZKW__
-#define __APPHEADERFILE_ZSFZKW__
+#pragma once
 
 #include "AppConfig.h"
 
@@ -37,9 +36,7 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Chaser";
-    const char* const  versionString  = "2.0.0";
-    const int          versionNumber  = 0x20000;
+    const char* const  versionString  = "2.0.1";
+    const int          versionNumber  = 0x20001;
 }
 #endif
-
-#endif   // __APPHEADERFILE_ZSFZKW__

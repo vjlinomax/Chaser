@@ -7,7 +7,7 @@
   */
 
 #include "MainComponent.h"
-#include "../../HybridApi/Source/HybridApi.h"
+#include "../../HybridApi/Source/JuceBased/ArenaHelpers/File/FileHelper.h"
 #include "../../HybridApi/Source/JuceBased/Fileless/FileLess.h"
 
   //==============================================================================
