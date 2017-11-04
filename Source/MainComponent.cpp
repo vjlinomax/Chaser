@@ -242,6 +242,22 @@ void MainContentComponent::loadChaser()
 	}
 }
 
+void MainContentComponent::loadAssFile()
+{
+	//open a load dialog
+	File docs = File::getSpecialLocation(File::SpecialLocationType::userDocumentsDirectory);
+	FileChooser fc("Choose a Resolume ASS file...", docs, "*.xml", true);
+
+	if (fc.browseForFileToOpen())
+	{
+		File f = fc.getResult();
+		if (FileHelper::isFileValid(f, true))
+		{
+			creator->createChaserFromAssFile(f, false);
+		}
+	}
+}
+
 bool MainContentComponent::keyPressed( const juce::KeyPress &key, juce::Component * )
 {
 
@@ -260,6 +276,11 @@ bool MainContentComponent::keyPressed( const juce::KeyPress &key, juce::Componen
 	else if ( key == KeyPress( 'v', ModifierKeys::commandModifier, NULL ) )
 	{
 		pasteStep();
+	}
+	//secret shortcut to force opening a particular assfile
+	else if (key == KeyPress('o', ModifierKeys::commandModifier + ModifierKeys::shiftModifier, NULL))
+	{
+		loadAssFile();
 	}
 
 	return true;

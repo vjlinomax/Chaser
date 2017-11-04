@@ -57,6 +57,8 @@ public:
 	bool saveChaserAs();
 	void loadChaser();
 
+	void loadAssFile();
+
 	void copyStep();
 	void pasteStep();
 
