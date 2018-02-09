@@ -2,9 +2,10 @@
 
 <JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.3"
               bundleIdentifier="nl.HybridVisuals.www" includeBinaryInAppConfig="1"
-              jucerVersion="5.1.2" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
+              jucerVersion="5.2.0" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
               companyEmail="joris@hybridvisuals.nl" displaySplashScreen="0"
-              reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11">
+              reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
+              companyCopyright="Hybrid Visuals">
   <MAINGROUP id="cFMW0p" name="Chaser">
     <GROUP id="{6A6FFF85-7097-63A1-1439-46EFB4CC7C8A}" name="Source">
       <GROUP id="{A45A8A90-99DF-A3ED-9483-B22CEDC95B4C}" name="buttons">
@@ -80,10 +81,10 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        isDebug="1" optimisation="1" targetName="Chaser" libraryPath="../../../HybridApi/Builds/MacOSX/build/Debug"
-                       headerPath="../../../HybridApi"/>
+                       headerPath="../../../HybridApi" enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="64BitIntel"
                        isDebug="0" optimisation="2" targetName="Chaser" libraryPath="../../../HybridApi/Builds/MacOSX/build/Release"
-                       headerPath="../../../HybridApi"/>
+                       headerPath="../../../HybridApi" enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
@@ -97,15 +98,17 @@
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="y0Yjpu" bigIcon="y0Yjpu"
-            externalLibraries="HybridApi.lib">
+    <VS2017 targetFolder="Builds/VisualStudio2017" windowsTargetPlatformVersion="10.0.16299.0"
+            externalLibraries="HybridApi.lib" smallIcon="y0Yjpu" bigIcon="y0Yjpu">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Debug\Static Library"
-                       headerPath="..\..\..\HybridApi\Source"/>
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="0" isDebug="1" optimisation="1" targetName="Chaser"
+                       headerPath="" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2017\x64\Debug\Static Library"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="Chaser" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Release\Static Library"
-                       headerPath="..\..\..\HybridApi\Source"/>
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="Chaser"
+                       headerPath="..\..\..\HybridApi\Source" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Release\Static Library"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
@@ -118,7 +121,7 @@
         <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
       </MODULEPATHS>
-    </VS2015>
+    </VS2017>
   </EXPORTFORMATS>
   <MODULES>
     <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
