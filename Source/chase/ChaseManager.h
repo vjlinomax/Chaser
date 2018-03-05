@@ -16,6 +16,7 @@
 #include "../slice/SliceManager.h"
 #include "../gui logic/UpdateableComponent.h"
 #include "../../HybridApi/Source/JuceBased/ArenaHelpers/Slice/Slice.h"
+#include "../achievements/AchievementManager.h"
 
 //the active slices in a step, slices are identified by their uniqueId
 typedef Array<int64> Step;
@@ -40,7 +41,7 @@ struct Sequence
 class ChaseManager : public Timer
 {
 public:
-	ChaseManager( ChaserXmlManager* xmlManager, SliceManager* sliceManager );
+	ChaseManager( ChaserXmlManager* xmlManager, SliceManager* sliceManager, AchievementManager* achievementManager );
 	~ChaseManager();
 
 	void timerCallback() override;
@@ -104,6 +105,7 @@ private:
 
 	ChaserXmlManager* xmlManager;
 	SliceManager* sliceManager;
+	AchievementManager* achievementManager;
 
 	Array<UpdateableComponent*> updateables;
 	void updateComponents();

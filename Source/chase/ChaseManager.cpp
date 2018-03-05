@@ -11,7 +11,8 @@
 #include "ChaseManager.h"
 
 
-ChaseManager::ChaseManager( ChaserXmlManager* xmlManager, SliceManager* sliceManager ) : xmlManager( xmlManager ), sliceManager( sliceManager )
+ChaseManager::ChaseManager( ChaserXmlManager* xmlManager, SliceManager* sliceManager, AchievementManager* achievementManager ) : 
+	xmlManager( xmlManager ), sliceManager( sliceManager ), achievementManager ( achievementManager )
 {
 	setDefaults();
 }
@@ -209,6 +210,11 @@ int ChaseManager::setStepCount( int i )
 			addStep( false );
 		while ( i < getLastStepIndex() + 1 )
 			removeStep( false );
+
+		if ( i == 666 )
+			if ( achievementManager )
+				achievementManager->getAchievement( Achievement::Types::Darklord )->trigger();
+
 	}
 
 	writeToXml();

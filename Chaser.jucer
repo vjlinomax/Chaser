@@ -8,6 +8,14 @@
               companyCopyright="Hybrid Visuals">
   <MAINGROUP id="cFMW0p" name="Chaser">
     <GROUP id="{6A6FFF85-7097-63A1-1439-46EFB4CC7C8A}" name="Source">
+      <GROUP id="{FCD126FD-39C0-C815-B45E-7215B384B62B}" name="achievements">
+        <FILE id="ORzVrB" name="Achievement.cpp" compile="1" resource="0" file="Source/achievements/Achievement.cpp"/>
+        <FILE id="aRHbxX" name="Achievement.h" compile="0" resource="0" file="Source/achievements/Achievement.h"/>
+        <FILE id="rM51Zb" name="AchievementManager.cpp" compile="1" resource="0"
+              file="Source/achievements/AchievementManager.cpp"/>
+        <FILE id="okyeeP" name="AchievementManager.h" compile="0" resource="0"
+              file="Source/achievements/AchievementManager.h"/>
+      </GROUP>
       <GROUP id="{A45A8A90-99DF-A3ED-9483-B22CEDC95B4C}" name="buttons">
         <FILE id="y0Yjpu" name="ICON-B.png" compile="0" resource="1" file="Source/buttons/ICON-B.png"/>
         <FILE id="bhzqgn" name="next.svg" compile="0" resource="1" file="Source/buttons/next.svg"/>

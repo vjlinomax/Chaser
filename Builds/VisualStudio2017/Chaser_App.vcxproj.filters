@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Chaser\Source\achievements">
+      <UniqueIdentifier>{5D063F2D-CF40-90A2-86B0-882E9D45A126}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Chaser\Source\buttons">
       <UniqueIdentifier>{4F67F556-8AAC-5B46-7AAD-A58AF08AC3D8}</UniqueIdentifier>
     </Filter>
@@ -325,6 +328,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\achievements\Achievement.cpp">
+      <Filter>Chaser\Source\achievements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\achievements\AchievementManager.cpp">
+      <Filter>Chaser\Source\achievements</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\chase\ChaseManager.cpp">
       <Filter>Chaser\Source\chase</Filter>
     </ClCompile>
@@ -1944,6 +1953,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\achievements\Achievement.h">
+      <Filter>Chaser\Source\achievements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\achievements\AchievementManager.h">
+      <Filter>Chaser\Source\achievements</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\chase\ChaseManager.h">
       <Filter>Chaser\Source\chase</Filter>
     </ClInclude>

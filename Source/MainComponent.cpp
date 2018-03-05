@@ -31,8 +31,10 @@ MainContentComponent::MainContentComponent()
 	versionXml->setAttribute( "nr", version );
 	xmlManager->saveXmlElement( versionXml );
 
+	achievementManager = new AchievementManager();
+
 	sliceManager = new SliceManager( xmlManager );
-	chaseManager = new ChaseManager( xmlManager, sliceManager );
+	chaseManager = new ChaseManager( xmlManager, sliceManager, achievementManager );
 	
 	previewWindow = new Preview( chaseManager, sliceManager );
 	addAndMakeVisible( previewWindow );
@@ -93,6 +95,9 @@ MainContentComponent::~MainContentComponent()
 	chaseManager = nullptr;
 	sliceManager = nullptr;
 	xmlManager = nullptr;
+	achievementManager = nullptr;
+
+	laf = nullptr;
 }
 
 void MainContentComponent::timerCallback()

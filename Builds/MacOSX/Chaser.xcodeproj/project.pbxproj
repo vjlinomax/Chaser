@@ -18,6 +18,8 @@
 		033E9A367609FB8A06471898 = {isa = PBXBuildFile; fileRef = 6C292685D7D4755269FBBC19; };
 		4C654AEFCE1F1E088DA6261F = {isa = PBXBuildFile; fileRef = 2B53E0A4D84754BCF1EA2A5F; };
 		B6054B6DD33BB901156F11ED = {isa = PBXBuildFile; fileRef = 49252167DA421F81AF11FB2D; };
+		DA18DC7F3A4BA9C12D7A7DCC = {isa = PBXBuildFile; fileRef = FF134AE6F92B7F07A8ED58A7; };
+		48C7522AAEFEC4D0C0E14F14 = {isa = PBXBuildFile; fileRef = 17DBC5E44FCDC706507867F9; };
 		03B7012999D0C69E49B1A5D9 = {isa = PBXBuildFile; fileRef = C85AEF66CF2AA2ABD5110B65; };
 		AD120EC0D249CE594C9F3A12 = {isa = PBXBuildFile; fileRef = 94FB9DEBC33D1B140CCBCA70; };
 		406149CCE518C0079B39DF69 = {isa = PBXBuildFile; fileRef = 9E96B350C8EFA2B65EBF7392; };
@@ -52,6 +54,7 @@
 		130A9924474027575B52CAA7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ListBrowser.cpp; path = ../../Source/gui/ListBrowser.cpp; sourceTree = "SOURCE_ROOT"; };
 		14BED1AFD47684317873EFD3 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AutoUpdateTimer.h; path = ../../Source/utility/AutoUpdateTimer.h; sourceTree = "SOURCE_ROOT"; };
 		1576B7E2588AB247B7B573E9 = {isa = PBXFileReference; lastKnownFileType = file.svg; name = play.svg; path = ../../Source/buttons/play.svg; sourceTree = "SOURCE_ROOT"; };
+		17DBC5E44FCDC706507867F9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementManager.cpp; path = ../../Source/achievements/AchievementManager.cpp; sourceTree = "SOURCE_ROOT"; };
 		1993B8FE571B3F984DC90736 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_core"; path = "../../../JUCE/modules/juce_core"; sourceTree = "SOURCE_ROOT"; };
 		1A55E6CB5782E74105844A17 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChaserCreator.h; path = ../../Source/utility/ChaserCreator.h; sourceTree = "SOURCE_ROOT"; };
 		20DF94E59B2B9E1A057CF704 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sequencer.h; path = ../../Source/gui/Sequencer.h; sourceTree = "SOURCE_ROOT"; };
@@ -111,14 +114,22 @@
 		DF20FE8DB42FAEE12DA627D9 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_gui_extra"; path = "../../../JUCE/modules/juce_gui_extra"; sourceTree = "SOURCE_ROOT"; };
 		E080EADE35EA28B76D7DB26F = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_graphics"; path = "../../../JUCE/modules/juce_graphics"; sourceTree = "SOURCE_ROOT"; };
 		E28A7628C1E9B3FFAAC6F142 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ChaserCreator.cpp; path = ../../Source/utility/ChaserCreator.cpp; sourceTree = "SOURCE_ROOT"; };
+		E74F66544CF047D294907555 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Achievement.h; path = ../../Source/achievements/Achievement.h; sourceTree = "SOURCE_ROOT"; };
 		ECFADD77502B1DFF33E78283 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UpdateableComponent.h; path = "../../Source/gui logic/UpdateableComponent.h"; sourceTree = "SOURCE_ROOT"; };
 		ED623C5B64779742843BA78C = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SliceList.h; path = ../../Source/gui/SliceList.h; sourceTree = "SOURCE_ROOT"; };
 		EEBF998F98404FB3188B7871 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SliceManager.cpp; path = ../../Source/slice/SliceManager.cpp; sourceTree = "SOURCE_ROOT"; };
+		EFC4B95B5D6EFAE981E054BF = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AchievementManager.h; path = ../../Source/achievements/AchievementManager.h; sourceTree = "SOURCE_ROOT"; };
 		F2E5474DD3DDD0CAB39A701C = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XmlSequence.h; path = ../../Source/xml/XmlSequence.h; sourceTree = "SOURCE_ROOT"; };
 		F8E903E9EFCF8DA0D250DEBD = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-App.plist"; path = "Info-App.plist"; sourceTree = "SOURCE_ROOT"; };
 		FC4C14C646438ADCC264CA27 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Preview.cpp; path = ../../Source/gui/Preview.cpp; sourceTree = "SOURCE_ROOT"; };
 		FEAA8F12EC11ADE17E742E8B = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stepper.h; path = ../../Source/gui/Stepper.h; sourceTree = "SOURCE_ROOT"; };
 		FEE2B693C85730202E5AA92A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = XmlSequence.cpp; path = ../../Source/xml/XmlSequence.cpp; sourceTree = "SOURCE_ROOT"; };
+		FF134AE6F92B7F07A8ED58A7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Achievement.cpp; path = ../../Source/achievements/Achievement.cpp; sourceTree = "SOURCE_ROOT"; };
+		4FA114CC2C9B77BF0BFA166C = {isa = PBXGroup; children = (
+					FF134AE6F92B7F07A8ED58A7,
+					E74F66544CF047D294907555,
+					17DBC5E44FCDC706507867F9,
+					EFC4B95B5D6EFAE981E054BF, ); name = achievements; sourceTree = "<group>"; };
 		F037A0D76DE7D66CB80F1621 = {isa = PBXGroup; children = (
 					BDACC76BDF1684C89FBD7B2F,
 					0ECDC3E1D87AA48F258B8B7D,
@@ -163,6 +174,7 @@
 					FEE2B693C85730202E5AA92A,
 					F2E5474DD3DDD0CAB39A701C, ); name = xml; sourceTree = "<group>"; };
 		EE82A34CAE1E1E6677679462 = {isa = PBXGroup; children = (
+					4FA114CC2C9B77BF0BFA166C,
 					F037A0D76DE7D66CB80F1621,
 					134EB2364224471E7C3C3488,
 					306C9782EEC42B0514B436A8,
@@ -375,6 +387,8 @@
 					4C654AEFCE1F1E088DA6261F,
 					B6054B6DD33BB901156F11ED, ); runOnlyForDeploymentPostprocessing = 0; };
 		D17F88E53C5B4FF78FFCA498 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+					DA18DC7F3A4BA9C12D7A7DCC,
+					48C7522AAEFEC4D0C0E14F14,
 					03B7012999D0C69E49B1A5D9,
 					AD120EC0D249CE594C9F3A12,
 					406149CCE518C0079B39DF69,

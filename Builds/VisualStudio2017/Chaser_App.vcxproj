@@ -159,6 +159,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\achievements\Achievement.cpp"/>
+    <ClCompile Include="..\..\Source\achievements\AchievementManager.cpp"/>
     <ClCompile Include="..\..\Source\chase\ChaseManager.cpp"/>
     <ClCompile Include="..\..\Source\gui logic\UpdateableComponent.cpp"/>
     <ClCompile Include="..\..\Source\gui\Copier.cpp"/>
@@ -1637,6 +1639,8 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\achievements\Achievement.h"/>
+    <ClInclude Include="..\..\Source\achievements\AchievementManager.h"/>
     <ClInclude Include="..\..\Source\chase\ChaseManager.h"/>
     <ClInclude Include="..\..\Source\gui logic\UpdateableComponent.h"/>
     <ClInclude Include="..\..\Source\gui\ColourLookAndFeel.h"/>

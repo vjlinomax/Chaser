@@ -23,6 +23,7 @@
 #include "utility/AutoUpdateTimer.h"
 #include "gui/ListBrowser.h"
 #include "gui/SequenceList.h"
+#include "achievements/AchievementManager.h"
 
 //==============================================================================
 /*
@@ -80,6 +81,7 @@ private:
 	ScopedPointer<ChaseManager> chaseManager;
 	ScopedPointer<SliceManager> sliceManager;
 	ScopedPointer<ChaserXmlManager> xmlManager;
+	ScopedPointer<AchievementManager> achievementManager;
 	ScopedPointer<ChaserCreator> creator;
 	ScopedPointer<AutoUpdateTimer> autoUpdate;
     
