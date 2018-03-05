@@ -97,7 +97,7 @@ MainContentComponent::~MainContentComponent()
 	xmlManager = nullptr;
 	achievementManager = nullptr;
 
-	laf = nullptr;
+	setLookAndFeel( nullptr );
 }
 
 void MainContentComponent::timerCallback()

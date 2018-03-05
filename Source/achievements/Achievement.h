@@ -19,19 +19,24 @@ class Achievement
 public:
 	enum Types
 	{
+		Empty,
 		Darklord
 	};
 
 	Achievement( Types type );
+	Achievement ( XmlElement* xml );
 	~Achievement();
 
 	void add();
 	void trigger();
 
 	Types getType();
+
+	static File getAchievementsFile();
 	
 private:
 	Types type;
+	bool hasTriggered;
 	int count;
 	void writeToXml();
 

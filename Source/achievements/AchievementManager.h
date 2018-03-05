@@ -19,6 +19,8 @@ public:
 	~AchievementManager();
 
 	Achievement* getAchievement( Achievement::Types achievement );
+
+	
 private:
 	OwnedArray<Achievement> achievements;
 };
