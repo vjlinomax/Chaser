@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.3"
+<JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.4"
               bundleIdentifier="nl.HybridVisuals.www" includeBinaryInAppConfig="1"
               jucerVersion="5.2.0" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
               companyEmail="joris@hybridvisuals.nl" displaySplashScreen="0"
@@ -9,8 +9,15 @@
   <MAINGROUP id="cFMW0p" name="Chaser">
     <GROUP id="{6A6FFF85-7097-63A1-1439-46EFB4CC7C8A}" name="Source">
       <GROUP id="{FCD126FD-39C0-C815-B45E-7215B384B62B}" name="achievements">
+        <FILE id="RF0VkQ" name="AchievementComponent.cpp" compile="1" resource="0"
+              file="Source/achievements/AchievementComponent.cpp"/>
+        <FILE id="H12d1G" name="AchievementComponent.h" compile="0" resource="0"
+              file="Source/achievements/AchievementComponent.h"/>
+        <FILE id="uQbFY7" name="Achievements.cpp" compile="1" resource="0"
+              file="Source/achievements/Achievements.cpp"/>
         <FILE id="ORzVrB" name="Achievement.cpp" compile="1" resource="0" file="Source/achievements/Achievement.cpp"/>
         <FILE id="aRHbxX" name="Achievement.h" compile="0" resource="0" file="Source/achievements/Achievement.h"/>
+        <FILE id="EKri4a" name="Achievements.h" compile="0" resource="0" file="Source/achievements/Achievements.h"/>
         <FILE id="rM51Zb" name="AchievementManager.cpp" compile="1" resource="0"
               file="Source/achievements/AchievementManager.cpp"/>
         <FILE id="okyeeP" name="AchievementManager.h" compile="0" resource="0"
@@ -116,7 +123,7 @@
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
                        linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="Chaser"
-                       headerPath="..\..\..\HybridApi\Source" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2015\x64\Release\Static Library"/>
+                       headerPath="" libraryPath="..\..\..\HybridApi\Builds\VisualStudio2017\x64\Release\Static Library"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>

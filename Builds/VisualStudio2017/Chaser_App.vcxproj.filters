@@ -328,6 +328,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\achievements\AchievementComponent.cpp">
+      <Filter>Chaser\Source\achievements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\achievements\Achievements.cpp">
+      <Filter>Chaser\Source\achievements</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\achievements\Achievement.cpp">
       <Filter>Chaser\Source\achievements</Filter>
     </ClCompile>
@@ -1953,7 +1959,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\achievements\AchievementComponent.h">
+      <Filter>Chaser\Source\achievements</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\achievements\Achievement.h">
+      <Filter>Chaser\Source\achievements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\achievements\Achievements.h">
       <Filter>Chaser\Source\achievements</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\achievements\AchievementManager.h">
