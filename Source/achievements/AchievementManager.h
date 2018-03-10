@@ -10,7 +10,7 @@
 
 #pragma once
 #include "JuceHeader.h"
-#include "Achievement.h"
+#include "Achievements.h"
 
 class AchievementManager
 {
@@ -18,7 +18,8 @@ public:
 	AchievementManager();
 	~AchievementManager();
 
-	Achievement* getAchievement( Achievement::Types achievement );
+	//Achievement* getAchievement(  Achievements::Achievement achievement );
+	Achievement* getAchievement( Achievement achievement );
 
 	
 private:

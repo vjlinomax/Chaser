@@ -10,51 +10,45 @@
 
 #include "Achievement.h"
 
-Achievement::Achievement( Types type ) : type( type )
-{
-	hasTriggered = false;
-	count = 0;
-}
 
-Achievement::Achievement( XmlElement * xml )
+void Achievement::setValuesFromXml( XmlElement * xml )
 {
-	type = Achievement::Types( xml->getIntAttribute( "type" ) );
 	hasTriggered = xml->getBoolAttribute( "triggered", false );
 	count = xml->getIntAttribute( "count", 0 );
 }
 
+Achievement::Achievement( String name, String description, int limit ) 
+	: name( name ), description( description ), limit( limit )
+{
+	id = name.hashCode();
+}
+
 Achievement::~Achievement()
 {
+
 }
 
-
-void Achievement::add()
-{
-	count++;
-	writeToXml();
-}
 
 void Achievement::trigger()
 {
-	if ( !hasTriggered )
+#ifdef DEBUG
+	if ( /*!hasTriggered &&*/ count >= limit )
 	{
-		switch ( type )
-		{
-		case Types::Darklord:
-			AlertWindow::showMessageBox( AlertWindow::AlertIconType::WarningIcon,
-				"Greetings, Hellchild!",
-				"You have set your sequence to exactly 666 steps. You are truly the spawn of Satan.",
-				"All Hail!", nullptr );
-		}
+		AchievementComponent* window;
+		window = new AchievementComponent();
+		window->setText( name, description );
+
 		hasTriggered = true;
 	}
 
+	count++;
 	writeToXml();
+#endif
 }
 
-Achievement::Types Achievement::getType()
+void Achievement::reset()
 {
-	return type;
+	count = 0;
 }
 
 File Achievement::getAchievementsFile()
@@ -74,13 +68,13 @@ void Achievement::writeToXml()
 
 	XmlElement* elementToWrite = nullptr;
 	forEachXmlChildElement( *mainElement, achievementXml )
-		if ( Types( achievementXml->getIntAttribute( "type" ) ) == type )
+		if ( achievementXml->getIntAttribute( "id" ) == id )
 			elementToWrite = achievementXml;
 
 	if ( !elementToWrite )
 	{
 		elementToWrite = new XmlElement( "achievement" );
-		elementToWrite->setAttribute( "type", int( type ) );
+		elementToWrite->setAttribute( "id", id );
 		mainElement->addChildElement( elementToWrite );
 	}
 

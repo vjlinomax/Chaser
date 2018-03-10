@@ -11,33 +11,30 @@
 #pragma once
 
 #include "JuceHeader.h"
-
-
+#include "AchievementComponent.h"
 
 class Achievement
 {
 public:
-	enum Types
-	{
-		Empty,
-		Darklord
-	};
-
-	Achievement( Types type );
-	Achievement ( XmlElement* xml );
+	Achievement( String name, String description, int limit );
 	~Achievement();
 
-	void add();
-	void trigger();
+	void setValuesFromXml( XmlElement* xml );
 
-	Types getType();
+	/* keeps score and shows its popup when necessarry */
+	void trigger();
+	void reset();
 
 	static File getAchievementsFile();
-	
+	int id;
+
 private:
-	Types type;
+	
 	bool hasTriggered;
 	int count;
 	void writeToXml();
 
+	int limit;
+	String name;
+	String description;
 };

@@ -16,20 +16,28 @@ AchievementManager::AchievementManager()
 	ScopedPointer<XmlElement> mainElement = XmlDocument::parse( Achievement::getAchievementsFile() );
 	if ( mainElement )
 		forEachXmlChildElement( *mainElement, achievementXml )
-		achievements.add( new Achievement( achievementXml ) );
+	{
+		if ( Achievement* newAchievement = Achievements::getAchievement( achievementXml->getStringAttribute( "id" ).getIntValue() ) )
+		{
+			newAchievement->setValuesFromXml( achievementXml );
+			achievements.add( newAchievement );
+		}
+	}
 }
 
 AchievementManager::~AchievementManager()
 {
 }
 
-Achievement* AchievementManager::getAchievement( Achievement::Types type )
+Achievement* AchievementManager::getAchievement( Achievement achievement )
 {
-	for ( Achievement* achievement : achievements )
-		if ( achievement->getType() == type )
-			return achievement;
+	//check if this achievement is already in the list
+	for ( Achievement* existing : achievements )
+		if ( achievement.id == existing->id )
+			return existing;
 
-	Achievement* newAchievement = new Achievement( type );
+	Achievement* newAchievement = new Achievement( achievement );
 	achievements.add( newAchievement );
 	return newAchievement;
 }
+
