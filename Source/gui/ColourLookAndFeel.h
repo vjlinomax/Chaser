@@ -16,8 +16,8 @@ class ColourLookAndFeel : public LookAndFeel_V1
 public:
 	
 	Colour outlineColour = Colours::white;//Colour::fromRGB(0, 161, 255);
-	Colour backgroundColour = Colour::fromRGB(25, 171, 255).darker(0.2f);
-	Colour primaryColour = Colour::fromRGB(255, 146, 0);
+	Colour backgroundColour = Colour::fromRGB(25, 171, 255).darker(0.2f); //#19abff
+	Colour primaryColour = Colour::fromRGB(255, 146, 0); 
 	Colour textColour = Colours::whitesmoke;
 	Colour textOnColour = Colours::whitesmoke;
 	
