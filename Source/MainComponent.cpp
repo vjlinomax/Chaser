@@ -36,7 +36,7 @@ MainContentComponent::MainContentComponent()
 	sliceManager = new SliceManager( xmlManager );
 	chaseManager = new ChaseManager( xmlManager, sliceManager, achievementManager );
 	
-	previewWindow = new Preview( chaseManager, sliceManager );
+	previewWindow = new Preview( chaseManager, sliceManager, achievementManager );
 	addAndMakeVisible( previewWindow );
 
 	sequencer = new Sequencer( chaseManager );

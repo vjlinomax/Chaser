@@ -213,8 +213,7 @@ int ChaseManager::setStepCount( int i )
 
 		if ( i == 666 )
 			if ( achievementManager )
-				achievementManager->getAchievement( Achievement::Types::Darklord )->trigger();
-
+				achievementManager->getAchievement( Achievements::Darklord )->trigger();
 	}
 
 	writeToXml();
@@ -318,6 +317,8 @@ void ChaseManager::setCurrentSequenceName( juce::String newName )
 	sequences.set( getCurrentSequenceIndex(), sequence );
 
 	writeToXml();
+
+	achievementManager->getAchievement( Achievements::FirstBorn )->trigger();
 }
 
 StringArray ChaseManager::getSequenceNames()

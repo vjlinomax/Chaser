@@ -13,10 +13,11 @@
 #include "../MainComponent.h"
 
 
-//==============================================================================
-Preview::Preview( ChaseManager* chaseManager, SliceManager* sliceManager ) :
-chaseManager( chaseManager ),
-sliceManager( sliceManager )
+  //==============================================================================
+Preview::Preview( ChaseManager* chaseManager, SliceManager* sliceManager, AchievementManager* achievementManager ) :
+	chaseManager( chaseManager ),
+	sliceManager( sliceManager ),
+	achievementManager( achievementManager )
 {
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
@@ -35,7 +36,7 @@ void Preview::update()
 	resized();
 }
 
-void Preview::buttonClicked( Button* )
+void Preview::buttonClicked( Button* b )
 {
 	//using uid instead of index should make sure that once we change the state again
 	//1. non-existent slices in a step get removed because their id is no longer in the list
@@ -53,6 +54,13 @@ void Preview::buttonClicked( Button* )
 	}
 
 	chaseManager->setCurrentStep( activeSlices );
+
+	if ( b == pButton )
+		achievementManager->getAchievement( Achievements::MakeUpYourMind )->trigger();
+	else
+		achievementManager->getAchievement( Achievements::MakeUpYourMind )->reset();
+
+	pButton = b;
 }
 
 void Preview::setActiveSlices()

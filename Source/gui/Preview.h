@@ -72,7 +72,7 @@ class Preview    :
 	public UpdateableComponent
 {
 public:
-    Preview( ChaseManager* chaseManager, SliceManager* sliceManager );
+    Preview( ChaseManager* chaseManager, SliceManager* sliceManager, AchievementManager* achievementManager );
     ~Preview();
 
     void paint (Graphics&) override;
@@ -104,6 +104,9 @@ private:
 
     OwnedArray<SliceButton> sliceButtons;
     ScopedPointer<SliceLookAndFeel> sliceLaf;
+
+	AchievementManager* achievementManager;
+	Button* pButton;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Preview)
 };
