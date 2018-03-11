@@ -22,13 +22,11 @@ const Achievement Achievements::MakeUpYourMind( "Pick a team!",
 
 Achievement* Achievements::getAchievement( int hash )
 {
-	std::vector< Achievement> achievements =
-	{
-		Darklord,
-		Skidoo,
-		FirstBorn,
-		MakeUpYourMind
-	};
+    std::vector< Achievement> achievements;
+    achievements.push_back(Darklord);
+    achievements.push_back(Skidoo);
+    achievements.push_back(FirstBorn);
+  //  achievements.push_back(MakeUpYourMind); //not including an achievement here, will reset it on every launch
 
 	for ( auto achievement : achievements )
 		if ( achievement.id == hash )
