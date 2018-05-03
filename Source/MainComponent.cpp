@@ -9,6 +9,7 @@
 #include "MainComponent.h"
 #include "../../HybridApi/Source/JuceBased/ArenaHelpers/File/FileHelper.h"
 #include "../../HybridApi/Source/JuceBased/Fileless/FileLess.h"
+#include "utility/PixelMapCreator.h"
 
   //==============================================================================
 MainContentComponent::MainContentComponent()
@@ -164,6 +165,12 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 			xmlManager->setSaveFile( defaultChaser );
 			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), true );
 			getTopLevelComponent()->setName( defaultChaser.getFileNameWithoutExtension() );
+#ifdef DEBUG
+			PixelMapCreator c;
+			c.saveAsPng( defaultChaser.getFileNameWithoutExtension(), sliceManager->getSlices(), sliceManager->getResolution() );
+#endif // DEBUG
+
+			
 		}
 		break;
 		case 2:
@@ -325,7 +332,7 @@ void MainContentComponent::resized()
 	Rectangle<int> previewWindowArea = previewArea.reduced( 5 );
 
 	if ( previewWindow->getWidth() > 0 && previewWindow->getHeight() > 0 )
-		previewWindow->setBoundsToFit( previewWindowArea.getX(), previewWindowArea.getY(), previewWindowArea.getWidth(), previewWindowArea.getHeight(), Justification::centred, false );
+		previewWindow->setBoundsToFit( Rectangle<int>{previewWindowArea.getX(), previewWindowArea.getY(), previewWindowArea.getWidth(), previewWindowArea.getHeight()}, Justification::centred, false );
 
 	Rectangle<int> sliceArea = Rectangle < int >{ previewArea.getWidth(), menuBarHeight, area.getWidth() - previewArea.getWidth(), previewArea.getHeight() };
 	listBrowser->setBounds( sliceArea.reduced( 5 ) );
