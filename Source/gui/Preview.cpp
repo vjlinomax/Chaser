@@ -122,9 +122,10 @@ void Preview::createSliceButtons()
 
 void Preview::addSliceButton( Slice& slice )
 {
-	SliceButton* newButton = new SliceButton( slice, Point<int>( getWidth(), getHeight() ) );
+	SliceButton* newButton = new SliceButton( slice );
 	newButton->setLookAndFeel( sliceLaf );
-	newButton->setColours( sliceLaf->backgroundColour, sliceLaf->textColour, sliceLaf->primaryColour );
+	//newButton->setColours( sliceLaf->backgroundColour, sliceLaf->textColour, sliceLaf->primaryColour );
+	newButton->setColors( sliceLaf->primaryColour, sliceLaf->backgroundColour, sliceLaf->textColour );
 	newButton->addListener( this );
 
 	sliceButtons.add( newButton );

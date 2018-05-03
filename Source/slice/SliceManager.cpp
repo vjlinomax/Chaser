@@ -44,44 +44,7 @@ XmlElement* SliceManager::getSlicesAsXml()
 
 	//loop through all the slices
 	for ( Slice* slice : slices )
-	{
-		//for every slice, create an xmlelement and its id, and which screen it belongs to
-		XmlElement* sliceXml = new XmlElement( "slice" );
-		sliceXml->setAttribute( "name", slice->sliceId.first );
-		sliceXml->setAttribute( "uniqueId", String( slice->sliceId.second ) );
-		sliceXml->setAttribute( "enable", slice->enabled );
-		sliceXml->setAttribute( "screenId", String( slice->screenId ) );
-		slicesXml->addChildElement( sliceXml );
-
-		//then create an xmlelement to store its rects and points
-		XmlElement* inputRectXml = new XmlElement( "inputRect" );
-		inputRectXml->setAttribute( "orientation", slice->inputRectOrientation );
-		sliceXml->addChildElement( inputRectXml );
-
-		//loop through this rect's points
-		for ( Point<float> point : slice->inputRectPoints )
-		{
-			//for every step, create an xmlelement and store the step nr
-			XmlElement* pointXml = new XmlElement( "point" );
-			pointXml->setAttribute( "x", point.getX() );
-			pointXml->setAttribute( "y", point.getY() );
-			inputRectXml->addChildElement( pointXml );
-		}
-
-		//then create an xmlelement to store its rects and points
-		XmlElement* maskXml = new XmlElement( "mask" );
-		sliceXml->addChildElement( maskXml );
-
-		//loop through this mask's points
-		for ( Point<float> point : slice->maskPoints )
-		{
-			//for every step, create an xmlelement and store the step nr
-			XmlElement* pointXml = new XmlElement( "point" );
-			pointXml->setAttribute( "x", point.getX() );
-			pointXml->setAttribute( "y", point.getY() );
-			maskXml->addChildElement( pointXml );
-		}
-	}
+		slicesXml->addChildElement( slice->toXml() );
 
 	return slicesXml;
 }

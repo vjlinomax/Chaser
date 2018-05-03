@@ -12,7 +12,7 @@
 #define PREVIEW_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "SliceButton.h"
+//#include "SliceButton.h"
 #include "../chase/ChaseManager.h"
 #include "../slice/SliceManager.h"
 #include "ColourLookAndFeel.h"
