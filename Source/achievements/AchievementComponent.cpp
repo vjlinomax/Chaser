@@ -7,12 +7,12 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 5.2.0
+  Created with Projucer version: 5.2.1
 
   ------------------------------------------------------------------------------
 
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
+  The Projucer is part of the JUCE library.
+  Copyright (c) 2017 - ROLI Ltd.
 
   ==============================================================================
 */
@@ -99,8 +99,8 @@ void AchievementComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    nameLabel->setBounds (proportionOfWidth (0.2492f), proportionOfHeight (0.0000f), proportionOfWidth (0.7508f), proportionOfHeight (0.3309f));
-    descLabel->setBounds (proportionOfWidth (0.2492f), proportionOfHeight (0.3309f), proportionOfWidth (0.7508f), proportionOfHeight (0.6595f));
+    nameLabel->setBounds (proportionOfWidth (0.2493f), proportionOfHeight (0.0000f), proportionOfWidth (0.7507f), proportionOfHeight (0.3314f));
+    descLabel->setBounds (proportionOfWidth (0.2493f), proportionOfHeight (0.3314f), proportionOfWidth (0.7507f), proportionOfHeight (0.6594f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -139,16 +139,17 @@ BEGIN_JUCER_METADATA
                  overlayOpacity="0.330" fixedSize="0" initialWidth="500" initialHeight="100">
   <BACKGROUND backgroundColour="ff19abff"/>
   <LABEL name="new label" id="4f46e3685df3c34c" memberName="nameLabel"
-         virtualName="" explicitFocusOrder="0" pos="24.927% 0% 75.073% 33.142%"
+         virtualName="" explicitFocusOrder="0" pos="24.922% 0% 75.078% 33.095%"
          edTextCol="ff000000" edBkgCol="0" labelText="Name" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default sans-serif font"
-         fontsize="15" kerning="0" bold="1" italic="0" justification="33"
-         typefaceStyle="Bold"/>
+         fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
+         bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
   <LABEL name="new label" id="49293c01478a59ee" memberName="descLabel"
-         virtualName="" explicitFocusOrder="0" pos="24.927% 33.142% 75.073% 65.94%"
+         virtualName="" explicitFocusOrder="0" pos="24.922% 33.095% 75.078% 65.952%"
          edTextCol="ff000000" edBkgCol="0" labelText="Description" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default sans-serif font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="9"/>
+         fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
+         bold="0" italic="0" justification="9"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
