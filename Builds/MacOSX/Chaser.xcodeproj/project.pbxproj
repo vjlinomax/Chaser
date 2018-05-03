@@ -29,12 +29,12 @@
 		38F5C05FE2E25C6317487A65 = {isa = PBXBuildFile; fileRef = FC4C14C646438ADCC264CA27; };
 		1FD62A43E3CAC927FEBDE429 = {isa = PBXBuildFile; fileRef = 6871E604E51379569F660EFE; };
 		221709008D0845C2C7BF77EC = {isa = PBXBuildFile; fileRef = 6D2A2875981A91F3B4294305; };
-		D466EAC816A9193B8E8F7C56 = {isa = PBXBuildFile; fileRef = 639A3BD16C459A8780254ACA; };
 		5894CEA33AA5563B56243ABB = {isa = PBXBuildFile; fileRef = 4EED9933EBBD69D311614A32; };
 		4C3391C39089B3DDA9F18053 = {isa = PBXBuildFile; fileRef = C2BD448AEECA05D500D4AFDE; };
 		824A58D7F5EB0A6B8CF167FC = {isa = PBXBuildFile; fileRef = EEBF998F98404FB3188B7871; };
 		9BC0661D27DE76FC795A8041 = {isa = PBXBuildFile; fileRef = 5E518575CA99EABDE73D81DB; };
 		516C2AA98C2FB6E24AA599E3 = {isa = PBXBuildFile; fileRef = E28A7628C1E9B3FFAAC6F142; };
+		4D69A3584A9E36A72D2C36AF = {isa = PBXBuildFile; fileRef = D76996EF8CA7FC6E312E22D7; };
 		B58ED098645AFA23F67DD97A = {isa = PBXBuildFile; fileRef = C5099324F7D6C956D76486D4; };
 		E0EFBF80D9D98155C11586DF = {isa = PBXBuildFile; fileRef = FEE2B693C85730202E5AA92A; };
 		9197B658DBFD9A7098940593 = {isa = PBXBuildFile; fileRef = 933108786FD171A05C0AD6B4; };
@@ -82,7 +82,6 @@
 		5B7826F127D89824F3AC1080 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_devices.mm"; path = "../../JuceLibraryCode/include_juce_audio_devices.mm"; sourceTree = "SOURCE_ROOT"; };
 		5E518575CA99EABDE73D81DB = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AutoUpdateTimer.cpp; path = ../../Source/utility/AutoUpdateTimer.cpp; sourceTree = "SOURCE_ROOT"; };
 		612F3A73D9A93B992CD3864A = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChaseManager.h; path = ../../Source/chase/ChaseManager.h; sourceTree = "SOURCE_ROOT"; };
-		639A3BD16C459A8780254ACA = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SliceButton.cpp; path = ../../Source/gui/SliceButton.cpp; sourceTree = "SOURCE_ROOT"; };
 		6871E604E51379569F660EFE = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SequenceList.cpp; path = ../../Source/gui/SequenceList.cpp; sourceTree = "SOURCE_ROOT"; };
 		6C1691E7F2B96C8A18BCDAC8 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6C292685D7D4755269FBBC19 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -115,9 +114,10 @@
 		CD3A6B6FB97956FC19DAACEB = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_core.mm"; path = "../../JuceLibraryCode/include_juce_core.mm"; sourceTree = "SOURCE_ROOT"; };
 		CD6B6DCD211407216038021F = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChaserXmlManager.h; path = ../../Source/xml/ChaserXmlManager.h; sourceTree = "SOURCE_ROOT"; };
 		D1217E7B0AE19AEFD201FF7A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_data_structures.mm"; path = "../../JuceLibraryCode/include_juce_data_structures.mm"; sourceTree = "SOURCE_ROOT"; };
-		D8E07537C4E3287FD6F2260A = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SliceButton.h; path = ../../Source/gui/SliceButton.h; sourceTree = "SOURCE_ROOT"; };
+		D76996EF8CA7FC6E312E22D7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PixelMapCreator.cpp; path = ../../Source/utility/PixelMapCreator.cpp; sourceTree = "SOURCE_ROOT"; };
 		DDFE00E2D2B8BE8F4564D6EA = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Preview.h; path = ../../Source/gui/Preview.h; sourceTree = "SOURCE_ROOT"; };
 		DF20FE8DB42FAEE12DA627D9 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_gui_extra"; path = "../../../JUCE/modules/juce_gui_extra"; sourceTree = "SOURCE_ROOT"; };
+		DF541BD8A3AB67B38A714F44 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PixelMapCreator.h; path = ../../Source/utility/PixelMapCreator.h; sourceTree = "SOURCE_ROOT"; };
 		E080EADE35EA28B76D7DB26F = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_graphics"; path = "../../../JUCE/modules/juce_graphics"; sourceTree = "SOURCE_ROOT"; };
 		E28A7628C1E9B3FFAAC6F142 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ChaserCreator.cpp; path = ../../Source/utility/ChaserCreator.cpp; sourceTree = "SOURCE_ROOT"; };
 		E74F66544CF047D294907555 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Achievement.h; path = ../../Source/achievements/Achievement.h; sourceTree = "SOURCE_ROOT"; };
@@ -164,8 +164,6 @@
 					BE7E7CBF820D398231348F55,
 					6D2A2875981A91F3B4294305,
 					20DF94E59B2B9E1A057CF704,
-					639A3BD16C459A8780254ACA,
-					D8E07537C4E3287FD6F2260A,
 					4EED9933EBBD69D311614A32,
 					ED623C5B64779742843BA78C,
 					C2BD448AEECA05D500D4AFDE,
@@ -177,7 +175,9 @@
 					5E518575CA99EABDE73D81DB,
 					14BED1AFD47684317873EFD3,
 					E28A7628C1E9B3FFAAC6F142,
-					1A55E6CB5782E74105844A17, ); name = utility; sourceTree = "<group>"; };
+					1A55E6CB5782E74105844A17,
+					D76996EF8CA7FC6E312E22D7,
+					DF541BD8A3AB67B38A714F44, ); name = utility; sourceTree = "<group>"; };
 		AFD4E184F179B66AA1D570C6 = {isa = PBXGroup; children = (
 					C5099324F7D6C956D76486D4,
 					CD6B6DCD211407216038021F,
@@ -206,7 +206,7 @@
 					07F54F1B4BA4EB06D1961333,
 					E080EADE35EA28B76D7DB26F,
 					725708042CD7CFD235625505,
-					DF20FE8DB42FAEE12DA627D9, ); name = "Juce Modules"; sourceTree = "<group>"; };
+					DF20FE8DB42FAEE12DA627D9, ); name = "JUCE Modules"; sourceTree = "<group>"; };
 		A2E9A37B2B9BF1D7BDA84C08 = {isa = PBXGroup; children = (
 					96E48259D4A7BB65BA72D780,
 					AEC5989C9768D47358F426BC,
@@ -220,7 +220,7 @@
 					4D725F2D2854F53255B7B6EB,
 					2F6545D1C23D93CE0AD184CD,
 					AC1D59200EB035019AE18B2A,
-					5AAD8D3C0A79C55631103892, ); name = "Juce Library Code"; sourceTree = "<group>"; };
+					5AAD8D3C0A79C55631103892, ); name = "JUCE Library Code"; sourceTree = "<group>"; };
 		45D62177F045EEE67B0DA390 = {isa = PBXGroup; children = (
 					F8E903E9EFCF8DA0D250DEBD,
 					2B53E0A4D84754BCF1EA2A5F,
@@ -306,6 +306,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../HybridApi/Builds/MacOSX/build/Release\"");
+				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = "-lHybridApi";
@@ -408,12 +409,12 @@
 					38F5C05FE2E25C6317487A65,
 					1FD62A43E3CAC927FEBDE429,
 					221709008D0845C2C7BF77EC,
-					D466EAC816A9193B8E8F7C56,
 					5894CEA33AA5563B56243ABB,
 					4C3391C39089B3DDA9F18053,
 					824A58D7F5EB0A6B8CF167FC,
 					9BC0661D27DE76FC795A8041,
 					516C2AA98C2FB6E24AA599E3,
+					4D69A3584A9E36A72D2C36AF,
 					B58ED098645AFA23F67DD97A,
 					E0EFBF80D9D98155C11586DF,
 					9197B658DBFD9A7098940593,
@@ -442,7 +443,7 @@
 					0E5B6D7CBA3708F43AAEF5A9,
 					D17F88E53C5B4FF78FFCA498,
 					8FF8B07EFAB5BDEC4F2D2CE4, ); buildRules = ( ); dependencies = (  ); name = "Chaser - App"; productName = Chaser; productReference = 7A98EF33A968CBE2FC6A3DB1; productType = "com.apple.product-type.application"; };
-		01BEC04E9BD0D2E30D8EC1CF = {isa = PBXProject; buildConfigurationList = 739C80A34BA5C3983D609706; attributes = { LastUpgradeCheck = 0830; TargetAttributes = { 715E8AE9C872CDED94B8F9EE = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = 119F33738EEF59034A3217B1; projectDirPath = ""; projectRoot = ""; targets = (715E8AE9C872CDED94B8F9EE); };
+		01BEC04E9BD0D2E30D8EC1CF = {isa = PBXProject; buildConfigurationList = 739C80A34BA5C3983D609706; attributes = { LastUpgradeCheck = 0830; ORGANIZATIONNAME = "Hybrid Visuals"; TargetAttributes = { 715E8AE9C872CDED94B8F9EE = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = 119F33738EEF59034A3217B1; projectDirPath = ""; projectRoot = ""; targets = (715E8AE9C872CDED94B8F9EE); };
 	};
 	rootObject = 01BEC04E9BD0D2E30D8EC1CF;
 }

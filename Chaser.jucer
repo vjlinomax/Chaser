@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.4"
               bundleIdentifier="nl.HybridVisuals.www" includeBinaryInAppConfig="1"
-              jucerVersion="5.2.0" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
+              jucerVersion="5.3.0" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
               companyEmail="joris@hybridvisuals.nl" displaySplashScreen="0"
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
               companyCopyright="Hybrid Visuals">
@@ -55,8 +55,6 @@
         <FILE id="IZ4TKb" name="SequenceList.h" compile="0" resource="0" file="Source/gui/SequenceList.h"/>
         <FILE id="WMlvLX" name="Sequencer.cpp" compile="1" resource="0" file="Source/gui/Sequencer.cpp"/>
         <FILE id="jA2Ero" name="Sequencer.h" compile="0" resource="0" file="Source/gui/Sequencer.h"/>
-        <FILE id="HovDuI" name="SliceButton.cpp" compile="1" resource="0" file="Source/gui/SliceButton.cpp"/>
-        <FILE id="yTzOeG" name="SliceButton.h" compile="0" resource="0" file="Source/gui/SliceButton.h"/>
         <FILE id="OmOI7H" name="SliceList.cpp" compile="1" resource="0" file="Source/gui/SliceList.cpp"/>
         <FILE id="YPASnp" name="SliceList.h" compile="0" resource="0" file="Source/gui/SliceList.h"/>
         <FILE id="ZtXr4A" name="Stepper.cpp" compile="1" resource="0" file="Source/gui/Stepper.cpp"/>
@@ -75,6 +73,10 @@
         <FILE id="DZS6F8" name="ChaserCreator.cpp" compile="1" resource="0"
               file="Source/utility/ChaserCreator.cpp"/>
         <FILE id="WblnnR" name="ChaserCreator.h" compile="0" resource="0" file="Source/utility/ChaserCreator.h"/>
+        <FILE id="LRfLqA" name="PixelMapCreator.cpp" compile="1" resource="0"
+              file="Source/utility/PixelMapCreator.cpp"/>
+        <FILE id="hvobJW" name="PixelMapCreator.h" compile="0" resource="0"
+              file="Source/utility/PixelMapCreator.h"/>
       </GROUP>
       <GROUP id="{1378AC68-4293-88BD-BFEC-611A8E42B263}" name="xml">
         <FILE id="jC5IXd" name="ChaserXmlManager.cpp" compile="1" resource="0"
@@ -94,10 +96,10 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="y0Yjpu" bigIcon="y0Yjpu"
                externalLibraries="HybridApi">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="Chaser" libraryPath="../../../HybridApi/Builds/MacOSX/build/Debug"
-                       headerPath="../../../HybridApi" enablePluginBinaryCopyStep="1"/>
-        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="64BitIntel"
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Chaser"
+                       libraryPath="../../../HybridApi/Builds/MacOSX/build/Debug" headerPath="../../../HybridApi"
+                       enablePluginBinaryCopyStep="1"/>
+        <CONFIGURATION name="Release" osxCompatibility="10.7 SDK" osxArchitecture="64BitIntel"
                        isDebug="0" optimisation="2" targetName="Chaser" libraryPath="../../../HybridApi/Builds/MacOSX/build/Release"
                        headerPath="../../../HybridApi" enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
