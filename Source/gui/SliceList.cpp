@@ -46,18 +46,15 @@ SlicePropertyButton::SlicePropertyButton( SliceList& parent, Slice& slice ) : Bo
 
 SlicePropertyButton::~SlicePropertyButton(){}
 
-void SlicePropertyButton::buttonClicked( Button* b )
-{
-	setState( !getState() );
-	b->setToggleState( getState(), dontSendNotification );
-	slice.enabled = getState();
-
-	parent.sliceVisibilityChanged();
-}
 
 void SlicePropertyButton::setState( bool newState )
 {
 	state = newState;
+
+	slice.enabled = getState();
+	refresh();
+
+	parent.sliceVisibilityChanged();
 }
 
 bool SlicePropertyButton::getState() const

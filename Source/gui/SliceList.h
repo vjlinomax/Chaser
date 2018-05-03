@@ -80,7 +80,6 @@ public:
 	SlicePropertyButton( SliceList& parent, Slice& slice );
 	~SlicePropertyButton();
 
-	void buttonClicked( Button* b ) override;
 	void setState( bool newState ) override;
 	bool getState() const override;
 	void paint( Graphics& g ) override;
