@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 5.2.1
+  Created with Projucer version: 5.3.0
 
   ------------------------------------------------------------------------------
 
@@ -99,8 +99,8 @@ void AchievementComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    nameLabel->setBounds (proportionOfWidth (0.2493f), proportionOfHeight (0.0000f), proportionOfWidth (0.7507f), proportionOfHeight (0.3314f));
-    descLabel->setBounds (proportionOfWidth (0.2493f), proportionOfHeight (0.3314f), proportionOfWidth (0.7507f), proportionOfHeight (0.6594f));
+    nameLabel->setBounds (proportionOfWidth (0.2492f), proportionOfHeight (0.0000f), proportionOfWidth (0.7508f), proportionOfHeight (0.3309f));
+    descLabel->setBounds (proportionOfWidth (0.2492f), proportionOfHeight (0.3309f), proportionOfWidth (0.7508f), proportionOfHeight (0.6595f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
