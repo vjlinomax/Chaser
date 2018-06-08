@@ -113,8 +113,7 @@ void MainContentComponent::timerCallback()
 	getTopLevelComponent()->setName( FileLess::getLastUsedFileName( FileLess::Chaser ).getFileNameWithoutExtension() );
 
 #ifdef DEBUG
-	PixelMapCreator c;
-	c.saveAsPng( getTopLevelComponent()->getName(), sliceManager->getSlices(), sliceManager->getResolution() );
+	
 #endif // DEBUG
 
 	//resize to update preview window
@@ -139,6 +138,8 @@ PopupMenu MainContentComponent::getMenuForIndex( int menuIndex, const juce::Stri
 		menu.addItem( 2, "Load Chaser" );
 		menu.addItem( 3, "Save Chaser as..." );
 		menu.addSeparator();
+
+		menu.addItem( 4, "Export Pixelmap" );
 
 //		//if there is no active assfile, stop the timer
 //		bool isAvailable = FileHelper::isFileValid( sliceManager->getAssFile(), false );
@@ -170,9 +171,6 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 			xmlManager->setSaveFile( defaultChaser );
 			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), true );
 			getTopLevelComponent()->setName( defaultChaser.getFileNameWithoutExtension() );
-
-
-			
 		}
 		break;
 		case 2:
@@ -183,6 +181,12 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 			//save the chaser under a new name
 			saveChaserAs();
 			break;
+		case 4:
+		{
+			PixelMapCreator c;
+			c.saveAsPng( sliceManager->getAssFile().getFileNameWithoutExtension(), sliceManager->getSlices(), sliceManager->getResolution() );
+			break;
+		}
 		case 0:
 		default:
 			return;

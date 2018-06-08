@@ -27,15 +27,25 @@ void PixelMapCreator::saveAsPng( String name, OwnedArray<Slice>& slices, Point<i
 
 	for ( auto slice : slices )
 	{
-		PixelMapButton b( *slice );
-		b.updatePath( resolution );
-		b.paint( g, slices.indexOf( slice ) / (float)slices.size() );
+		if ( !slice->screenIsCollapsed && slice->enabled )
+		{
+			PixelMapButton b( *slice );
+			b.updatePath( resolution );
+			b.paint( g, slices.indexOf( slice ) / (float) slices.size() );
+		}
 	}
 
-	File pngFile = File( File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory ).getFullPathName() + "/" + name + ".png" );
-	if ( pngFile.exists() )
-		pngFile.deleteFile();
-	FileOutputStream stream( pngFile );
-	PNGImageFormat pngWriter;
-	pngWriter.writeImageToStream( pixelMap, stream );
+	
+	File tempFile = File( File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory ).getFullPathName() + "/" + name + ".png" );
+	File pngFile;
+	FileChooser chooser("Export Pixelmap as...", tempFile);
+	if ( chooser.browseForFileToSave( true ) )
+	{
+		pngFile = chooser.getResult();
+		if ( pngFile.exists() )
+			pngFile.deleteFile();
+		FileOutputStream stream( pngFile );
+		PNGImageFormat pngWriter;
+		pngWriter.writeImageToStream( pixelMap, stream );
+	}
 }
