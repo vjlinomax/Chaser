@@ -14,7 +14,7 @@
 const Achievement Achievements::Darklord( "Greetings, Hellchild!",
 	"You have set your sequence to exactly 666 steps. All hail the Dark Lord.", 0);
 const Achievement Achievements::Skidoo( "23", 
-	"You were not supposed to be here yet. Madness this way lies. Stop before it's too late.", 22 );
+	"You were not supposed to be here yet. Madness this way lies. Get out while you can.", 22 );
 const Achievement Achievements::FirstBorn( "Congratulations! It's a sequence!",
 	"You have named your first sequence! Careful, they grow up fast.", 0 );
 const Achievement Achievements::MakeUpYourMind( "Pick a team!",

@@ -112,6 +112,11 @@ void MainContentComponent::timerCallback()
 	//set the name
 	getTopLevelComponent()->setName( FileLess::getLastUsedFileName( FileLess::Chaser ).getFileNameWithoutExtension() );
 
+#ifdef DEBUG
+	PixelMapCreator c;
+	c.saveAsPng( getTopLevelComponent()->getName(), sliceManager->getSlices(), sliceManager->getResolution() );
+#endif // DEBUG
+
 	//resize to update preview window
 	resized();
 }
@@ -165,10 +170,7 @@ void MainContentComponent::menuItemSelected( int menuItemID, int topLevelMenuInd
 			xmlManager->setSaveFile( defaultChaser );
 			creator->createChaserFromAssFile( FileHelper::getAssFileAutomagically( true ), true );
 			getTopLevelComponent()->setName( defaultChaser.getFileNameWithoutExtension() );
-#ifdef DEBUG
-			PixelMapCreator c;
-			c.saveAsPng( defaultChaser.getFileNameWithoutExtension(), sliceManager->getSlices(), sliceManager->getResolution() );
-#endif // DEBUG
+
 
 			
 		}

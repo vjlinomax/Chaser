@@ -9,7 +9,7 @@
 */
 
 #include "PixelMapCreator.h"
-#include "../../HybridApi/Source/JuceBased/Components/SliceButton.h"
+#include "../gui/PixelMapButton.h"
 
 PixelMapCreator::PixelMapCreator()
 {
@@ -25,18 +25,17 @@ void PixelMapCreator::saveAsPng( String name, OwnedArray<Slice>& slices, Point<i
 	Image pixelMap = Image( Image::PixelFormat::ARGB, resolution.x, resolution.y, true );
 	Graphics g( pixelMap );
 
-	Component c;
-	c.setSize( resolution.x, resolution.y );
 	for ( auto slice : slices )
 	{
-		SliceButton b( *slice );
-		c.addChildComponent( b );
-		b.resized();
-		b.paintButton( g, false, false );
+		PixelMapButton b( *slice );
+		b.updatePath( resolution );
+		b.paint( g, slices.indexOf( slice ) / (float)slices.size() );
 	}
 
-	FileOutputStream stream( File( File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory ).getFullPathName() + "/" + name + ".png" ) );
-	stream.flush();
+	File pngFile = File( File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory ).getFullPathName() + "/" + name + ".png" );
+	if ( pngFile.exists() )
+		pngFile.deleteFile();
+	FileOutputStream stream( pngFile );
 	PNGImageFormat pngWriter;
 	pngWriter.writeImageToStream( pixelMap, stream );
 }
