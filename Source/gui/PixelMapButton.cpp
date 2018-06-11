@@ -56,8 +56,8 @@ void PixelMapButton::paint( Graphics & g, float index )
 	g.drawLine( bounds.getX(), bounds.getBottom(), bounds.getRight(), bounds.getY() );
 
 	int logoOffset = 0;
-	int width = upright.getBounds().getWidth();
-	int height = upright.getBounds().getHeight();
+	int width = int( upright.getBounds().getWidth() );
+	int height = int( upright.getBounds().getHeight() );
 	if ( height > 400 && width > 400 )
 	{
 		//scan the logo folder for files
@@ -72,7 +72,7 @@ void PixelMapButton::paint( Graphics & g, float index )
 				Image logo = ImageFileFormat::loadFrom( files[ 0 ] );
 				if ( logo.isValid() )
 				{
-					g.drawImage( logo, upright.getBounds().withSizeKeepingCentre( jmin( 300, width / 2 ), jmin( 300, height / 2 ) ), RectanglePlacement::centred );
+					g.drawImage( logo, upright.getBounds().withSizeKeepingCentre( jmin( 300.0f, width / 2.0f ), jmin( 300.0f, height / 2.0f ) ), RectanglePlacement::centred );
 					logoOffset = jmin( 300, height / 2 ) / 2;
 				}
 			}
@@ -83,23 +83,23 @@ void PixelMapButton::paint( Graphics & g, float index )
 	{
 		Font f;
 		f.setTypefaceName( "Impact" );
-		int h = 24;
-		logoOffset += h;
+		float h = 24;
+		logoOffset = logoOffset + int( h );
 		f.setHeight( h );
 		g.setFont( f );
 		int textWidth = f.getStringWidth( name );
 		g.setColour( Colours::black );
-		g.fillRect( bounds.withSizeKeepingCentre( textWidth + 16, h * 1.5 ).translated( 0, h * -0.75 + logoOffset ) );
+		g.fillRect( bounds.withSizeKeepingCentre( float( textWidth + 16 ), h * 1.5f ).translated( 0, h * -0.75f + logoOffset ) );
 		g.setColour( Colours::white );
-		g.drawText( name, upright.getBounds().toNearestInt().translated( 0, h * -0.75 + logoOffset ), Justification::centred, 1 );
-		h *= 0.75;
+		g.drawText( name, upright.getBounds().toNearestInt().translated( 0, int( h * -0.75f ) + logoOffset ), Justification::centred, 1 );
+		h *= 0.75f;
 		f.setHeight( h );
 		String data = String( bounds.toNearestInt().getX() ) + ", " + String( bounds.toNearestInt().getY() ) + " // " + String( bounds.toNearestInt().getWidth() ) + " x " + String( bounds.toNearestInt().getHeight() );
 		textWidth = f.getStringWidth( data );
-		g.fillRect( bounds.withSizeKeepingCentre( textWidth + 16, h *  1.5 ).translated( 0, h * 0.75 + logoOffset ) );
+		g.fillRect( bounds.withSizeKeepingCentre( float( textWidth + 16 ), h *  1.5f ).translated( 0.0f, h * 0.75f + logoOffset ) );
 		g.setColour( Colours::black );
 		g.setFont( f );
-		g.drawText( data, upright.getBounds().toNearestInt().translated( 0, h * 0.75 + logoOffset ), Justification::centred, 1 );
+		g.drawText( data, upright.getBounds().toNearestInt().translated( 0, int( h * 0.75f ) + logoOffset ), Justification::centred, 1 );
 	}
 
 	g.restoreState();
