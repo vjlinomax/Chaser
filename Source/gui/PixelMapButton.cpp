@@ -79,7 +79,7 @@ void PixelMapButton::paint( Graphics & g, float index )
 		}
 	}
 
-	if ( height > 48 && width > 128 )
+	if ( height > 48 && width > 128 ) //show the name
 	{
 		Font f;
 		f.setTypefaceName( "Impact" );
@@ -92,14 +92,18 @@ void PixelMapButton::paint( Graphics & g, float index )
 		g.fillRect( bounds.withSizeKeepingCentre( float( textWidth + 16 ), h * 1.5f ).translated( 0, h * -0.75f + logoOffset ) );
 		g.setColour( Colours::white );
 		g.drawText( name, upright.getBounds().toNearestInt().translated( 0, int( h * -0.75f ) + logoOffset ), Justification::centred, 1 );
-		h *= 0.75f;
-		f.setHeight( h );
-		String data = String( bounds.toNearestInt().getX() ) + ", " + String( bounds.toNearestInt().getY() ) + " // " + String( bounds.toNearestInt().getWidth() ) + " x " + String( bounds.toNearestInt().getHeight() );
-		textWidth = f.getStringWidth( data );
-		g.fillRect( bounds.withSizeKeepingCentre( float( textWidth + 16 ), h *  1.5f ).translated( 0.0f, h * 0.75f + logoOffset ) );
-		g.setColour( Colours::black );
-		g.setFont( f );
-		g.drawText( data, upright.getBounds().toNearestInt().translated( 0, int( h * 0.75f ) + logoOffset ), Justification::centred, 1 );
+		
+		if ( height > 64 ) //show the coordinates too
+		{
+			h *= 0.75f;
+			f.setHeight( h );
+			String data = String( bounds.toNearestInt().getX() ) + ", " + String( bounds.toNearestInt().getY() ) + " // " + String( bounds.toNearestInt().getWidth() ) + " x " + String( bounds.toNearestInt().getHeight() );
+			textWidth = f.getStringWidth( data );
+			g.fillRect( bounds.withSizeKeepingCentre( float( textWidth + 16 ), h *  1.5f ).translated( 0.0f, h * 0.75f + logoOffset ) );
+			g.setColour( Colours::black );
+			g.setFont( f );
+			g.drawText( data, upright.getBounds().toNearestInt().translated( 0, int( h * 0.75f ) + logoOffset ), Justification::centred, 1 );
+		}
 	}
 
 	g.restoreState();
@@ -113,7 +117,5 @@ void PixelMapButton::paint( Graphics & g, float index )
 	while ( it.next() )
 		g.fillEllipse( it.x1 - r * 0.5f, it.y1 - r * 0.5f, r, r );
 	g.restoreState();
-
-
 }
 
