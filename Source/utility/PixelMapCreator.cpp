@@ -25,14 +25,17 @@ void PixelMapCreator::saveAsPng( String name, OwnedArray<Slice>& slices, Point<i
 	Image pixelMap = Image( Image::PixelFormat::ARGB, resolution.x, resolution.y, true );
 	Graphics g( pixelMap );
 
+	//create a sub array to get a better distribution of colors when lots of slices are disabled
+	Array<Slice*> visibleSlices;
 	for ( auto slice : slices )
-	{
 		if ( !slice->screenIsCollapsed && slice->enabled )
-		{
-			PixelMapButton b( *slice );
-			b.updatePath( resolution );
-			b.paint( g, slices.indexOf( slice ) / (float) slices.size() );
-		}
+			visibleSlices.add( slice );
+	
+	for ( auto visibleSlice : visibleSlices )
+	{
+		PixelMapButton b( *visibleSlice );
+		b.updatePath( resolution );
+		b.paint( g, visibleSlices.indexOf( visibleSlice ) / (float) visibleSlices.size() );
 	}
 
 	
