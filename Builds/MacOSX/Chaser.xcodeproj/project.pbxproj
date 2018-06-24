@@ -271,6 +271,7 @@
 					5536D239F9D7AFDE7263F98A, ); name = Source; sourceTree = "<group>"; };
 		F236A3EC721BC703A709DC46 = {isa = XCBuildConfiguration; buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
@@ -305,6 +306,7 @@
 		F2C65DA9CAE09EDB6E2A4436 = {isa = XCBuildConfiguration; buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
@@ -473,7 +475,7 @@
 					0E5B6D7CBA3708F43AAEF5A9,
 					D17F88E53C5B4FF78FFCA498,
 					8FF8B07EFAB5BDEC4F2D2CE4, ); buildRules = ( ); dependencies = (  ); name = "Chaser - App"; productName = Chaser; productReference = 7A98EF33A968CBE2FC6A3DB1; productType = "com.apple.product-type.application"; };
-		01BEC04E9BD0D2E30D8EC1CF = {isa = PBXProject; buildConfigurationList = 739C80A34BA5C3983D609706; attributes = { LastUpgradeCheck = 0830; ORGANIZATIONNAME = "Hybrid Visuals"; TargetAttributes = { 715E8AE9C872CDED94B8F9EE = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = 119F33738EEF59034A3217B1; projectDirPath = ""; projectRoot = ""; targets = (715E8AE9C872CDED94B8F9EE); };
+		01BEC04E9BD0D2E30D8EC1CF = {isa = PBXProject; buildConfigurationList = 739C80A34BA5C3983D609706; attributes = { LastUpgradeCheck = 0930; ORGANIZATIONNAME = "Hybrid Visuals"; TargetAttributes = { 715E8AE9C872CDED94B8F9EE = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = 119F33738EEF59034A3217B1; projectDirPath = ""; projectRoot = ""; targets = (715E8AE9C872CDED94B8F9EE); };
 	};
 	rootObject = 01BEC04E9BD0D2E30D8EC1CF;
 }
