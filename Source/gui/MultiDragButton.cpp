@@ -22,8 +22,6 @@ MultiDragButton::~MultiDragButton()
 void MultiDragButton::mouseDown( const MouseEvent &event )
 {
 	Button::mouseDown( event );
-
-	lastDraggedButton = nullptr;
 }
 
 void MultiDragButton::mouseUp( const MouseEvent &event )
