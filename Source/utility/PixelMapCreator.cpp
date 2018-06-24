@@ -40,12 +40,14 @@ void PixelMapCreator::saveAsPng( String name, OwnedArray<Slice>& slices, Point<i
 
 	File tempFile = File( File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory ).getFullPathName() + "/" + name + ".png" );
 	File pngFile;
-	FileChooser chooser("Export Pixelmap as...", tempFile);
+	FileChooser chooser("Export Pixelmap as...", tempFile, ".png");
 	if ( chooser.browseForFileToSave( true ) )
 	{
 		pngFile = chooser.getResult();
 		if ( pngFile.exists() )
 			pngFile.deleteFile();
+		if ( !pngFile.hasFileExtension( "png" ) )
+			pngFile = File( pngFile.getParentDirectory().getFullPathName() + "/" + pngFile.getFileNameWithoutExtension() + ".png" );
 		FileOutputStream stream( pngFile );
 		PNGImageFormat pngWriter;
 		pngWriter.writeImageToStream( pixelMap, stream );
