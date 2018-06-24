@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="ZsFZkw" name="Chaser" projectType="guiapp" version="2.0.4"
               bundleIdentifier="nl.HybridVisuals.www" includeBinaryInAppConfig="1"
-              jucerVersion="5.3.0" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
+              jucerVersion="5.3.2" companyName="Hybrid Visuals" companyWebsite="www.hybridvisuals.nl"
               companyEmail="joris@hybridvisuals.nl" displaySplashScreen="0"
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
               companyCopyright="Hybrid Visuals">
@@ -97,6 +97,9 @@
               file="Source/xml/ChaserXmlManager.cpp"/>
         <FILE id="vELNWa" name="ChaserXmlManager.h" compile="0" resource="0"
               file="Source/xml/ChaserXmlManager.h"/>
+        <FILE id="uMKs34" name="ResXmlParser.cpp" compile="1" resource="0"
+              file="../HybridApi/Source/JuceBased/ArenaHelpers/Xml/ResXmlParser.cpp"/>
+        <FILE id="WDYwVq" name="ResXmlParser.h" compile="0" resource="0" file="../HybridApi/Source/JuceBased/ArenaHelpers/Xml/ResXmlParser.h"/>
         <FILE id="MDCZNm" name="XmlSequence.cpp" compile="1" resource="0" file="Source/xml/XmlSequence.cpp"/>
         <FILE id="hGOzrZ" name="XmlSequence.h" compile="0" resource="0" file="Source/xml/XmlSequence.h"/>
       </GROUP>
@@ -166,4 +169,7 @@
     <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS/>
+  <LIVE_SETTINGS>
+    <WINDOWS/>
+  </LIVE_SETTINGS>
 </JUCERPROJECT>

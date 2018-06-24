@@ -15,11 +15,6 @@ PixelMapButton::PixelMapButton( hybrid::Slice slice ) :
 {
 	name = slice.sliceId.first;
 	rotation = slice.maskPoints.size() > 0 ? slice.maskRectOrientation : slice.inputRectOrientation;
-
-	schemes.add( Scheme( Colours::darkgrey, Colours::darkorchid ) );
-	schemes.add( Scheme( Colours::blanchedalmond, Colours::darkgoldenrod ) );
-	schemes.add( Scheme( Colours::blue, Colours::darkkhaki ) );
-	schemes.add( Scheme( Colours::grey, Colours::maroon ) );
 }
 
 PixelMapButton::~PixelMapButton()

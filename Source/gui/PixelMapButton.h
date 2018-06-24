@@ -26,13 +26,4 @@ public:
 private:
 	String name;
 	float rotation;
-
-	struct Scheme
-	{
-		Scheme() {};
-		Scheme( Colour a, Colour b ) { firstCol = a; secondCol = b; }
-		Colour firstCol;
-		Colour secondCol;
-	};
-	Array<Scheme> schemes;
 };
