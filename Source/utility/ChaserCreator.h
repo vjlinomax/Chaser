@@ -27,6 +27,7 @@ public:
 					Preview* preview, SliceList* sliceList );
 	~ChaserCreator();
 
+	//we pass in the assFile because it may be different from the one currently open in Resolume
 	void createChaserFromAssFile( File assFile, bool createNew );
 	
 	//will return true if succesful

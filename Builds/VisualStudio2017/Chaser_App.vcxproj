@@ -183,6 +183,7 @@
     <ClCompile Include="..\..\Source\utility\ChaserCreator.cpp"/>
     <ClCompile Include="..\..\Source\utility\PixelMapCreator.cpp"/>
     <ClCompile Include="..\..\Source\xml\ChaserXmlManager.cpp"/>
+    <ClCompile Include="..\..\..\HybridApi\Source\JuceBased\ArenaHelpers\Xml\ResXmlParser.cpp"/>
     <ClCompile Include="..\..\Source\xml\XmlSequence.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
@@ -1707,6 +1708,7 @@
     <ClInclude Include="..\..\Source\utility\ChaserCreator.h"/>
     <ClInclude Include="..\..\Source\utility\PixelMapCreator.h"/>
     <ClInclude Include="..\..\Source\xml\ChaserXmlManager.h"/>
+    <ClInclude Include="..\..\..\HybridApi\Source\JuceBased\ArenaHelpers\Xml\ResXmlParser.h"/>
     <ClInclude Include="..\..\Source\xml\XmlSequence.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>

@@ -9,8 +9,8 @@
   */
 
 #include "ChaserCreator.h"
-#include "../../HybridApi/Source/HybridApi.h"
 #include "../../HybridApi/Source/JuceBased/Fileless/FileLess.h"
+#include "../../HybridApi/Source/JuceBased/ArenaHelpers/Xml/ResXmlParser.h"
 
 ChaserCreator::ChaserCreator( SliceManager* sliceManager, ChaseManager* chaseManager,
 	Preview* preview, SliceList* sliceList ) :
@@ -29,8 +29,11 @@ ChaserCreator::~ChaserCreator()
 
 void ChaserCreator::createChaserFromAssFile( File assFile, bool createNew )
 {
-	ResXmlParser::parseAssFile( assFile, sliceManager->getSlices(), sliceManager->getScreens(), sliceManager->getResolution() );
+	ResXmlParser parser;
+	//
+	//ResXmlParser::parseAssFile( assFile, sliceManager->getSlices(), sliceManager->getScreens(), sliceManager->getResolution() );
 	sliceManager->getAssFile() = assFile;
+	parser.setAssFile( assFile );
 
 	//now populate the previewwindow with buttons for these slices
 	previewWindow->createSliceButtons();
