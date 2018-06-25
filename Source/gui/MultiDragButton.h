@@ -17,10 +17,13 @@ public:
 	MultiDragButton();
 	~MultiDragButton();
 
+	void mouseDown( const MouseEvent& ) override;
+	void mouseUp( const MouseEvent& ) override;
 	void mouseDrag( const MouseEvent& ) override;
 
 private:
 	MultiDragButton* lastDraggedButton;
+	bool weWereDragging;
 
 
 };
