@@ -9,6 +9,7 @@
 */
 
 #include "PixelMapButton.h"
+#include "JuceHeader.h"
 
 PixelMapButton::PixelMapButton( hybrid::Slice slice ) :
 	PathButton( slice.maskPoints.size() > 0 ? slice.maskPoints : slice.inputRectPoints )
@@ -36,8 +37,8 @@ void PixelMapButton::paint( Graphics & g, float index )
 	AffineTransform trans = AffineTransform::rotation( rotation, center.x, center.y );
 	g.addTransform( trans );
 
-	float xTiles = jmax( 1.0f, bounds.getWidth() / round( bounds.getWidth() / 64.0f ) );
-	float yTiles = jmax( 1.0f, bounds.getHeight() / round( bounds.getHeight() / 64.0f ) );
+    float xTiles = jmax( 1.0f, float( bounds.getWidth() / round( bounds.getWidth() / 64.0f ) ) );
+	float yTiles = jmax( 1.0f, float( bounds.getHeight() / round( bounds.getHeight() / 64.0f ) ) );
 	Colour col = Colour::fromHSV( 1.0f - index, 1.0f, 1.0f, 1.0f );
 	g.fillCheckerBoard( bounds, xTiles, yTiles, col, col.darker() );
 
