@@ -15,7 +15,7 @@
 AutoUpdateTimer::AutoUpdateTimer( ChaserCreator* creator ) :
 creator( creator )
 {
-	lastModifiedTime = ChaserXmlParser::getLastUpdateTimeForActiveAssFile();
+	lastModifiedTime = ChaserXmlParser::getLastUpdateTime();
 }
 
 AutoUpdateTimer::~AutoUpdateTimer()
@@ -36,7 +36,7 @@ void AutoUpdateTimer::stop()
 void AutoUpdateTimer::timerCallback()
 {
 	//check if the file has been modified
-	Time checkTime = ChaserXmlParser::getLastUpdateTimeForActiveAssFile();
+	Time checkTime = ChaserXmlParser::getLastUpdateTime();
 
 	//if we didn't get a valid time, 
 	//maybe because the file doesn't exist
